@@ -11,5 +11,7 @@
 
     <!-- green plate color -->
     <color name="green_plate_green">#4C7623</color>
-    <color name="green_plate_gray">#7C7C7C</color>
+    <color name="green_plate_gray">#818181</color>
+    <color name="green_plate_lightgray">#EDEDED</color>
+    <color name="green_plate_navy">#2F4858</color>
 </resources>

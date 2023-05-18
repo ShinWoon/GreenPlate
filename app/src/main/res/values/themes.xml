@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Green_plate" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/green_plate_green</item>
+        <item name="colorPrimaryVariant">@color/green_plate_green</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -12,9 +12,26 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="statusBarTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/green_plate_green</item>
+        <item name="colorPrimaryDark">@color/green_plate_green</item>
+        <!-- Other attributes -->
+    </style>
+
+    <style name="AppTheme" parent="android:Theme.Material">
+        <item name="android:colorPrimaryDark">@color/green_plate_green</item>
     </style>
 
     <style name="BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
         <item name="android:background">@color/white</item>
     </style>
+
+
+    // font
+
 </resources>
