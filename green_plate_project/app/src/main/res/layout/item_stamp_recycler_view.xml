@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="63dp"
+    android:layout_height="63dp"
+    android:layout_margin="4dp">
+
+    <View
+        android:id="@+id/stamp_circle_view"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:layout_gravity="center"
+        android:background="@drawable/no_stamp_circle"/>
+
+    <ImageView
+        android:id="@+id/stamp_logo_view"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/logo_gray"
+        android:layout_gravity="center"/>
+</FrameLayout>
