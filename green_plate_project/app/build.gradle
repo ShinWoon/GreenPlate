@@ -79,4 +79,9 @@ dependencies {
     //framework ktx dependency 추가
     implementation "androidx.fragment:fragment-ktx:1.4.1"
 
+    // viewPager
+//    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    //viewpager2
+    implementation 'com.google.android.material:material:1.6.1'
+
 }

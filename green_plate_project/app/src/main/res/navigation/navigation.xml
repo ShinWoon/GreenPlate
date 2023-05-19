@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/homeFragment">
 
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.ssafy.green_plate.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
-        <action
-            android:id="@+id/action_splashFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
 
     <fragment
         android:id="@+id/homeFragment"
@@ -33,8 +24,8 @@
             android:id="@+id/action_orderFragment_to_orderDetailFragment"
             app:destination="@id/orderDetailFragment" />
         <action
-            android:id="@+id/action_orderFragment_to_shoppingcartFragment"
-            app:destination="@id/shoppingcartFragment" />
+            android:id="@+id/action_orderFragment_to_shoppingCartFragment"
+            app:destination="@id/shoppingCartFragment" />
         <action
             android:id="@+id/action_orderFragment_to_menuDetailFragment"
             app:destination="@id/menuDetailFragment" />
@@ -78,8 +69,8 @@
         android:label="fragment_paying"
         tools:layout="@layout/fragment_paying" />
     <fragment
-        android:id="@+id/shoppingcartFragment"
-        android:name="com.ssafy.green_plate.ShoppingcartFragment"
+        android:id="@+id/shoppingCartFragment"
+        android:name="com.ssafy.green_plate.ShoppingCartFragment"
         android:label="fragment_shoppingcart"
         tools:layout="@layout/fragment_shoppingcart" >
         <action
