@@ -1,8 +1,68 @@
 package com.ssafy.green_plate
 
+import android.content.Context
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentShoppingcartBinding
+import com.ssafy.green_plate.src.main.MainActivity
 
-class ShoppingCartFragment : BaseFragment<FragmentShoppingcartBinding>(FragmentShoppingcartBinding::bind, R.layout.fragment_menu_detail) {
+private const val TAG = "ShoppingCartFragment_싸피"
+class ShoppingCartFragment : BaseFragment<FragmentShoppingcartBinding>(FragmentShoppingcartBinding::bind, R.layout.fragment_shoppingcart) {
+
+    private lateinit var mainActivity: MainActivity
+    private lateinit var shoppingCartAdapter: ShoppingCartAdapter
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mainActivity.hideBottomNav(true)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        Log.d(TAG, "onViewCreated: ")
+        var items = listOf("item1", "item2")
+
+        shoppingCartAdapter = ShoppingCartAdapter(mainActivity, items)
+
+        val linearLayoutManager = LinearLayoutManager(context)
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        binding.shoppingCartRv.apply {
+            layoutManager = linearLayoutManager
+            adapter = shoppingCartAdapter
+        }
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mainActivity.hideBottomNav(false)
+    }
 
 }

@@ -2,7 +2,9 @@ package com.ssafy.green_plate.src.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.ssafy.green_plate.HomeFragment
 import com.ssafy.green_plate.MypageFragment
 import com.ssafy.green_plate.OrderFragment
@@ -23,35 +25,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 //            .replace(R.id.frame_layout_main, HomeFragment())
 //            .commit()
 
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_page_1 -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment, HomeFragment())
-                        .commit()
-                    true
-                }
-                R.id.navigation_page_2 -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment, OrderFragment())
-                        .commit()
-                    true
-                }
-                R.id.navigation_page_3 -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment, MypageFragment())
-                        .commit()
-                    true
-                }
-                else -> false
-            }
-        }
+        // 네비게이션 호스트
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        // 네비게이션 컨트롤러
+        val navController = navHostFragment.navController
+        // 바인딩
+        NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
 
-        binding.bottomNavigation.setOnItemReselectedListener { item ->
-            // 재선택시 다시 랜더링 하지 않기 위해 수정
-            if (binding.bottomNavigation.selectedItemId != item.itemId) {
-                binding.bottomNavigation.selectedItemId = item.itemId
-            }
-        }
+
+    }
+
+    fun hideBottomNav(state : Boolean) {
+        if (state) binding.bottomNavigation.visibility = View.GONE
+        else binding.bottomNavigation.visibility = View.VISIBLE
     }
 }
