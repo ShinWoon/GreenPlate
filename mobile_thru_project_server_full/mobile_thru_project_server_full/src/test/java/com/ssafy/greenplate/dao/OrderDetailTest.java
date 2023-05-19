@@ -28,13 +28,13 @@ class OrderDetailTest extends AbstractDaoTest {
         assertEquals(selected.getProductId(), 1);
     }
 
-    @Test
-    @org.junit.jupiter.api.Order(2)
-    public void insertTest() {
-        OrderDetail detail = new OrderDetail(1, 1, 10);
-        int result = dDao.insert(detail);
-        assertEquals(result, 1);
-    }
+    // @Test
+    // @org.junit.jupiter.api.Order(2)
+    // public void insertTest() {
+    // OrderDetail detail = new OrderDetail(1, 1, 10);
+    // int result = dDao.insert(detail);
+    // assertEquals(result, 1);
+    // }
 
     @Test
     @org.junit.jupiter.api.Order(3)

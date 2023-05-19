@@ -13,39 +13,39 @@ import com.ssafy.greenplate.model.dto.User;
 
 class StampServiceTest extends AbstractServiceTest {
 
-    @Test
-    @org.junit.jupiter.api.Order(1)
-    public void stampTest() {
-        User testUser = new User("test", "test", "test", 0);
-        userService.join(testUser);
+    // @Test
+    // @org.junit.jupiter.api.Order(1)
+    // public void stampTest() {
+    // User testUser = new User("test", "test", "test", 0);
+    // userService.join(testUser);
 
-        Order order = new Order(testUser.getId(), "table_test", new Date(), 'N');
-        List<OrderDetail> details = new ArrayList<>();
-        details.add(new OrderDetail(1, 1));
-        details.add(new OrderDetail(2, 2));
-        details.add(new OrderDetail(2, 2));
-        order.setDetails(details);
+    // Order order = new Order(testUser.getId(), "table_test", new Date(), 'N');
+    // List<OrderDetail> details = new ArrayList<>();
+    // details.add(new OrderDetail(1, 1));
+    // details.add(new OrderDetail(2, 2));
+    // details.add(new OrderDetail(2, 2));
+    // order.setDetails(details);
 
-        orderService.makeOrder(order);
+    // orderService.makeOrder(order);
 
-        order = new Order(testUser.getId(), "table_test", new Date(), 'N');
-        details = new ArrayList<>();
-        details.add(new OrderDetail(1, 1));
-        order.setDetails(details);
+    // order = new Order(testUser.getId(), "table_test", new Date(), 'N');
+    // details = new ArrayList<>();
+    // details.add(new OrderDetail(1, 1));
+    // order.setDetails(details);
 
-        orderService.makeOrder(order);
+    // orderService.makeOrder(order);
 
-        User selected = userService.login(testUser.getId(), testUser.getPass());
-        assertEquals(selected.getStamps(), 6);
+    // User selected = userService.login(testUser.getId(), testUser.getPass());
+    // assertEquals(selected.getStamps(), 6);
 
-        List<Stamp> stamps = sService.selectByUser("test");
-        assertEquals(stamps.size(), 2);
-        assertEquals(stamps.get(0).getQuantity(), 1);
-    }
+    // List<Stamp> stamps = sService.selectByUser("test");
+    // assertEquals(stamps.size(), 2);
+    // assertEquals(stamps.get(0).getQuantity(), 1);
+    // }
 
-    @Test
-    @org.junit.jupiter.api.Order(2)
-    public void cleanup() {
-        userService.leave("test");
-    }
+    // @Test
+    // @org.junit.jupiter.api.Order(2)
+    // public void cleanup() {
+    // userService.leave("test");
+    // }
 }

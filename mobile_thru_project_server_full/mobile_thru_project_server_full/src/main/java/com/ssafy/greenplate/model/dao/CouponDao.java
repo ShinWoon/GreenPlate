@@ -11,5 +11,5 @@ public interface CouponDao {
 
     Coupon select(Integer couponId);
 
-    List<Coupon> selectAll();
+    List<Coupon> selectAll(String userId);
 }

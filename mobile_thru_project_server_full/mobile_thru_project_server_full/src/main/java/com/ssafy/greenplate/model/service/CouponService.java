@@ -30,7 +30,8 @@ public interface CouponService {
     /**
      * Coupon 목록읅 반환한다.
      * 
+     * @param id
      * @return
      */
-    List<Coupon> selectAllCoupons();
+    List<Coupon> selectAllCoupons(String userId);
 }

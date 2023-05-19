@@ -10,6 +10,7 @@ INSERT INTO t_order_detail
     product_id,
 	dressing_id,
 	added_stuff, 
+	added_quantity,
     quantity)
 VALUES
     ( 
@@ -17,6 +18,7 @@ VALUES
     #{productId},
 	#{dressingId},
 	#{addedStuff}, 
+	#{addedQuantity},
     #{quantity})
 	</insert>
 
@@ -41,6 +43,7 @@ VALUES
 		<result column="product_id" property="productId"/>
 		<result column="dressing_id" property="dressingId"/>
 		<result column="added_stuff" property="addedStuff"/>
+		<result column="added_quantity" property="addedQuantity"/>
 		<result column="quantity" property="quantity"/>
 	</resultMap>
 </mapper>

@@ -33,8 +33,8 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
-    public List<Coupon> selectAllCoupons() {
-        return cDao.selectAll();
+    public List<Coupon> selectAllCoupons(String userId) {
+        return cDao.selectAll(userId);
     }
 
     @Override

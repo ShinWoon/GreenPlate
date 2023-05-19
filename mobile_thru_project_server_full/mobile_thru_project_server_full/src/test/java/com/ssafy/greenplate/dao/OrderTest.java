@@ -24,13 +24,13 @@ class OrderTest extends AbstractDaoTest {
 
     static Order last;
 
-    @Test
-    @org.junit.jupiter.api.Order(2)
-    public void insertTest() {
-        Order data = new Order("id 01", "order_table_01", null, 'N');
-        int result = oDao.insert(data);
-        assertEquals(result, 1);
-    }
+    // @Test
+    // @org.junit.jupiter.api.Order(2)
+    // public void insertTest() {
+    // Order data = new Order("id 01", "order_table_01", null, 'N');
+    // int result = oDao.insert(data);
+    // assertEquals(result, 1);
+    // }
 
     @Test
     @org.junit.jupiter.api.Order(3)

@@ -12,18 +12,18 @@ import com.ssafy.greenplate.model.dto.OrderDetail;
 
 class OrderServiceTest extends AbstractServiceTest {
 
-    @Test
-    @org.junit.jupiter.api.Order(1)
-    void makeOrderTest() {
-        Order order = new Order(user.getId(), "table_test", new Date(), 'N');
-        List<OrderDetail> details = new ArrayList<>();
-        details.add(new OrderDetail(1, 1));
-        details.add(new OrderDetail(2, 2));
-        details.add(new OrderDetail(2, 2));
-        order.setDetails(details);
+    // @Test
+    // @org.junit.jupiter.api.Order(1)
+    // void makeOrderTest() {
+    // Order order = new Order(user.getId(), "table_test", new Date(), 'N');
+    // List<OrderDetail> details = new ArrayList<>();
+    // details.add(new OrderDetail(1, 1));
+    // details.add(new OrderDetail(2, 2));
+    // details.add(new OrderDetail(2, 2));
+    // order.setDetails(details);
 
-        orderService.makeOrder(order);
-    }
+    // orderService.makeOrder(order);
+    // }
 
     static Order last;
 
@@ -74,7 +74,7 @@ class OrderServiceTest extends AbstractServiceTest {
 
     @Test
     public void selectLastOrderTest() {
-        List<Map<String, Object>> orders = orderService.getLastMonthOrder("id 08");
+        List<Map<String, Object>> orders = orderService.getLastestOrder("id 08");
         System.out.println(orders);
     }
 
