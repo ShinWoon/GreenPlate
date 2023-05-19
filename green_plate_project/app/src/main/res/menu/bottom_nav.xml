@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_page_1"
+        android:id="@+id/homeFragment"
         android:enabled="true"
         android:title="Home"
         android:icon="@drawable/home"/>
     <item
-        android:id="@+id/navigation_page_2"
+        android:id="@+id/orderFragment"
         android:enabled="true"
         android:title="Order"
         android:icon="@drawable/logo_color"/>
     <item
-        android:id="@+id/navigation_page_3"
+        android:id="@+id/mypageFragment"
         android:enabled="true"
         android:title="Mypage"
         android:icon="@drawable/user"/>

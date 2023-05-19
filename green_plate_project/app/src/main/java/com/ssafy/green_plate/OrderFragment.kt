@@ -14,7 +14,10 @@ import com.ssafy.green_plate.tab_fragment.Tab1Fragment
 import com.ssafy.green_plate.tab_fragment.Tab2Fragment
 import com.ssafy.green_plate.tab_fragment.Tab3Fragment
 
-class OrderFragment : BaseFragment<FragmentOrderBinding>(FragmentOrderBinding::bind, R.layout.fragment_order) {
+class OrderFragment : Fragment() {
+    private var _binding: FragmentOrderBinding? = null
+    private val binding
+        get() = _binding!!
 
     private val tabTitle = arrayOf("전체메뉴", "샐러드", "그릭요거트")
 
@@ -24,8 +27,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(FragmentOrderBinding::b
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-
+        _binding = FragmentOrderBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,6 +44,11 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(FragmentOrderBinding::b
                 .navigate(R.id.action_orderFragment_to_shoppingCartFragment)
         }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     // ViewPagerAdapter 내부 클래스 생성
