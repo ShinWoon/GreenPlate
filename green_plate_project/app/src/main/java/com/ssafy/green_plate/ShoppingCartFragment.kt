@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentShoppingcartBinding
 import com.ssafy.green_plate.src.main.MainActivity
