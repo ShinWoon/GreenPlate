@@ -43,7 +43,17 @@
         <action
             android:id="@+id/action_mypageFragment_to_orderHistoryFragment"
             app:destination="@id/orderHistoryFragment" />
+        <action
+            android:id="@+id/action_mypageFragment_to_couponFragment"
+            app:destination="@id/couponFragment"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/couponFragment"
+        android:name="com.ssafy.green_plate.CouponFragment"
+        android:label="fragment_coupon"
+        tools:layout="@layout/fragment_coupon"/>
+
     <fragment
         android:id="@+id/orderDetailFragment"
         android:name="com.ssafy.green_plate.OrderDetailFragment"
