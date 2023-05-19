@@ -12,6 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <!--    Material Design + Style 지정 완료   -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
