@@ -80,7 +80,7 @@
         tools:layout="@layout/fragment_paying" />
     <fragment
         android:id="@+id/shoppingCartFragment"
-        android:name="com.ssafy.green_plate.ShoppingCartFragment"
+        android:name="com.ssafy.green_plate.ShoppingcartFragment"
         android:label="fragment_shoppingcart"
         tools:layout="@layout/fragment_shoppingcart" >
         <action

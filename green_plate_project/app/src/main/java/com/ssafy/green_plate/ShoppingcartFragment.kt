@@ -12,7 +12,7 @@ import com.ssafy.green_plate.databinding.FragmentShoppingcartBinding
 import com.ssafy.green_plate.src.main.MainActivity
 
 private const val TAG = "ShoppingCartFragment_싸피"
-class ShoppingCartFragment : BaseFragment<FragmentShoppingcartBinding>(FragmentShoppingcartBinding::bind, R.layout.fragment_shoppingcart) {
+class ShoppingcartFragment : BaseFragment<FragmentShoppingcartBinding>(FragmentShoppingcartBinding::bind, R.layout.fragment_shoppingcart) {
 
     private lateinit var mainActivity: MainActivity
     private lateinit var shoppingCartAdapter: ShoppingCartAdapter
