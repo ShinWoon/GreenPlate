@@ -12,6 +12,12 @@
     <!-- green plate color -->
     <color name="green_plate_green">#4C7623</color>
     <color name="green_plate_gray">#818181</color>
+    <color name="green_plate_mypage_gray">#F9F9F9</color>
+    <color name="green_plate_progress_gray">#D9D9D9</color>
+    <color name="green_plate_orange">#FF7A00</color>
     <color name="green_plate_lightgray">#EDEDED</color>
     <color name="green_plate_navy">#2F4858</color>
+    <color name="green_plate_info_color">#4E4E4E</color>
+    <color name="green_plate_coupon_info_color">#818181</color>
+    <color name="green_plate_pay_order_history_color">#F7F6F6</color>
 </resources>
