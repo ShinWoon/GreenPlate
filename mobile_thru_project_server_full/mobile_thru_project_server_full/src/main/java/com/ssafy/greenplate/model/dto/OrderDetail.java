@@ -6,33 +6,37 @@ public class OrderDetail {
 	private Integer productId;
 	private Integer dressingId;
 	private String addedStuff;
+	private String addedQuantity;
 	private Integer quantity;
 
 	public OrderDetail(Integer id, Integer orderId, Integer productId, Integer dressingId,
-			String addedStuff, Integer quantity) {
+			String addedStuff, String addedQuantity, Integer quantity) {
 		super();
 		this.id = id;
 		this.orderId = orderId;
 		this.productId = productId;
 		this.dressingId = dressingId;
 		this.addedStuff = addedStuff;
+		this.addedQuantity = addedQuantity;
 		this.quantity = quantity;
 	}
 
 	public OrderDetail(Integer productId, Integer dressingId,
-			String addedStuff, Integer quantity) {
+			String addedStuff, String addedQuantity, Integer quantity) {
 		this.productId = productId;
 		this.dressingId = dressingId;
 		this.addedStuff = addedStuff;
+		this.addedQuantity = addedQuantity;
 		this.quantity = quantity;
 	}
 
 	public OrderDetail(Integer orderId, Integer productId, Integer dressingId,
-			String addedStuff, Integer quantity) {
+			String addedStuff, String addedQuantity, Integer quantity) {
 		this.orderId = orderId;
 		this.productId = productId;
 		this.dressingId = dressingId;
 		this.addedStuff = addedStuff;
+		this.addedQuantity = addedQuantity;
 		this.quantity = quantity;
 	}
 
@@ -77,6 +81,14 @@ public class OrderDetail {
 
 	public void setAddedStuff(String addedStuff) {
 		this.addedStuff = addedStuff;
+	}
+
+	public String getAddedQuantity() {
+		return addedQuantity;
+	}
+
+	public void setAddedQuantity(String addedQuantity) {
+		this.addedQuantity = addedQuantity;
 	}
 
 	public Integer getQuantity() {

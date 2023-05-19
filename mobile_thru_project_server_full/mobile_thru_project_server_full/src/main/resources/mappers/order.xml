@@ -83,7 +83,7 @@
 
 	<select id="selectOrderTotalInfo" resultType="map"
 		parameterType="int">
-		select o.o_id, o.order_table, o.order_time , d.quantity, p.name, p.price as
+		select o.o_id, o.order_table, o.order_time , d.quantity, d.dressing_id, d.added_stuff, d.added_quantity, p.name, p.price as
 		unitprice, p.img, s.quantity as stamp, d.quantity*p.price as
 		totalprice
 		from t_order o join t_order_detail d on o.o_id = d.order_id
@@ -94,11 +94,12 @@
 	</select>
 
 	<!-- 관통 프로젝트 6단계에서 추가됨 -->
-	<select id="getLastMonthOrder" parameterType="string" resultType="map">
-	select o.o_id, o.user_id, o.order_time, d.quantity, p.name, p.type, p.price, p.img
+	<select id="getLastestOrder" parameterType="string" resultType="map">
+	select o.o_id, o.user_id, o.order_time, d.quantity, d.dressing_id, d.added_stuff, d.added_quantity, p.name, p.type, p.price, p.img
 		from t_order o join t_order_detail d on d.order_id=o.o_id
                join t_product p on d.product_id = p.id
-		where user_id=#{id} and order_time > date_add(now(), interval -1 month)
+		where user_id=#{id}
 		order by o.o_id desc, d.d_id desc
+		limit 5
 </select>
 </mapper>

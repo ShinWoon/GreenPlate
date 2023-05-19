@@ -90,16 +90,9 @@ public class UserRestController {
         for (Level level : levels) {
             if (level.max >= stamp) {
                 grade.put("title", level.title);
+                grade.put("greetings", level.greetings);
+                grade.put("max", level.max);
                 grade.put("img", level.img);
-                if (!level.title.equals("커피나무")) {
-                    int step = (stamp - pre) / level.unit + ((stamp - pre) % level.unit > 0 ? 1 : 0);
-                    grade.put("step", step);
-                    int to = level.unit - (stamp - pre) % level.unit;
-                    grade.put("to", to);
-                }
-                break;
-            } else {
-                pre = level.max;
             }
         }
         return grade;
@@ -110,21 +103,21 @@ public class UserRestController {
     @PostConstruct
     public void setup() {
         levels = new ArrayList<>();
-        levels.add(new Level("씨앗", 10, 50, "seeds.png"));
-        levels.add(new Level("꽃", 15, 125, "flower.png"));
-        levels.add(new Level("열매", 20, 225, "coffee_fruit.png"));
-        levels.add(new Level("커피콩", 25, 350, "coffee_beans.png"));
-        levels.add(new Level("커피나무", Integer.MAX_VALUE, Integer.MAX_VALUE, "coffee_tree.png"));
+        levels.add(new Level("옥수수", "억수로 귀여운", 5, 5, "corn.png"));
+        levels.add(new Level("당근", "바니바니", 10, 15, "carrot.png"));
+        levels.add(new Level("토마토", "멋쟁이", Integer.MAX_VALUE, Integer.MAX_VALUE, "tomato.png"));
     }
 
     class Level {
         private String title;
+        private String greetings;
         private int unit;
         private int max;
         private String img;
 
-        private Level(String title, int unit, int max, String img) {
+        private Level(String title, String greetings, int unit, int max, String img) {
             this.title = title;
+            this.greetings = greetings;
             this.unit = unit;
             this.max = max;
             this.img = img;

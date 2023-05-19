@@ -1,4 +1,4 @@
--- drop database ssafy_mobile_cafe;
+drop database green_plate_db;
 select @@global.transaction_isolation, @@transaction_isolation;
 set @@transaction_isolation="read-committed";
 
@@ -162,7 +162,7 @@ INSERT INTO t_product (name, type, price, img) VALUES ('X', 'salad_dressing', 10
 -- greek yogurt dressing
 INSERT INTO t_product (name, type, price, img) VALUES ('X', 'yogurt_dressing', 0, 'hide.png');
 
-/*
+
 INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type) VALUES ('id 01', 'order_table 01', '구미 싸피점', 0, '신용카드');
 INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type) VALUES ('id 02', 'order_table 02', '구미 싸피점', 0, '신용카드');
 INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type) VALUES ('id 03', 'order_table 03', '구미 싸피점', 0, '신용카드');
@@ -173,20 +173,20 @@ INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type
 INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type) VALUES ('id 08', 'order_table 08', '구미 싸피점', 0, '신용카드');
 INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type) VALUES ('id 09', 'order_table 09', '구미 싸피점', 0, '신용카드');
 INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type) VALUES ('id 10', 'order_table 10', '구미 싸피점', 0, '신용카드');
-*/
-/*
-INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, quantity) VALUES (1, 1, 1, "연어, 닭가슴살, 계란", 1);
-INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (1, 2, 3);
-INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (2, 1, 1);
-INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (3, 3, 3);
-INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (4, 4, 4);
-INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (5, 5, 5);
-INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (6, 6, 6);
-INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (7, 7, 7);
-INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (8, 8, 8);
-INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (9, 9, 9);
-INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (10, 10, 10);
-*/
+
+
+INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, added_quantity, quantity) VALUES (1, 1, 31, "연어,닭가슴살,계란", "1,1,1", 1);
+INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, added_quantity, quantity) VALUES (1, 2, 32, "단호박,계란", "1,1", 1);
+INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, added_quantity, quantity) VALUES (2, 3, 33, "두부", "1", 1);
+INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, added_quantity, quantity) VALUES (3, 3, 32, "베이컨,옥수수", "1,2", 1);
+INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, added_quantity, quantity) VALUES (4, 6, 33, "토마토", "1", 2);
+INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, added_quantity, quantity) VALUES (5, 5, 35, "토마토,양파", "2,1", 1);
+INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, added_quantity, quantity) VALUES (6, 4, 32, "양파", "1", 1);
+INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, added_quantity, quantity) VALUES (7, 4, 36, "단호박,두부", "1,1", 3);
+INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, added_quantity, quantity) VALUES (8, 3, 34, "옥수수,양파", "3,1", 2);
+INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, added_quantity, quantity) VALUES (9, 7, 31, "두부,단호박", "3,2", 1);
+INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, added_quantity, quantity) VALUES (10, 1, 34, "계란,옥수수", "3,3", 2);
+
 
 INSERT INTO t_stamp (user_id, order_id, quantity) VALUES ('id 01', 1, 4);
 INSERT INTO t_stamp (user_id, order_id, quantity) VALUES ('id 02', 2, 1);
@@ -198,6 +198,19 @@ INSERT INTO t_stamp (user_id, order_id, quantity) VALUES ('id 07', 7, 7);
 INSERT INTO t_stamp (user_id, order_id, quantity) VALUES ('id 08', 8, 8);
 INSERT INTO t_stamp (user_id, order_id, quantity) VALUES ('id 09', 9, 9);
 INSERT INTO t_stamp (user_id, order_id, quantity) VALUES ('id 10', 10, 10);
+
+INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 01', '신규 가입', 7000);
+INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 01', '등급 업그레이드', 5000);
+INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 02', '신규 가입', 7000);
+INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 03', '신규 가입', 7000);
+INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 04', '신규 가입', 7000);
+INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 05', '신규 가입', 7000);
+INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 06', '신규 가입', 7000);
+INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 07', '신규 가입', 7000);
+INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 08', '신규 가입', 7000);
+INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 09', '신규 가입', 7000);
+INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 10', '신규 가입', 7000);
+
 
 select * from t_order;
 

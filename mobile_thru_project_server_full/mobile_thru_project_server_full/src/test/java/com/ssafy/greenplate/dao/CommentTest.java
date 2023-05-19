@@ -28,7 +28,7 @@ class CommentTest extends AbstractDaoTest {
     @Test
     @Order(2)
     public void selectAll() {
-        List<Coupon> result = cDao.selectAll();
+        List<Coupon> result = cDao.selectAll("id 01");
         assertEquals(result.size(), 10);
         System.out.println(result);
 
@@ -39,34 +39,34 @@ class CommentTest extends AbstractDaoTest {
     @Test
     @Order(3)
     public void insertTest() {
-        Coupon comment = new Coupon("id 01", productId, 5.0, "좋음");
+        Coupon comment = new Coupon("id 01", "등급 업그레이드", 5000);
         int result = cDao.insert(comment);
         assertEquals(result, 1);
     }
 
-    @Test
-    @Order(4)
-    public void selectAllByProduct() {
-        List<Coupon> result = cDao.selectByProduct(productId);
-        assertEquals(result.size(), 4);
-        last = result.get(0);
-        System.out.println(last);
-        assertEquals(result.get(0).getUserId(), "id 01");
-    }
+    // @Test
+    // @Order(4)
+    // public void selectAllByProduct() {
+    // List<Coupon> result = cDao.selectByProduct(productId);
+    // assertEquals(result.size(), 4);
+    // last = result.get(0);
+    // System.out.println(last);
+    // assertEquals(result.get(0).getUserId(), "id 01");
+    // }
 
     static Coupon last = null;
 
-    @Test
-    @Order(5)
-    public void updateTest() {
-        Coupon selected = cDao.select(last.getId());
-        selected.setComment("더 좋아짐");
-        int result = cDao.update(selected);
-        assertEquals(result, 1);
+    // @Test
+    // @Order(5)
+    // public void updateTest() {
+    // Coupon selected = cDao.select(last.getId());
+    // selected.setComment("더 좋아짐");
+    // int result = cDao.update(selected);
+    // assertEquals(result, 1);
 
-        Coupon selected2 = cDao.select(selected.getId());
-        assertEquals(selected2.getComment(), selected.getComment());
-    }
+    // Coupon selected2 = cDao.select(selected.getId());
+    // assertEquals(selected2.getComment(), selected.getComment());
+    // }
 
     @Test
     @Order(6)
