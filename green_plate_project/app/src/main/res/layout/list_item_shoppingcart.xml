@@ -93,6 +93,7 @@
                     android:layout_height="wrap_content"/>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/subDressingRv"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:layout_width="100dp"
                     android:layout_height="100dp" />
             </LinearLayout>
@@ -112,6 +113,7 @@
                     android:layout_height="wrap_content"/>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/subToppingRv"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
