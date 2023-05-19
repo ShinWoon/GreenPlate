@@ -15,9 +15,9 @@ create table t_user(
 create table t_product(
     id integer auto_increment primary key,
     name varchar(100) not null,
-    english_name varchar(100),
+    english_name varchar(100) default "",
     type varchar(20) not null,
-    discription varchar(100),
+    discription varchar(100) default "",
     price integer not null,
     img varchar(100)
 );
@@ -40,6 +40,7 @@ create table t_order_detail(
     product_id integer not null,
     dressing_id integer not null,
     added_stuff varchar(100),
+    added_quantity varchar(100),
     quantity integer not null default 1,
     constraint fk_order_detail_product foreign key (product_id) references t_product(id) on delete cascade,
     constraint fk_order_detail_order foreign key(order_id) references t_order(o_id) on delete cascade
@@ -128,28 +129,40 @@ INSERT INTO t_product (name, english_name, type, discription, price, img)
     
 -- salad topping
 
-INSERT INTO t_product (name, type, price) VALUES ('연어', 'salad_topping', 4000);
-INSERT INTO t_product (name, type, price) VALUES ('우삼겹', 'salad_topping', 3000);
-INSERT INTO t_product (name, type, price) VALUES ('베이컨', 'salad_topping', 2000);
-INSERT INTO t_product (name, type, price) VALUES ('닭가슴살', 'salad_topping', 1500);
-INSERT INTO t_product (name, type, price) VALUES ('두부', 'salad_topping', 1500);
-INSERT INTO t_product (name, type, price) VALUES ('단호박', 'salad_topping', 1500);
-INSERT INTO t_product (name, type, price) VALUES ('토마토', 'salad_topping', 1000);
-INSERT INTO t_product (name, type, price) VALUES ('계란', 'salad_topping', 500);
-INSERT INTO t_product (name, type, price) VALUES ('옥수수', 'salad_topping', 500);
-INSERT INTO t_product (name, type, price) VALUES ('양파', 'salad_topping', 500);
+INSERT INTO t_product (name, type, price, img) VALUES ('연어', 'salad_topping', 4000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('우삼겹', 'salad_topping', 3000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('베이컨', 'salad_topping', 2000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('닭가슴살', 'salad_topping', 1500, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('두부', 'salad_topping', 1500, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('단호박', 'salad_topping', 1500, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('토마토', 'salad_topping', 1000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('계란', 'salad_topping', 500, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('옥수수', 'salad_topping', 500, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('양파', 'salad_topping', 500, 'hide.png');
 
 -- greek yogurt topping
-INSERT INTO t_product (name, type, price) VALUES ('딸기', 'yogurt_topping', 3000);
-INSERT INTO t_product (name, type, price) VALUES ('키위', 'yogurt_topping', 3000);
-INSERT INTO t_product (name, type, price) VALUES ('블루베리', 'yogurt_topping', 2500);
-INSERT INTO t_product (name, type, price) VALUES ('바나나', 'yogurt_topping', 1000);
-INSERT INTO t_product (name, type, price) VALUES ('벌꿀집', 'yogurt_topping', 3000);
-INSERT INTO t_product (name, type, price) VALUES ('브라우니', 'yogurt_topping', 2500);
-INSERT INTO t_product (name, type, price) VALUES ('그래놀라', 'yogurt_topping', 1000);
-INSERT INTO t_product (name, type, price) VALUES ('쿠키크럼', 'yogurt_topping', 1000);
+INSERT INTO t_product (name, type, price, img) VALUES ('딸기', 'yogurt_topping', 3000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('키위', 'yogurt_topping', 3000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('블루베리', 'yogurt_topping', 2500, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('바나나', 'yogurt_topping', 1000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('벌꿀집', 'yogurt_topping', 3000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('브라우니', 'yogurt_topping', 2500, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('그래놀라', 'yogurt_topping', 1000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('쿠키크럼', 'yogurt_topping', 1000, 'hide.png');
 
+-- salad dressing
+INSERT INTO t_product (name, type, price, img) VALUES ('시저 드레싱', 'salad_dressing', 1000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('오리엔탈 드레싱', 'salad_dressing', 1000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('발사믹 드레싱', 'salad_dressing', 1000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('레몬 드레싱', 'salad_dressing', 1000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('머스타드 드레싱', 'salad_dressing', 1000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('칠리 드레싱', 'salad_dressing', 1000, 'hide.png');
+INSERT INTO t_product (name, type, price, img) VALUES ('X', 'salad_dressing', 1000, 'hide.png');
 
+-- greek yogurt dressing
+INSERT INTO t_product (name, type, price, img) VALUES ('X', 'yogurt_dressing', 0, 'hide.png');
+
+/*
 INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type) VALUES ('id 01', 'order_table 01', '구미 싸피점', 0, '신용카드');
 INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type) VALUES ('id 02', 'order_table 02', '구미 싸피점', 0, '신용카드');
 INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type) VALUES ('id 03', 'order_table 03', '구미 싸피점', 0, '신용카드');
@@ -160,19 +173,8 @@ INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type
 INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type) VALUES ('id 08', 'order_table 08', '구미 싸피점', 0, '신용카드');
 INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type) VALUES ('id 09', 'order_table 09', '구미 싸피점', 0, '신용카드');
 INSERT INTO t_order (user_id, order_table, store_name, discount_amount, pay_type) VALUES ('id 10', 'order_table 10', '구미 싸피점', 0, '신용카드');
-
-
-create table t_order_detail(
-    d_id integer auto_increment primary key,
-    order_id integer not null,
-    product_id integer not null,
-    dressing_id integer not null,
-    added_stuff varchar(100),
-    quantity integer not null default 1,
-    constraint fk_order_detail_product foreign key (product_id) references t_product(id) on delete cascade,
-    constraint fk_order_detail_order foreign key(order_id) references t_order(o_id) on delete cascade
-);   
-
+*/
+/*
 INSERT INTO t_order_detail (order_id, product_id, dressing_id, added_stuff, quantity) VALUES (1, 1, 1, "연어, 닭가슴살, 계란", 1);
 INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (1, 2, 3);
 INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (2, 1, 1);
@@ -184,6 +186,7 @@ INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (7, 7, 7);
 INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (8, 8, 8);
 INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (9, 9, 9);
 INSERT INTO t_order_detail (order_id, product_id, quantity) VALUES (10, 10, 10);
+*/
 
 INSERT INTO t_stamp (user_id, order_id, quantity) VALUES ('id 01', 1, 4);
 INSERT INTO t_stamp (user_id, order_id, quantity) VALUES ('id 02', 2, 1);
