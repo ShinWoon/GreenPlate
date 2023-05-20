@@ -9,7 +9,7 @@
     <View
         android:id="@+id/rectangle_1"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/rectangle_1"/>
@@ -178,7 +178,7 @@
             android:orientation="horizontal"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/linear_layout3"
+            app:layout_constraintBottom_toTopOf="@+id/linear_layout_order_history"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mypage_level_disc_tv">
 
@@ -196,14 +196,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linear_layout3"
+            android:id="@+id/linear_layout_order_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/linear_layout4"
+            app:layout_constraintBottom_toTopOf="@+id/linear_layout_store_info"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linear_layout_coupon">
 
@@ -220,7 +220,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linear_layout4"
+            android:id="@+id/linear_layout_store_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -229,7 +229,7 @@
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toTopOf="@+id/linear_layout5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout3">
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_order_history">
 
             <ImageView
                 android:layout_width="35dp"
@@ -250,19 +250,21 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
+                android:id="@+id/mypage_logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="로그아웃" />
 
             <TextView
+                android:id="@+id/mypage_withdrawal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
