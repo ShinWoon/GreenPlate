@@ -19,7 +19,7 @@ class OrderHistoryFragment : BaseFragment<FragmentOrderHistoryBinding>(FragmentO
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var items = listOf("item1", "item2", "item3")
+        var items = listOf("item1", "item2", "item3", "item4", "item5")
 
         binding.orderHistoryRv.apply {
             adapter = OrderHistoryAdapter(mainActivity, items)

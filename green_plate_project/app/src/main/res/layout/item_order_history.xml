@@ -1,127 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:orientation="vertical">
 
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/orderItemImgIv"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/shape"
+            android:src="@mipmap/ic_launcher_round" />
+
         <LinearLayout
-            android:padding="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/orderItemImgIv"
-                android:layout_marginEnd="8dp"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@drawable/shape"
-                android:src="@mipmap/ic_launcher_round" />
+            <TextView
+                android:id="@+id/orderStoreNameTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="그린플레이트 싸피점" />
+
+            <TextView
+                android:id="@+id/orderItemNameTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="샐러드1 외 1건" />
+
+            <TextView
+                android:id="@+id/orderItemPriceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30,000원" />
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/orderStoreNameTv"
-                    android:text="그린플레이트 싸피점"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:gravity="end">
 
                 <TextView
-                    android:id="@+id/orderItemNameTv"
-                    android:text="샐러드1 외 1건"
+                    android:id="@+id/orderItemDateTv"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/orderItemPriceTv"
-                    android:text="30,000원"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <LinearLayout
-                    android:gravity="end"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/orderItemDateTv"
-                        android:text="2023. 05. 18"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-
+                    android:layout_height="wrap_content"
+                    android:text="2023. 05. 18" />
             </LinearLayout>
 
         </LinearLayout>
 
-        <FrameLayout
-            android:layout_marginTop="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <View
-                android:layout_marginTop="4dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="@color/green_plate_progress_gray" />
-            <View
-                android:id="@+id/orderWaitCircle"
-                android:layout_marginStart="26dp"
-                android:background="@drawable/circle_1"
-                android:layout_width="10dp"
-                android:layout_height="10dp" />
-            <TextView
-                android:id="@+id/orderWaitTv"
-                android:layout_marginStart="8dp"
-                android:text="주문대기"
-                android:textSize="12dp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/green_plate_progress_gray"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <View
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/pickupWaitCircle"
-                android:background="@drawable/circle_1"
-                android:layout_width="10dp"
-                android:layout_height="10dp" />
-            <TextView
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/pickupWaitTv"
-                android:text="픽업대기"
-                android:textSize="12dp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/green_plate_progress_gray"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <View
-                android:layout_gravity="end"
-                android:layout_marginEnd="26dp"
-                android:id="@+id/pickupCompleteCircle"
-                android:background="@drawable/circle_1"
-                android:layout_width="10dp"
-                android:layout_height="10dp" />
-            <TextView
-                android:layout_gravity="end"
-                android:layout_marginEnd="8dp"
-                android:id="@+id/pickupCompleteTv"
-                android:text="픽업완료"
-                android:textSize="12dp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/green_plate_progress_gray"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </FrameLayout>
-
     </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="32dp"
+            android:background="@color/green_plate_progress_gray" />
+
+        <View
+            android:id="@+id/orderWaitCircle"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="26dp"
+            android:background="@drawable/circle_1" />
+
+        <TextView
+            android:id="@+id/orderWaitTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="주문대기"
+            android:textColor="@color/green_plate_progress_gray"
+            android:textSize="12dp" />
+
+        <View
+            android:id="@+id/pickupWaitCircle"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/circle_1" />
+
+        <TextView
+            android:id="@+id/pickupWaitTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="픽업대기"
+            android:textColor="@color/green_plate_progress_gray"
+            android:textSize="12dp" />
+
+        <View
+            android:id="@+id/pickupCompleteCircle"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="26dp"
+            android:background="@drawable/circle_1" />
+
+        <TextView
+            android:id="@+id/pickupCompleteTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="픽업완료"
+            android:textColor="@color/green_plate_progress_gray"
+            android:textSize="12dp" />
+
+    </FrameLayout>
 
 
 </LinearLayout>

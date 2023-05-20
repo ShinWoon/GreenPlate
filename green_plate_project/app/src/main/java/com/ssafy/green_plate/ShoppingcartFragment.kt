@@ -39,7 +39,7 @@ class ShoppingcartFragment : BaseFragment<FragmentShoppingcartBinding>(FragmentS
         super.onViewCreated(view, savedInstanceState)
 
         Log.d(TAG, "onViewCreated: ")
-        var items = listOf("item1", "item2")
+        var items = listOf("item1", "item2", "item3")
 
         shoppingCartAdapter = ShoppingCartAdapter(mainActivity, items)
 
