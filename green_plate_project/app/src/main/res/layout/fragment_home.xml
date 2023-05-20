@@ -1,86 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".HomeFragment"
     android:orientation="vertical"
-    android:padding="24dp"
-    tools:context=".HomeFragment">
+    android:padding="24dp">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-        <TextView
-            android:id="@+id/greetingTv"
-            android:text="안녕하세요 김진영님.   "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/timeGreetingTv"
-            android:text="활기찬 아침입니다!"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/mainViewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/timeRecommendMenuTv"
-        android:text="김진영 님을 위한 아침 추천 메뉴"
-        android:layout_marginTop="24dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/greetingTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="안녕하세요 김진영님.   " />
-
-                <TextView
-                    android:id="@+id/timeGreetingTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="활기찬 아침입니다!" />
-            </LinearLayout>
-
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
             <TextView
-                android:id="@+id/timeRecommendMenuTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="활기찬 아침입니다!" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/mainRecommendRV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp" />
-
+                android:id="@+id/greetingTv"
+                android:text="안녕하세요 김진영님.   "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/LatestOrderMenuTv"
+                android:id="@+id/timeGreetingTv"
+                android:text="활기찬 아침입니다!"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="최근 주문 메뉴" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/mainLatestOrderRV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+        <TextView
+            android:id="@+id/timeRecommendMenuTv"
+            android:text="김진영 님을 위한 아침 추천 메뉴"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mainRecommendRV"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/LatestOrderMenuTv"
+            android:text="최근 주문 메뉴"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mainLatestOrderRV"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 </LinearLayout>
