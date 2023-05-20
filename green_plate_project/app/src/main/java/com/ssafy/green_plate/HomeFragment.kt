@@ -22,6 +22,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
     private lateinit var bannerAdapter: BannerViewPagerAdapter
     private lateinit var timer: Timer
     private var recommendList = mutableListOf<Product>()
+    private var recentMenuList = mutableListOf<String>()
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
@@ -43,10 +44,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
         timer = Timer()
         timer.schedule(autoScrollTask, 3000,3000)
 
-        setRecommendList()
+        if(recommendList.size == 0) setRecommendList()
         binding.mainRecommendRV.apply {
             adapter = HomeRecommendAdapter(requireContext(), recommendList)
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
+        }
+
+        recentMenuList.add("샐러드")
+        recentMenuList.add("샐러드")
+        recentMenuList.add("샐러드")
+        binding.mainLatestOrderRV.apply {
+            adapter = RecentMenuAdapter(requireContext(),recentMenuList)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
         }
     }
     private inner class AutoScrollTask : TimerTask() {
