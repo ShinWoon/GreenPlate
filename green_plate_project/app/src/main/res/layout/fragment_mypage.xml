@@ -166,12 +166,12 @@
             android:layout_marginTop="14dp"
             android:layout_marginBottom="30dp"
             android:text="구매 메뉴 n개 달성하면 [등급명칭]로 승급됩니다."
-            app:layout_constraintBottom_toTopOf="@+id/linear_layout2"
+            app:layout_constraintBottom_toTopOf="@+id/linear_layout_coupon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linear_layout" />
 
         <LinearLayout
-            android:id="@+id/linear_layout2"
+            android:id="@+id/linear_layout_coupon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -205,7 +205,7 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/linear_layout4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout2">
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_coupon">
 
             <ImageView
                 android:layout_width="35dp"
