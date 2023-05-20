@@ -39,6 +39,9 @@ class MypageFragment : Fragment() {
             Navigation.findNavController(view)
                 .navigate(R.id.action_mypageFragment_to_couponFragment)
         }
+        binding.linearLayout3.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_mypageFragment_to_orderHistoryFragment)
+        }
 
     }
 
