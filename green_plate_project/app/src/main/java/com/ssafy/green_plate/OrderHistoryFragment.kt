@@ -3,6 +3,7 @@ package com.ssafy.green_plate
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentOrderHistoryBinding
@@ -11,6 +12,7 @@ import com.ssafy.green_plate.src.main.MainActivity
 class OrderHistoryFragment : BaseFragment<FragmentOrderHistoryBinding>(FragmentOrderHistoryBinding::bind, R.layout.fragment_order_history) {
 
     private lateinit var mainActivity: MainActivity
+    private lateinit var orderHistoryAdapter: OrderHistoryAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -21,10 +23,18 @@ class OrderHistoryFragment : BaseFragment<FragmentOrderHistoryBinding>(FragmentO
 
         var items = listOf("item1", "item2", "item3", "item4", "item5")
 
+        orderHistoryAdapter = OrderHistoryAdapter(mainActivity, items)
+        orderHistoryAdapter.setOnItemClickListener { position ->
+            val clickedItem = items[position]
+            Navigation.findNavController(view).navigate(R.id.action_orderHistoryFragment_to_orderHistoryDetailFragment)
+        }
+
         binding.orderHistoryRv.apply {
-            adapter = OrderHistoryAdapter(mainActivity, items)
+            adapter = orderHistoryAdapter
             layoutManager = LinearLayoutManager(mainActivity)
         }
+
+
     }
 
 }
