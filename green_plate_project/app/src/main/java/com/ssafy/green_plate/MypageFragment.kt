@@ -40,6 +40,21 @@ class MypageFragment : Fragment() {
                 .navigate(R.id.action_mypageFragment_to_couponFragment)
         }
 
+        binding.linearLayoutOrderHistory.setOnClickListener {
+
+        }
+
+        binding.linearLayoutStoreInfo.setOnClickListener {
+
+        }
+
+        binding.mypageLogout.setOnClickListener {
+
+        }
+
+        binding.mypageWithdrawal.setOnClickListener {
+
+        }
     }
 
     override fun onDestroy() {
