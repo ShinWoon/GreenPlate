@@ -14,27 +14,18 @@ class ShoppingCartAdapter(val context : Context, private var items : List<String
 
     inner class ShoppingCartViewHolder(private val binding: ListItemShoppingcartBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        private var subDressingAdapter: SubDressingAdapter = SubDressingAdapter()
-        private var subToppingAdapter: SubToppingAdapter = SubToppingAdapter()
 
         init {
-            binding.subDressingRv.adapter = subDressingAdapter
-            binding.subToppingRv.adapter = subToppingAdapter
-
             var subItems = listOf("토핑1", "토핑2")
+            binding.subDressingRv.adapter = SubDressingAdapter(context, subItems)
+            binding.subToppingRv.adapter = SubToppingAdapter(context, subItems)
 
-            subDressingAdapter.setItems(subItems)
-            subDressingAdapter.notifyDataSetChanged()
-            subToppingAdapter.setItems(subItems)
-            subToppingAdapter.notifyDataSetChanged()
             Log.d(TAG, ": $subItems")
         }
         fun bind(item: String) {
             binding.shoppingItemNameTv.text = item
             Log.d(TAG, "bind: $item")
 
-
-//            Log.d(TAG, "bind: $subItems")
             
         }
     }
@@ -49,7 +40,6 @@ class ShoppingCartAdapter(val context : Context, private var items : List<String
     override fun onBindViewHolder(holder: ShoppingCartAdapter.ShoppingCartViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item)
-        Log.d(TAG, "onBindViewHolder: ")
     }
 
     override fun getItemCount(): Int {

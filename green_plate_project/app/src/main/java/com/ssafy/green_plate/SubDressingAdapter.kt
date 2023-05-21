@@ -1,5 +1,6 @@
 package com.ssafy.green_plate
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ssafy.green_plate.databinding.ListItemShoppingcartSubDressingBinding
 
 private const val TAG = "SubDressingAdapter_싸피"
-class SubDressingAdapter() : RecyclerView.Adapter<SubDressingAdapter.SubDressingViewHolder>() {
+class SubDressingAdapter(val context : Context, private var items : List<String>) : RecyclerView.Adapter<SubDressingAdapter.SubDressingViewHolder>() {
 
     inner class SubDressingViewHolder(private val binding: ListItemShoppingcartSubDressingBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -27,15 +28,12 @@ class SubDressingAdapter() : RecyclerView.Adapter<SubDressingAdapter.SubDressing
     override fun onBindViewHolder(holder: SubDressingViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item)
+        Log.d(TAG, "onBindViewHolder: $items")
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-    private var items: List<String> = listOf()
-    fun setItems(newItems: List<String>) {
-        items = newItems
-    }
 
 }

@@ -1,5 +1,6 @@
 package com.ssafy.green_plate
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ssafy.green_plate.databinding.ListItemShoppingcartSubToppingBinding
 
 private const val TAG = "SubToppingAdapter_싸피"
-class SubToppingAdapter() : RecyclerView.Adapter<SubToppingAdapter.SubToppingViewHolder>() {
+class SubToppingAdapter(val context : Context, private var items : List<String>) : RecyclerView.Adapter<SubToppingAdapter.SubToppingViewHolder>() {
     inner class SubToppingViewHolder(private val binding: ListItemShoppingcartSubToppingBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -31,11 +32,5 @@ class SubToppingAdapter() : RecyclerView.Adapter<SubToppingAdapter.SubToppingVie
     override fun getItemCount(): Int {
        return items.size
     }
-
-    private var items: List<String> = listOf()
-    fun setItems(newItems: List<String>) {
-        items = newItems
-    }
-
 
 }
