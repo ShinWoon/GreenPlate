@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="12dp"
     android:orientation="vertical"
     tools:context=".OrderHistoryDetailFragment">
@@ -11,8 +11,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="주문상세"
         android:layout_marginBottom="12dp"
+        android:text="주문상세"
         android:textAlignment="center"
         android:textSize="24sp" />
 
@@ -22,50 +22,82 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <LinearLayout
-            android:padding="8dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:text="그린 플레이트 싸피점"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <androidx.appcompat.widget.AppCompatButton
-                    android:layout_marginEnd="12dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:text="내역 삭제"
-                    android:background="@drawable/button_background1"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/orderHistoryStoreNameTv"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_height="wrap_content"
+                    android:text="그린 플레이트 싸피점" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/orderHistoryDeleteBtn"
+                        android:layout_width="80dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/order_choose_shape"
+                        android:text="내역 삭제"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </LinearLayout>
-            <TextView
-                android:text="주문일시 : 2023년 05월 08일 17 : 00"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:text="주문번호 : 41278471892371982"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="주문일시 : " />
+
+                <TextView
+                    android:id="@+id/orderHistoryDateTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2023년 05월 08일 17 : 00" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="주문번호 : " />
+
+                <TextView
+                    android:id="@+id/orderHistoryNumberTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="41278471892371982" />
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
                 android:background="@android:color/darker_gray" />
-
 
 
             <LinearLayout
@@ -74,29 +106,33 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
                     <TextView
-                        android:id="@+id/shoppingItemNameTv"
+                        android:id="@+id/orderHistoryItemNameTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
                         android:text="메뉴명" />
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_weight="1.5"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
                     <TextView
-                        android:id="@+id/subDressingCntTv"
+                        android:id="@+id/orderHistoryItemCntTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.5"
                         android:text="1" />
+
                     <TextView
-                        android:id="@+id/shoppingItemPriceTv"
+                        android:id="@+id/orderHistoryItemPriceTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -122,6 +158,7 @@
                     android:text="필수 드레싱" />
 
                 <TextView
+                    android:id="@+id/orderHistoryMainDressingTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ㄴ 오리엔탈 드레싱" />
@@ -144,11 +181,11 @@
                     android:text="추가 드레싱" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/subDressingRv"
+                    android:id="@+id/orderHistorySubDressingRv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:listitem="@layout/list_item_shoppingcart_sub_dressing"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/list_item_shoppingcart_sub_dressing" />
             </LinearLayout>
 
             <LinearLayout
@@ -166,31 +203,118 @@
                     android:text="추가 토핑" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/subToppingRv"
-                    tools:listitem="@layout/list_item_shoppingcart_sub_topping"
+                    android:id="@+id/orderHistorySubToppingRv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/list_item_shoppingcart_sub_topping" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
                 android:background="@android:color/darker_gray" />
 
             <TextView
-                android:text="결제 내역"
-               android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="결제 내역" />
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="상품 금액"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/orderHistoryTotalPriceTv"
+                    android:text="15,000원"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="쿠폰 할인"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/orderHistoryDiscountTv"
+                    android:text="-5,000원"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="12dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="최종 결제 금액"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/orderHistoryFinalPriceTv"
+                    android:text="10,000원"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="결제 방법"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/orderHistoryPayMethod"
+                    android:text="신용카드"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
 
         </LinearLayout>
-
-
-
-
 
 
     </androidx.core.widget.NestedScrollView>
