@@ -1,5 +1,6 @@
 package com.ssafy.green_plate
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,14 +9,25 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssafy.green_plate.databinding.FragmentCouponBinding
 import com.ssafy.green_plate.dto.Coupon
+import com.ssafy.green_plate.src.main.MainActivity
 
 class CouponFragment :  Fragment() {
+    private lateinit var mainActivity: MainActivity
     private var _binding: FragmentCouponBinding? = null
     private val binding
         get() = _binding!!
 
     private val couponList = mutableListOf<Coupon>()
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mainActivity.hideBottomNav(true)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,6 +50,7 @@ class CouponFragment :  Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        mainActivity.hideBottomNav(false)
     }
 
     private fun setList() {
