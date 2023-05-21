@@ -76,6 +76,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     //liveData dependency 추가
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    //lifecycle scope dependency
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     //framework ktx dependency 추가
     implementation "androidx.fragment:fragment-ktx:1.4.1"
 

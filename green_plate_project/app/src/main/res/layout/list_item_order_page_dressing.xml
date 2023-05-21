@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="4dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/dressing_rbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:elevation="8dp"/>
+        <TextView
+            android:id="@+id/dressing_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="드레싱1"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dressing_price_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginRight="16dp"
+        android:layout_gravity="center"
+        android:textAlignment="textEnd"
+        android:text="1000원"/>
+</LinearLayout>
