@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ScrollView
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.ssafy.green_plate.config.BaseFragment
@@ -16,13 +17,17 @@ import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.src.main.MainActivity
 import java.util.*
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home) {
+class HomeFragment :
+    BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home) {
 
     private lateinit var mainActivity: MainActivity
     private lateinit var bannerAdapter: BannerViewPagerAdapter
     private lateinit var timer: Timer
     private var recommendList = mutableListOf<Product>()
     private var recentMenuList = mutableListOf<String>()
+
+    private val activityViewModel: MainActivityViewModel by activityViewModels()
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
@@ -42,37 +47,38 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
 
         val autoScrollTask = AutoScrollTask()
         timer = Timer()
-        timer.schedule(autoScrollTask, 3000,3000)
+        timer.schedule(autoScrollTask, 3000, 3000)
 
-        if(recommendList.size == 0) setRecommendList()
         binding.mainRecommendRV.apply {
             adapter = HomeRecommendAdapter(requireContext(), recommendList)
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
-        recentMenuList.add("샐러드")
-        recentMenuList.add("샐러드")
-        recentMenuList.add("샐러드")
         binding.mainLatestOrderRV.apply {
-            adapter = RecentMenuAdapter(requireContext(),recentMenuList)
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
+            adapter = RecentMenuAdapter(requireContext(), recentMenuList)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
     }
+
     private inner class AutoScrollTask : TimerTask() {
         override fun run() {
             requireActivity().runOnUiThread {
                 val currentItem = binding.mainViewPager.currentItem
-                val nextItem = if (currentItem == bannerAdapter.itemCount - 1) 0 else currentItem + 1
+                val nextItem =
+                    if (currentItem == bannerAdapter.itemCount - 1) 0 else currentItem + 1
                 binding.mainViewPager.setCurrentItem(nextItem, true)
             }
         }
     }
 
-    private fun setRecommendList(){
-        for(i in 1..5) {
-            recommendList.add(Product(i,"연어 샐러드","salad","",0,"salad01.png"))
+    private fun recommendObserver() {
+        activityViewModel.productInfo.observe(viewLifecycleOwner) {
+            recommendList = it as MutableList<Product>
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

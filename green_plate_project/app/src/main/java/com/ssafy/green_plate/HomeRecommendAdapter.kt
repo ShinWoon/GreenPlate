@@ -1,18 +1,25 @@
 package com.ssafy.green_plate
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.ListItemHomeRecommendBinding
 import com.ssafy.green_plate.dto.Product
 
+private const val TAG = "싸피"
 class HomeRecommendAdapter(val context : Context, private var items : List<Product>) : RecyclerView.Adapter<HomeRecommendAdapter.HomeRecommendViewHolder>() {
     inner class HomeRecommendViewHolder(private val binding: ListItemHomeRecommendBinding)
         :RecyclerView.ViewHolder(binding.root) {
             fun bindInfo(data: Product) {
                 binding.recommendMenuTv.text = data.name
-                binding.recommendIv.setImageResource(R.drawable.salad01)
+                Log.d(TAG, "bindInfo: ${data.name}")
+                Glide.with(itemView)
+                    .load("${ApplicationClass.MENU_IMGS_URL}${data.img}")
+                    .into(binding.recommendIv)
             }
         }
 
