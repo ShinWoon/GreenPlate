@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="36dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".OrderDetailFragment">
 
@@ -140,6 +139,14 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/myButton"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cornerRadius="20dp"
+            android:text="장바구니 담기" />
     </LinearLayout>
 
 </ScrollView>
