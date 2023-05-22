@@ -49,16 +49,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 activityViewModel.setTopThreeMenuInfo(it as MutableList<Product>)
             }
         }
-        fun logout() {
-            //preference 지우기
-            ApplicationClass.sharedPreferencesUtil.deleteUser()
 
-            //화면이동
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    }
+    fun logout() {
+        //preference 지우기
+        ApplicationClass.sharedPreferencesUtil.deleteUser()
 
-            startActivity(intent)
-        }
+        //화면이동
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(intent)
     }
 }
