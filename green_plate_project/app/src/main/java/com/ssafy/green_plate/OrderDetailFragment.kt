@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.get
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.FragmentOrderDetailBinding
 import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.src.main.MainActivity
@@ -20,6 +23,8 @@ class OrderDetailFragment : Fragment() {
 
     private val dressingList = mutableListOf<Product>()
     private val toppingList = mutableListOf<Product>()
+
+    private val activityViewModel: MainActivityViewModel by activityViewModels()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -41,15 +46,6 @@ class OrderDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dressingList.add(Product(1,"","","","",1000,""))
-        dressingList.add(Product(1,"","","","",1000,""))
-        dressingList.add(Product(1,"","","","",1000,""))
-
-//        binding.orderDressingRv.apply {
-//            adapter = OrderDetailDressingAdapter(requireContext(), dressingList)
-//            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-//        }
-
 
         toppingList.add(Product(1,"","","","",1000,""))
         toppingList.add(Product(1,"","","","",1000,""))
@@ -59,12 +55,26 @@ class OrderDetailFragment : Fragment() {
             adapter = OrderDetailToppingAdapter(requireContext(), toppingList)
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
+
+        activityViewModel.menuDetailInfo.observe(viewLifecycleOwner) {
+            binding.apply {
+                orderDetailMenuNameTv.text = it.name
+                orderDetailMenuEngNameTv.text = it.engName
+                orderDetailMenuPrice.text = it.price.toString()
+                Glide.with(view)
+                    .load("${ApplicationClass.MENU_IMGS_URL}${it.img}")
+                    .into(orderDetailMenuIv)
+            }
+        }
+
     }
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
         mainActivity.hideBottomNav(false)
     }
+
+
 
     companion object {
     }

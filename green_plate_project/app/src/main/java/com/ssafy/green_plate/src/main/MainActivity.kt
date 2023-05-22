@@ -2,6 +2,7 @@ package com.ssafy.green_plate.src.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,7 +14,9 @@ import com.ssafy.green_plate.databinding.ActivityMainBinding
 import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.util.RetrofitUtil
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.plus
 
+private const val TAG = "싸피"
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     private val activityViewModel : MainActivityViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +24,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         setBottomNavigation()
         setRecommendMenu()
+        setProductList()
+        activityViewModel.putRecentOrderedMenu()
     }
 
     private fun setBottomNavigation() {
@@ -48,6 +53,31 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             RetrofitUtil.productService.getTopThreeMenuList().let {
                 activityViewModel.setTopThreeMenuInfo(it as MutableList<Product>)
             }
+        }
+    }
+
+    private fun setProductList() {
+        lifecycleScope.launch {
+            RetrofitUtil.productService.getProductList().let {
+                activityViewModel.setProductList(it as MutableList<Product>)
+            }
+            getFiveRecommendMenu()
+            activityViewModel.setSaladMenuList()
+            activityViewModel.setYogurtMenuList()
+            activityViewModel.setAllMenuList()
+        }
+    }
+
+    private fun getFiveRecommendMenu() {
+        lifecycleScope.launch {
+            var recommendList : MutableList<Product> = mutableListOf()
+            val pList = activityViewModel.productList
+            val numbers = (0..11).shuffled().take(5)
+            numbers.forEach {
+                Log.d(TAG, "getFiveRecommendMenu: ${it}")
+                recommendList.add(pList.value!!.get(it))
+            }
+            activityViewModel.setRecomemndMenuInfo(recommendList)
         }
     }
 }

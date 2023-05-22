@@ -2,6 +2,7 @@ package com.ssafy.green_plate
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.src.main.MainActivity
 import java.util.*
 
+private const val TAG = "싸피"
 class HomeFragment :
     BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home) {
 
@@ -25,6 +27,8 @@ class HomeFragment :
     private lateinit var timer: Timer
     private var recommendList = mutableListOf<Product>()
     private var recentMenuList = mutableListOf<String>()
+    private lateinit var recommendAdapter : HomeRecommendAdapter
+    private lateinit var recentMenuAdapter: RecentMenuAdapter
 
     private val activityViewModel: MainActivityViewModel by activityViewModels()
 
@@ -49,17 +53,24 @@ class HomeFragment :
         timer = Timer()
         timer.schedule(autoScrollTask, 3000, 3000)
 
-        recommendObserver()
-        binding.mainRecommendRV.apply {
-            adapter = HomeRecommendAdapter(requireContext(), recommendList)
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        activityViewModel.recommendMenu.observe(viewLifecycleOwner) {
+            recommendAdapter = HomeRecommendAdapter(requireContext(), it)
+            recommendAdapter.notifyDataSetChanged()
+            binding.mainRecommendRV.apply {
+                adapter = recommendAdapter
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            }
         }
 
-        binding.mainLatestOrderRV.apply {
-            adapter = RecentMenuAdapter(requireContext(), recentMenuList)
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        activityViewModel.recentOrderMenu.observe(viewLifecycleOwner) {
+            recentMenuAdapter = RecentMenuAdapter(requireContext(), it)
+            recentMenuAdapter.notifyDataSetChanged()
+            binding.mainLatestOrderRV.apply {
+                adapter = recentMenuAdapter
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            }
         }
     }
 
@@ -74,11 +85,6 @@ class HomeFragment :
         }
     }
 
-    private fun recommendObserver() {
-        activityViewModel.productInfo.observe(viewLifecycleOwner) {
-            recommendList = it as MutableList<Product>
-        }
-    }
 
 
     override fun onDestroyView() {

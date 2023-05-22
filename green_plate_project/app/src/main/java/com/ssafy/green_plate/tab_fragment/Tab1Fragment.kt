@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ssafy.green_plate.MainActivityViewModel
 import com.ssafy.green_plate.R
 import com.ssafy.green_plate.databinding.FragmentTab1Binding
 import com.ssafy.green_plate.dto.Product
@@ -18,6 +20,7 @@ class Tab1Fragment : Fragment() {
 
     private val menuList = mutableListOf<Product>()
     private lateinit var tabAdapter: TabAdapter
+    private val activityViewModel: MainActivityViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -34,22 +37,19 @@ class Tab1Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        menuList.add(Product(0, "연어 샐러드", "Salmon Salad", "Salad", "", 10000, "salad01.png"))
-        menuList.add(Product(1, "연어 샐러드", "Salmon Salad", "Salad", "", 10000, "salad01.png"))
-        menuList.add(Product(2, "연어 샐러드", "Salmon Salad", "Salad", "", 10000, "salad01.png"))
-        menuList.add(Product(3, "연어 샐러드", "Salmon Salad", "Salad", "", 10000, "salad01.png"))
-        menuList.add(Product(4, "연어 샐러드", "Salmon Salad", "Salad", "", 10000, "salad01.png"))
-        menuList.add(Product(5, "연어 샐러드", "Salmon Salad", "Salad", "", 10000, "salad01.png"))
-        tabAdapter = TabAdapter(requireContext(), menuList)
-        tabAdapter.setItemClickListener(object : TabAdapter.ItemClickListener{
-            override fun onClick(view: View, position: Int) {
-                Navigation.findNavController(view).navigate(R.id.action_orderFragment_to_orderDetailFragment)
-            }
-        })
+        activityViewModel.allMenuList.observe(viewLifecycleOwner) {
+            tabAdapter = TabAdapter(requireContext(), it)
+            tabAdapter.setItemClickListener(object : TabAdapter.ItemClickListener{
+                override fun onClick(data: Product) {
+                    activityViewModel.setMenuDetailInfo(data)
+                    Navigation.findNavController(view).navigate(R.id.action_orderFragment_to_orderDetailFragment)
+                }
+            })
 
-        binding.allMenuRv.apply {
-            adapter = tabAdapter
-            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
+            binding.allMenuRv.apply {
+                adapter = tabAdapter
+                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
+            }
         }
     }
 

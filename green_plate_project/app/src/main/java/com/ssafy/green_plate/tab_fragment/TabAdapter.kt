@@ -34,7 +34,7 @@ class TabAdapter (val context : Context, private var items : List<Product>) : Re
         holder.apply {
             bindInfo(item)
             itemView.setOnClickListener {
-                itemClickListner.onClick(it,position)
+                itemClickListner.onClick(item)
             }
         }
     }
@@ -44,7 +44,7 @@ class TabAdapter (val context : Context, private var items : List<Product>) : Re
     }
 
     interface ItemClickListener {
-        fun onClick(view: View, position: Int)
+        fun onClick(data : Product)
     }
     //클릭리스너 선언
     private lateinit var itemClickListner: ItemClickListener
