@@ -49,6 +49,7 @@ class HomeFragment :
         timer = Timer()
         timer.schedule(autoScrollTask, 3000, 3000)
 
+        recommendObserver()
         binding.mainRecommendRV.apply {
             adapter = HomeRecommendAdapter(requireContext(), recommendList)
             layoutManager =
