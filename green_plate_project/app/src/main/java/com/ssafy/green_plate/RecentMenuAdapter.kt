@@ -4,13 +4,19 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.ListItemHomeRecentMenuBinding
+import com.ssafy.green_plate.models.MenuDetailWithProductInfo
 
-class RecentMenuAdapter(val context : Context, private var items : List<String>): RecyclerView.Adapter<RecentMenuAdapter.RecentMenuViewHolder>() {
+class RecentMenuAdapter(val context : Context, private var items : List<MenuDetailWithProductInfo>): RecyclerView.Adapter<RecentMenuAdapter.RecentMenuViewHolder>() {
     inner class RecentMenuViewHolder(private val binding: ListItemHomeRecentMenuBinding)
         :RecyclerView.ViewHolder(binding.root) {
-            fun bindInfo(data : String) {
-                binding.recentRecommendMenuTv.text = data
+            fun bindInfo(data : MenuDetailWithProductInfo) {
+                binding.recentRecommendMenuTv.text = data.productName
+                Glide.with(itemView)
+                    .load("${ApplicationClass.MENU_IMGS_URL}${data.productImg}")
+                    .into(binding.recentRecommendIv)
             }
         }
     override fun onCreateViewHolder(
