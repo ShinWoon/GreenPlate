@@ -2,6 +2,7 @@ package com.ssafy.green_plate.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.ssafy.green_plate.dto.User
 
 class SharedPreferencesUtil (context: Context) {
     val SHARED_PREFERENCES_NAME = "smartstore_preference"
@@ -11,22 +12,22 @@ class SharedPreferencesUtil (context: Context) {
         context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
 
     //사용자 정보 저장
-//    fun addUser(user:User){
-//        val editor = preferences.edit()
-//        editor.putString("id", user.id)
-//        editor.putString("name", user.name)
-//        editor.apply()
-//    }
+    fun addUser(user: User){
+        val editor = preferences.edit()
+        editor.putString("id", user.id)
+        editor.putString("name", user.name)
+        editor.apply()
+    }
 
-//    fun getUser(): User{
-//        val id = preferences.getString("id", "")
-//        if (id != ""){
-//            val name = preferences.getString("name", "")
-//            return User(id!!, name!!, "",0)
-//        }else{
-//            return User()
-//        }
-//    }
+    fun getUser(): User{
+        val id = preferences.getString("id", "")
+        if (id != ""){
+            val name = preferences.getString("name", "")
+            return User(id!!, name!!, "",0)
+        }else{
+            return User()
+        }
+    }
 
     fun deleteUser(){
         //preference 지우기
