@@ -33,5 +33,61 @@
 
 
     // font
+    <style name="Text.Title.bold.kr" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textColor">@color/green_plate_font_black</item>
+        <item name="android:fontFamily">@font/lineseedkr_bd</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="Text.bold.kr" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textColor">@color/green_plate_font_black</item>
+        <item name="android:fontFamily">@font/lineseedkr_bd</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="Text.regular.kr" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textColor">@color/green_plate_font_black</item>
+        <item name="android:fontFamily">@font/lineseedkr_rg</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="Text.thin.kr" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textColor">@color/green_plate_font_dark_gray</item>
+        <item name="android:fontFamily">@font/lineseedkr_th</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    // eng
+    <style name="Text.bold.a" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/green_plate_font_dark_gray</item>
+        <item name="android:fontFamily">@font/lineseedsans_a_bd</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="Text.regular.a" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/green_plate_font_dark_gray</item>
+        <item name="android:fontFamily">@font/lineseedsans_a_rg</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
 
 </resources>

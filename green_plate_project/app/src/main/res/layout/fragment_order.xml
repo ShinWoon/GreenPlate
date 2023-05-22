@@ -11,6 +11,7 @@
     <TextView
         android:id="@+id/storeNameTv"
         android:text="그린 플레이트 (싸피점)"
+        style="@style/Text.Title.bold.kr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,14 +21,16 @@
         android:id="@+id/shoppingCartBtn"
         android:src="@drawable/outline_shopping_cart_24"
         android:backgroundTint="@color/white"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
+        android:layout_width="54dp"
+        android:layout_height="48dp"
+        android:scaleType="fitXY"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
     <TextView
         android:id="@+id/storeAdressTv"
         android:text="경상북도 구미시"
+        style="@style/Text.bold.a"
         android:layout_marginTop="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
