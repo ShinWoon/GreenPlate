@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssafy.green_plate.databinding.FragmentOrderDetailBinding
 import com.ssafy.green_plate.dto.Product
@@ -44,10 +45,11 @@ class OrderDetailFragment : Fragment() {
         dressingList.add(Product(1,"","","","",1000,""))
         dressingList.add(Product(1,"","","","",1000,""))
 
-        binding.orderDressingRv.apply {
-            adapter = OrderDetailDressingAdapter(requireContext(), dressingList)
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        }
+//        binding.orderDressingRv.apply {
+//            adapter = OrderDetailDressingAdapter(requireContext(), dressingList)
+//            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//        }
+
 
         toppingList.add(Product(1,"","","","",1000,""))
         toppingList.add(Product(1,"","","","",1000,""))
