@@ -74,7 +74,7 @@ class OrderServiceTest extends AbstractServiceTest {
 
     @Test
     public void selectLastOrderTest() {
-        List<Map<String, Object>> orders = orderService.getLastestOrder("id 08");
+        List<Map<String, Object>> orders = orderService.getLatestFiveOrder("id 08");
         System.out.println(orders);
     }
 

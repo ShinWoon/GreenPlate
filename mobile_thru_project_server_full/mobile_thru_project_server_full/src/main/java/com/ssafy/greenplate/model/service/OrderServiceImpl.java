@@ -81,8 +81,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Map<String, Object>> getLastestOrder(String id) {
-        return oDao.getLastestOrder(id);
+    public List<Map<String, Object>> getLatestFiveOrder(String id) {
+        return oDao.getLatestFiveOrder(id);
     }
 
 }

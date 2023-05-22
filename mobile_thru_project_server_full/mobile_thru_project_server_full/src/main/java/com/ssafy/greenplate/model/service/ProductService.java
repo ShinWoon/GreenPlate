@@ -21,4 +21,8 @@ public interface ProductService {
      */
     Product getProduct(Integer productId);
 
+    /**
+     * 주문량이 가장 많은 메뉴 3개 반환
+     */
+    List<Product> selectTop3Menu();
 }

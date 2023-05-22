@@ -32,4 +32,10 @@ public class ProductRestController {
     public Product getProduct(@PathVariable Integer productId) {
         return pService.getProduct(productId);
     }
+
+    @GetMapping("/topThreeMenu")
+    @ApiOperation(value = "가장 주문량이 많은 메뉴 3가지에 해당하는 상품의 정보를 반환한다.")
+    public List<Product> selectTop3Menu() {
+        return pService.selectTop3Menu();
+    }
 }
