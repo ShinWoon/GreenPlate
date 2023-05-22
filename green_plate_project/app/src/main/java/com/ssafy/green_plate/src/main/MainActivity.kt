@@ -1,5 +1,6 @@
 package com.ssafy.green_plate.src.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,7 @@ import com.ssafy.green_plate.HomeFragment
 import com.ssafy.green_plate.MypageFragment
 import com.ssafy.green_plate.OrderFragment
 import com.ssafy.green_plate.R
+import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.config.BaseActivity
 import com.ssafy.green_plate.databinding.ActivityMainBinding
 
@@ -21,9 +23,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     private fun setBottomNavigation() {
-        //        supportFragmentManager.beginTransaction()
-//            .replace(R.id.frame_layout_main, HomeFragment())
-//            .commit()
 
         // 네비게이션 호스트
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -38,5 +37,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     fun hideBottomNav(state : Boolean) {
         if (state) binding.bottomNavigation.visibility = View.GONE
         else binding.bottomNavigation.visibility = View.VISIBLE
+    }
+
+    fun logout() {
+        //preference 지우기
+        ApplicationClass.sharedPreferencesUtil.deleteUser()
+
+        //화면이동
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(intent)
     }
 }
