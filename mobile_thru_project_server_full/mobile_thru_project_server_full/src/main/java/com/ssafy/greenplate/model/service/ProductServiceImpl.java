@@ -29,4 +29,9 @@ public class ProductServiceImpl implements ProductService {
         return pDao.select(id);
     }
 
+    @Override
+    public List<Product> selectTop3Menu() {
+        return pDao.selectTop3Menu();
+    }
+
 }

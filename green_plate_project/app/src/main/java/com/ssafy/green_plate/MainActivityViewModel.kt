@@ -28,4 +28,11 @@ class MainActivityViewModel : ViewModel(){
             }
             return livedata
         }
+    private var _topThreeMenuInfo = MutableLiveData<MutableList<Product>>()
+    val topThreeMenuInfo : LiveData<MutableList<Product>>
+        get() = _topThreeMenuInfo
+
+    fun setTopThreeMenuInfo(result : MutableList<Product>) {
+        _topThreeMenuInfo.value = result
+    }
 }

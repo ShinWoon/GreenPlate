@@ -13,4 +13,8 @@ interface ProductService {
 //    // comment 조회시 사용
 //    @GET("rest/product/{productId}")
 //    suspend fun getProductWithComments(@Path("productId") productId: Int): List<MenuDetailWithCommentResponse>
+
+    // 주문량이 많은 메뉴 값 가져오기
+    @GET("rest/product/topThreeMenu")
+    suspend fun getTopThreeMenuList() : List<Product>
 }

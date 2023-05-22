@@ -42,7 +42,7 @@ public class OrderRestController {
     @GetMapping("/byUser")
     @ApiOperation(value = "{id}에 해당하는 사용자의 최근 주문 내역 5개를 반환한다."
             + "반환 정보는 1차 주문번호 내림차순, 2차 주문 상세 내림차순으로 정렬된다.", response = List.class)
-    public List<Map<String, Object>> getLastMonthOrder(String id) {
-        return oService.getLastestOrder(id);
+    public List<Map<String, Object>> getLatestFiveOrder(String id) {
+        return oService.getLatestFiveOrder(id);
     }
 }

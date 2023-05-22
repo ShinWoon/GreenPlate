@@ -5,14 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
+import com.bumptech.glide.Glide
+import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.FragmentFirstBannerBinding
+import com.ssafy.green_plate.dto.Product
 
 class FirstBannerFragment : Fragment() {
 
     private var _binding : FragmentFirstBannerBinding? = null
     private val binding
         get() = _binding!!
+
+    private val activityViewModel: MainActivityViewModel by activityViewModels()
+    private var recommendList = mutableListOf<Product>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,14 +34,25 @@ class FirstBannerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.firstRecommandMenuTv.text = "연어 샐러드"
-        binding.firstRecommandDiscripTv.text = "훈제 연어, 양파, 스윗포테이토의 달콤고소한 조합"
-        binding.firstRecommandImg.setImageResource(R.drawable.salad02)
+        topThreeMenuObserver()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun topThreeMenuObserver() {
+        activityViewModel.topThreeMenuInfo.observe(viewLifecycleOwner) {
+            recommendList = it as MutableList<Product>
+            binding.firstRecommandMenuTv.text = recommendList.get(0).name
+            binding.firstRecommandDiscripTv.text = recommendList.get(0).discription.split("(").get(0)
+            view?.let { it1 ->
+                Glide.with(it1)
+                    .load("${ApplicationClass.MENU_IMGS_URL}${recommendList.get(0).img}")
+                    .into(binding.firstRecommandImg)
+            }
+        }
     }
 
     companion object {

@@ -9,4 +9,6 @@ public interface ProductDao {
     Product select(Integer productId);
 
     List<Product> selectAll();
+
+    List<Product> selectTop3Menu();
 }
