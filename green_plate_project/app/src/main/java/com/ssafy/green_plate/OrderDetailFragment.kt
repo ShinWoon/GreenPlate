@@ -47,10 +47,6 @@ class OrderDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        toppingList.add(Product(1,"","","","",1000,""))
-        toppingList.add(Product(1,"","","","",1000,""))
-        toppingList.add(Product(1,"","","","",1000,""))
-
         binding.orderToppingRv.apply {
             adapter = OrderDetailToppingAdapter(requireContext(), toppingList)
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -64,6 +60,7 @@ class OrderDetailFragment : Fragment() {
                 Glide.with(view)
                     .load("${ApplicationClass.MENU_IMGS_URL}${it.img}")
                     .into(orderDetailMenuIv)
+                if(it.type.equals("yogurt")) dressingListLayout.visibility = View.GONE
             }
         }
 

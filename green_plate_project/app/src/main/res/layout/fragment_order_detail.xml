@@ -14,13 +14,16 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            
+            <ImageView
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:layout_gravity="center"
+                android:background="@drawable/home_recommend_circle"/>
             <ImageView
                 android:id="@+id/order_detail_menu_iv"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
-                android:layout_gravity="center"
-                android:background="@drawable/salad01"/>
+                android:layout_gravity="center"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -69,32 +72,37 @@
             android:layout_height="1dp"
             android:background="#EDEDED" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/dressing_list_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:layout_width="wrap_content"
+            android:orientation="vertical">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:text="드레싱 선택"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:paddingVertical="4dp"
-                android:paddingHorizontal="8dp"
-                android:layout_margin="8dp"
-                android:text="필수선택"
-                android:textColor="@color/white"
-                android:elevation="8dp"
-                android:background="@drawable/order_essential_shape" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="드레싱 선택"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingVertical="4dp"
+                    android:paddingHorizontal="8dp"
+                    android:layout_margin="8dp"
+                    android:text="필수선택"
+                    android:textColor="@color/white"
+                    android:elevation="8dp"
+                    android:background="@drawable/order_essential_shape" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -295,6 +303,8 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
+
 
 
         <View
