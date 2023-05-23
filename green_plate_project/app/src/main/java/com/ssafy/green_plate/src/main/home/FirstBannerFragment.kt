@@ -4,9 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
+import com.ssafy.green_plate.R
 import com.ssafy.green_plate.src.main.MainActivityViewModel
 import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.FragmentFirstBannerBinding
@@ -36,6 +40,10 @@ class FirstBannerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         topThreeMenuObserver()
+        binding.root.setOnClickListener {
+            val bundle = bundleOf("item" to recommendList[0])
+            view.findNavController().navigate(R.id.action_firstBannerFragment_to_menuDetail, bundle)
+        }
     }
 
     override fun onDestroy() {
