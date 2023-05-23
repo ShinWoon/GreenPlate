@@ -1,7 +1,6 @@
 package com.ssafy.green_plate.src.main
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -17,7 +16,6 @@ import com.ssafy.green_plate.databinding.ActivityMainBinding
 import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.util.RetrofitUtil
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.plus
 
 private const val TAG = "싸피"
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {

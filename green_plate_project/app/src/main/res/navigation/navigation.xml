@@ -102,9 +102,6 @@
         <action
             android:id="@+id/action_firstBannerFragment_to_menuDetail"
             app:destination="@id/orderDetailFragment"/>
-        <argument
-            android:name="firstBannerItem"
-            app:argType="Product"/>
     </fragment>
 
     <fragment
