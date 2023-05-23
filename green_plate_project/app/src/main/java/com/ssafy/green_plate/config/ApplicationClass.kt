@@ -18,7 +18,9 @@ class ApplicationClass : Application() {
         // 핸드폰으로 접속은 같은 인터넷으로 연결 되어있어야함 (유,무선)
 //        const val SERVER_URL = "http://mobile-pjt.sample.ssafy.io/"
 //        const val SERVER_URL = "http://172.30.1.26:9999/"
-        const val SERVER_URL = "http://192.168.33.111:9999/"
+//        const val SERVER_URL = "http://192.168.33.111:9999/"
+        const val SERVER_URL = "http://192.168.0.7:9999/"
+
 //        const val SERVER_URL = "http://175.121.145.246:8080/rest/posts"
         const val MENU_IMGS_URL = "${SERVER_URL}imgs/menu/"
         const val IMGS_URL = "${SERVER_URL}imgs/"
