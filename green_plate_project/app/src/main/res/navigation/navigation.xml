@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ssafy.green_plate.HomeFragment"
+        android:name="com.ssafy.green_plate.src.main.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
-        android:name="com.ssafy.green_plate.OrderFragment"
+        android:name="com.ssafy.green_plate.src.main.order.OrderFragment"
         android:label="fragment_order"
         tools:layout="@layout/fragment_order" >
         <action
@@ -37,7 +37,7 @@
         tools:layout="@layout/fragment_menu_detail" />
     <fragment
         android:id="@+id/mypageFragment"
-        android:name="com.ssafy.green_plate.MypageFragment"
+        android:name="com.ssafy.green_plate.src.main.mypage.MypageFragment"
         android:label="fragment_mypage"
         tools:layout="@layout/fragment_mypage" >
         <action
@@ -50,18 +50,18 @@
 
     <fragment
         android:id="@+id/couponFragment"
-        android:name="com.ssafy.green_plate.CouponFragment"
+        android:name="com.ssafy.green_plate.src.main.mypage.CouponFragment"
         android:label="fragment_coupon"
         tools:layout="@layout/fragment_coupon"/>
 
     <fragment
         android:id="@+id/orderDetailFragment"
-        android:name="com.ssafy.green_plate.OrderDetailFragment"
+        android:name="com.ssafy.green_plate.src.main.order.OrderDetailFragment"
         android:label="fragment_order_detail"
         tools:layout="@layout/fragment_order_detail" />
     <fragment
         android:id="@+id/orderHistoryFragment"
-        android:name="com.ssafy.green_plate.OrderHistoryFragment"
+        android:name="com.ssafy.green_plate.src.main.mypage.OrderHistoryFragment"
         android:label="fragment_order_history"
         tools:layout="@layout/fragment_order_history" >
         <action
@@ -70,17 +70,17 @@
     </fragment>
     <fragment
         android:id="@+id/orderHistoryDetailFragment"
-        android:name="com.ssafy.green_plate.OrderHistoryDetailFragment"
+        android:name="com.ssafy.green_plate.src.main.mypage.OrderHistoryDetailFragment"
         android:label="fragment_order_history_detail"
         tools:layout="@layout/fragment_order_history_detail" />
     <fragment
         android:id="@+id/payingFragment"
-        android:name="com.ssafy.green_plate.PayingFragment"
+        android:name="com.ssafy.green_plate.src.main.order.PayingFragment"
         android:label="fragment_paying"
         tools:layout="@layout/fragment_paying" />
     <fragment
         android:id="@+id/shoppingCartFragment"
-        android:name="com.ssafy.green_plate.ShoppingcartFragment"
+        android:name="com.ssafy.green_plate.src.main.order.shoppingcart.ShoppingcartFragment"
         android:label="fragment_shoppingcart"
         tools:layout="@layout/fragment_shoppingcart" >
         <action

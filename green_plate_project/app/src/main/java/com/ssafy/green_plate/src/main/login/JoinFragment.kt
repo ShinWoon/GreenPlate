@@ -2,6 +2,8 @@ package com.ssafy.green_plate.src.main.login
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,9 +30,40 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(FragmentJoinBinding::bind
         super.onViewCreated(view, savedInstanceState)
 
         checkIdObserver()
+        val textWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 텍스트 변경 이전에 호출됩니다.
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // 텍스트 변경 시 호출됩니다.
+//                val changedText = s.toString()
+                checkedId = false
+                binding.joinCheckBtn.setImageResource(R.drawable.baseline_check_circle_outline_24)
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 텍스트 변경 후에 호출됩니다.
+            }
+        }
+        binding.joinIdEdt.addTextChangedListener(textWatcher)
+
+        binding.joinCheckBtn.setOnClickListener {
+            if(checkedId) {
+                showToast("이미 아이디 중복 확인되었습니다.")
+
+            } else {
+                // 중복 확인하기
+                viewModel.checkIdDuplication(binding.joinIdEdt.text.toString())
+            }
+        }
+
+
+
+
         binding.btnJoin.setOnClickListener{
 
-            if(viewModel.idDuplication.value == false) {
+            if(checkedId) {
                 // 아이디 중복 확인을 끝낸 상태
                 val joinId = binding.joinIdEdt.text.toString()
                 val joinName = binding.joinNicknameEdt.text.toString()
@@ -51,7 +84,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(FragmentJoinBinding::bind
                 }
             } else {
                 // id 중복 확인
-                viewModel.checkIdDuplication(binding.joinIdEdt.text.toString())
+                showToast("아이디 중복 확인이 되지 않았습니다.")
             }
         }
     }
@@ -59,6 +92,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(FragmentJoinBinding::bind
 
 
     fun checkIdObserver() {
+
         viewModel.idDuplication.observe(viewLifecycleOwner) {
             if(it) {
                 // true == 이미 있음
@@ -66,6 +100,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(FragmentJoinBinding::bind
             } else {
                 showToast("사용 가능한 아이디입니다.")
                 checkedId = true
+                binding.joinCheckBtn.setImageResource(R.drawable.baseline_check_circle_24_green)
             }
         }
     }
