@@ -140,24 +140,31 @@ class OrderDetailFragment : Fragment() {
             when (checkedId) {
                 R.id.dressing_rbtn1 -> { // 시저 드레싱
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 1
+                    shoppingCart.dressingName = "시저 드레싱"
                 }
                 R.id.dressing_rbtn2 -> { // 오리엔탈 드레싱
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 2
+                    shoppingCart.dressingName = "오리엔탈 드레싱"
                 }
                 R.id.dressing_rbtn3 -> { // 발사믹 드레싱
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 3
+                    shoppingCart.dressingName = "발사믹 드레싱"
                 }
                 R.id.dressing_rbtn4 -> { // 레몬 드레싱
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 4
+                    shoppingCart.dressingName = "레몬 드레싱"
                 }
                 R.id.dressing_rbtn5 -> { // 머스타드 드레싱
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 5
+                    shoppingCart.dressingName = "머스타드 드레싱"
                 }
                 R.id.dressing_rbtn6 -> { // 칠리 드레싱
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 6
+                    shoppingCart.dressingName = "칠리 드레싱"
                 }
                 R.id.dressing_rbtn7 -> { // 드레싱X
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 7
+                    shoppingCart.dressingName = "드레싱 X"
                 }
             }
         }
