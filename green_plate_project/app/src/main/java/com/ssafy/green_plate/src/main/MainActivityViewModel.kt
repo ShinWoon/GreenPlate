@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ssafy.green_plate.dto.Product
+import com.ssafy.green_plate.dto.ShoppingCart
 import com.ssafy.green_plate.models.MenuDetailWithProductInfo
 import com.ssafy.green_plate.util.RetrofitUtil
 import kotlinx.coroutines.launch
@@ -15,6 +16,8 @@ class MainActivityViewModel : ViewModel(){
     private var _productList = MutableLiveData<MutableList<Product>>()
     val productList : LiveData<MutableList<Product>>
         get() = _productList
+
+    private val _productInfo = MutableLiveData<Int>()
 
     fun setProductList(result : MutableList<Product>) {
         _productList.value = result
@@ -143,4 +146,28 @@ class MainActivityViewModel : ViewModel(){
             }
         }
     }
+
+    private val _shoppingList = MutableLiveData<MutableList<ShoppingCart>>(mutableListOf())
+    val shoppingList: LiveData<MutableList<ShoppingCart>>
+        get() = _shoppingList
+
+    fun addShoppingList(shoppingCart: ShoppingCart) {
+        Log.d(TAG, "addShoppingList: $shoppingCart")
+        _shoppingList.value?.add(shoppingCart)
+        _shoppingList.value = _shoppingList.value // MutableLiveData가 변경되었음을 알리기 위해 다시 할당합니다.
+    }
+
+    fun deleteShoppingList(index: Int) {
+        _shoppingList.value?.let { list ->
+            if (list.size > index) {
+                list.removeAt(index)
+                _shoppingList.value = list
+            }
+        }
+    }
+
+    fun clearShoppingList() {
+        _shoppingList.value = mutableListOf()
+    }
+
 }
