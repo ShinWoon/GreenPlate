@@ -4,22 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".OrderDetailFragment">
+    tools:context=".src.main.order.OrderDetailFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="16dp"
         android:orientation="vertical">
         
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
+                android:layout_marginBottom="16dp"
                 android:layout_width="280dp"
                 android:layout_height="280dp"
                 android:layout_gravity="center"
                 android:background="@drawable/home_recommend_circle"/>
             <ImageView
+                android:layout_marginBottom="16dp"
                 android:id="@+id/order_detail_menu_iv"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
@@ -30,16 +33,17 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/green_plate_mypage_gray"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="10dp"
+                app:cardElevation="4dp"
                 android:layout_gravity="bottom"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="4dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
                         android:id="@+id/order_detail_menu_name_tv"
+                        style="@style/Text.Title.bold.kr"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
@@ -47,6 +51,7 @@
                         android:text="메뉴명"/>
                     <TextView
                         android:id="@+id/order_detail_menu_eng_name_tv"
+                        style="@style/Text.regular.small.kr"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
@@ -55,6 +60,7 @@
 
                     <TextView
                         android:id="@+id/order_detail_menu_price"
+                        style="@style/Text.regular.kr"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAlignment="textEnd"
@@ -85,6 +91,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/Text.regular.kr"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -99,8 +106,9 @@
                     android:paddingHorizontal="8dp"
                     android:layout_margin="8dp"
                     android:text="필수선택"
+                    style="@style/Text.regular.small.kr"
                     android:textColor="@color/white"
-                    android:elevation="8dp"
+                    android:elevation="4dp"
                     android:background="@drawable/order_essential_shape" />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <LinearLayout
@@ -191,7 +199,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="26dp"
                         android:orientation="horizontal">
                         <TextView
                             android:layout_width="match_parent"
@@ -210,7 +218,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginTop="28dp"
+                        android:layout_marginTop="26dp"
                         android:orientation="horizontal">
                         <TextView
                             android:layout_width="match_parent"
@@ -248,7 +256,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginTop="29dp"
+                        android:layout_marginTop="26dp"
                         android:orientation="horizontal">
                         <TextView
                             android:layout_width="match_parent"
@@ -267,7 +275,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="26dp"
                         android:orientation="horizontal">
                         <TextView
                             android:layout_width="match_parent"
@@ -278,7 +286,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="26dp"
                             android:textAlignment="textEnd"
                             android:text="1,000원"/>
                     </LinearLayout>
@@ -286,7 +294,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="20dp"
                         android:orientation="horizontal">
                         <TextView
                             android:layout_width="match_parent"
@@ -323,6 +331,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                style="@style/Text.regular.kr"
                 android:text="토핑 선택"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -331,8 +340,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:paddingVertical="4dp"
-                android:paddingHorizontal="8dp"
+                android:paddingHorizontal="4dp"
                 android:text="추가선택"
+                style="@style/Text.regular.small.kr"
                 android:elevation="8dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/order_choose_shape" />
@@ -351,6 +361,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cornerRadius="20dp"
+            style="@style/Text.bold.white.kr"
             android:text="장바구니 담기" />
     </LinearLayout>
 

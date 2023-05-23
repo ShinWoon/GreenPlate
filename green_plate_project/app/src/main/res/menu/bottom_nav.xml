@@ -10,7 +10,7 @@
         android:id="@+id/orderFragment"
         android:enabled="true"
         android:title="Order"
-        android:icon="@drawable/logo_color"/>
+        android:icon="@drawable/logo"/>
     <item
         android:id="@+id/mypageFragment"
         android:enabled="true"

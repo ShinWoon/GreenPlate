@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingVertical="10dp"
     android:background="@drawable/second_banner_shape"
-    tools:context=".FirstBannerFragment">
+    tools:context=".src.main.home.FirstBannerFragment">
 
     <LinearLayout
         android:id="@+id/linear_layout"
