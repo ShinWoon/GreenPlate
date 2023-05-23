@@ -3,6 +3,7 @@ package com.ssafy.green_plate.src.main.home
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -20,6 +21,9 @@ class HomeRecommendAdapter(val context : Context, private var items : List<Produ
                 Glide.with(itemView)
                     .load("${ApplicationClass.MENU_IMGS_URL}${data.img}")
                     .into(binding.recommendIv)
+                itemView.setOnClickListener{
+                    itemClickListner.onClick(it, layoutPosition, data)
+                }
             }
         }
 
@@ -38,10 +42,20 @@ class HomeRecommendAdapter(val context : Context, private var items : List<Produ
     ) {
         val item = items[position]
         holder.bindInfo(item)
+
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
+    interface ItemClickListener {
+        fun onClick(view: View, position: Int, menu: Product)
+    }
+    //클릭리스너 선언
+    private lateinit var itemClickListner: ItemClickListener
+    //클릭리스너 등록 매소드
+    fun setItemClickListener(itemClickListener: ItemClickListener) {
+        this.itemClickListner = itemClickListener
+    }
 }

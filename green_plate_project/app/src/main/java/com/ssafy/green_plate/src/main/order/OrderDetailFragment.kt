@@ -52,36 +52,70 @@ class OrderDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d(TAG, "onViewCreated: 화면 생성")
 
-        activityViewModel.menuDetailInfo.observe(viewLifecycleOwner) {
-            binding.apply {
-                orderDetailMenuNameTv.text = it.name
-                orderDetailMenuEngNameTv.text = it.englishName
-                orderDetailMenuPrice.text = CommonUtils.makeComma(it.price)
-                Glide.with(view)
-                    .load("${ApplicationClass.MENU_IMGS_URL}${it.img}")
-                    .into(orderDetailMenuIv)
-                if (it.type == "yogurt") dressingListLayout.visibility = View.GONE
-            }
-
-
-            binding.orderToppingRv.apply {
-                if (it.type == "salad") {
-                    adapter = OrderDetailToppingAdapter(
-                        requireContext(),
-                        activityViewModel.saladToppingList
-                    )
-                } else {
-                    adapter = OrderDetailToppingAdapter(
-                        requireContext(),
-                        activityViewModel.yogurtToppingList
-                    )
+        activityViewModel.pageType.observe(viewLifecycleOwner) {
+            if(it.equals("recommend")){
+                activityViewModel.selectedMenu.observe(viewLifecycleOwner) {
+                    Log.d(TAG, "onViewCreated: ${it}")
+                    binding.apply {
+                        orderDetailMenuNameTv.text = it.name
+                        orderDetailMenuEngNameTv.text = it.englishName
+                        orderDetailMenuPrice.text = CommonUtils.makeComma(it.price)
+                        Glide.with(view)
+                            .load("${ApplicationClass.MENU_IMGS_URL}${it.img}")
+                            .into(orderDetailMenuIv)
+                        if (it.type == "yogurt") dressingListLayout.visibility = View.GONE
+                    }
+                    binding.orderToppingRv.apply {
+                        if (it.type.equals("salad")) {
+                            adapter = OrderDetailToppingAdapter(
+                                requireContext(),
+                                activityViewModel.saladToppingList
+                            )
+                        } else {
+                            adapter = OrderDetailToppingAdapter(
+                                requireContext(),
+                                activityViewModel.yogurtToppingList
+                            )
+                        }
+                        layoutManager =
+                            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                    }
                 }
-                layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            }
+            } else if (it.equals("menuPage")) {
+                activityViewModel.menuDetailInfo.observe(viewLifecycleOwner) {
+                    binding.apply {
+                        Log.d(TAG, "onViewCreated: menu 화면에서 이동 ${it}")
+                        orderDetailMenuNameTv.text = it.name
+                        orderDetailMenuEngNameTv.text = it.englishName
+                        orderDetailMenuPrice.text = CommonUtils.makeComma(it.price)
+                        Glide.with(view)
+                            .load("${ApplicationClass.MENU_IMGS_URL}${it.img}")
+                            .into(orderDetailMenuIv)
+                        if (it.type == "yogurt") dressingListLayout.visibility = View.GONE
+                    }
 
+                    binding.orderToppingRv.apply {
+                        if (it.type.equals("salad")) {
+                            adapter = OrderDetailToppingAdapter(
+                                requireContext(),
+                                activityViewModel.saladToppingList
+                            )
+                        } else {
+                            adapter = OrderDetailToppingAdapter(
+                                requireContext(),
+                                activityViewModel.yogurtToppingList
+                            )
+                        }
+                        layoutManager =
+                            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                    }
+
+                }
+            }
         }
+
 
         binding.dressingRadioGroup.setOnCheckedChangeListener { group, checkedId ->
             // 선택된 RadioButton에 따라 처리할 로직을 작성합니다.
@@ -118,7 +152,6 @@ class OrderDetailFragment : Fragment() {
         }
 
 
-
     }
 
     override fun onDestroy() {
@@ -126,7 +159,6 @@ class OrderDetailFragment : Fragment() {
         _binding = null
         mainActivity.hideBottomNav(false)
     }
-
 
 
 }

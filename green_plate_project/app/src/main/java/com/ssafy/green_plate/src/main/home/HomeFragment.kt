@@ -2,10 +2,13 @@ package com.ssafy.green_plate.src.main.home
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.ssafy.green_plate.src.main.MainActivityViewModel
@@ -15,8 +18,10 @@ import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentHomeBinding
 import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.src.main.MainActivity
+import kotlinx.coroutines.launch
 import java.util.*
 
+private const val TAG = "HomeFragment_싸피"
 class HomeFragment :
     BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home) {
 
@@ -61,6 +66,18 @@ class HomeFragment :
                 layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             }
+            recommendAdapter.setItemClickListener(object : HomeRecommendAdapter.ItemClickListener{
+                override fun onClick(view: View, position: Int, menu : Product) {
+                    lifecycleScope.launch {
+                        Log.d(TAG, "onClick: ${menu}")
+                        activityViewModel.setPageType("recommend")
+                        activityViewModel.addSelectedMenu(menu)
+                        Navigation.findNavController(view)
+                            .navigate(R.id.action_homeFragment_to_orderDetailFragment)
+                    }
+                }
+
+            })
         }
 
         activityViewModel.recentOrderMenu.observe(viewLifecycleOwner) {

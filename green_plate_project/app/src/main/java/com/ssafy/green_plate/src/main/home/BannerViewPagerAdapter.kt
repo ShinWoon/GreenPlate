@@ -14,4 +14,6 @@ class BannerViewPagerAdapter(fragment : Fragment) : FragmentStateAdapter(fragmen
             else -> FirstBannerFragment()
         }
     }
+
+
 }
