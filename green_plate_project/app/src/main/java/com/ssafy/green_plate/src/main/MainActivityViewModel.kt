@@ -170,4 +170,25 @@ class MainActivityViewModel : ViewModel(){
         _shoppingList.value = mutableListOf()
     }
 
+
+    private var _selectedMenu = MutableLiveData<Product>()
+    val selectedMenu: LiveData<Product>
+        get() = _selectedMenu
+
+    fun addSelectedMenu(menu : Product) {
+        Log.d(TAG, "addSelectedMenu: ${menu.name}")
+        _selectedMenu.value = menu
+//        _selectedMenu.value = selectedMenu.value // MutableLiveData가 변경되었음을 알리기 위해 다시 할당합니다.
+    }
+
+    private var _pageType = MutableLiveData<String>()
+    val pageType : LiveData<String>
+        get() = _pageType
+
+    fun setPageType(type : String) {
+        _pageType.value = type
+    }
+
+
+
 }
