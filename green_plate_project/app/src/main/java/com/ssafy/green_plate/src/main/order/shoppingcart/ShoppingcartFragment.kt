@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ssafy.green_plate.R
@@ -58,7 +59,7 @@ class ShoppingcartFragment : BaseFragment<FragmentShoppingcartBinding>(
         }
 
         binding.shoppingCartOrderBtn.setOnClickListener {
-            showToast("상품을 주문하였습니다.")
+            Navigation.findNavController(view).navigate(R.id.action_shoppingcartFragment_to_payingFragment)
         }
 
     }

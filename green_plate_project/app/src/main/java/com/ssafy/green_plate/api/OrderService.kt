@@ -1,12 +1,13 @@
 package com.ssafy.green_plate.api
 
+import com.ssafy.green_plate.dto.Order
 import com.ssafy.green_plate.models.MenuDetailWithProductInfo
 import retrofit2.http.*
 
 interface OrderService {
     // order 객체를 저장하고 추가된 Order의 id를 반환한다.
-//    @POST("rest/order")
-//    suspend fun makeOrder(@Body body: Order): Int
+    @POST("rest/order")
+    suspend fun makeOrder(@Body body: Order): Int
 //
 //    // {orderId}에 해당하는 주문의 상세 내역을 목록 형태로 반환한다.
 //    // 사용자 정보 화면의 주문 내역 조회에서 사용된다.

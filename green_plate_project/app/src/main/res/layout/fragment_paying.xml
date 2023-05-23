@@ -12,12 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
+        style="@style/Text.bold.kr"
         android:text="결제"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="18dp"
+        android:layout_marginVertical="8dp"
         android:layout_marginLeft="16dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -30,8 +31,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
+            style="@style/Text.regular.margin.kr"
             android:text="할인쿠폰"/>
+
     </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <AutoCompleteTextView
+            android:id="@+id/payingCouponTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="할인쿠폰 선택"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <View
         android:layout_width="match_parent"
@@ -60,18 +77,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
+                style="@style/Text.regular.margin.kr"
                 android:text="신용/체크카드"/>
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/menu"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <AutoCompleteTextView
+                android:id="@+id/payingCardTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="카드사 선택"
@@ -102,7 +121,7 @@
         android:text="주문내역"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pay_order_recylcer_view"
+        android:id="@+id/pay_order_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -166,7 +185,7 @@
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/myButton"
+                android:id="@+id/payingBtn"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_width="match_parent"

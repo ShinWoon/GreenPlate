@@ -103,11 +103,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="필수 드레싱" />
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ㄴ 오리엔탈 드레싱" />
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ㄴ " />
+
+                        <TextView
+                            android:id="@+id/mainDressingTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="오리엔탈 드레싱" />
+                    </LinearLayout>
+
+
 
                 </LinearLayout>
 
