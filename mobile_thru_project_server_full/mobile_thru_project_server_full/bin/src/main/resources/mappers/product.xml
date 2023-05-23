@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
+<mapper namespace="com.ssafy.greenplate.model.dao.ProductDao">
+	<select id="select" parameterType="int" resultType="Product">
+		SELECT * FROM
+		t_product
+		WHERE id = #{id}
+	</select>
+	<select id="selectAll" resultType="Product">
+		SELECT * FROM t_product order by id asc
+	</select>
+
+	<!-- 주문량이 가장 많은 메뉴 3가지 -->
+	<select id="selectTop3Menu" resultType="Product">
+		SELECT * FROM t_product
+		WHERE id IN (
+    		SELECT product_id
+    		FROM t_order_detail
+    		GROUP BY product_id
+    		ORDER BY SUM(quantity) DESC
+		)
+		limit 3;
+	</select>
+	
+</mapper>

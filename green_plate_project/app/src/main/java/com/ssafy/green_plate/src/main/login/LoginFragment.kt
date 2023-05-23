@@ -10,7 +10,6 @@ import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentLoginBinding
 import com.ssafy.green_plate.src.main.LoginActivity
-import com.ssafy.smartstore_jetpack.src.main.login.LoginFragmentViewModel
 
 private const val TAG = "LoginFragment_싸피"
 class LoginFragment : BaseFragment<FragmentLoginBinding>(
@@ -40,10 +39,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(
         }
     }
 
-    fun registerObserver() {
+    private fun registerObserver() {
         viewModel.user.observe(viewLifecycleOwner) {
             Log.d(TAG, "registerObserver: ${it.id}")
-            if (it.id.isNotEmpty()) {
+            if (it.id != null && it.id.isNotEmpty()) {
                 Log.d(TAG, "registerObserver: 로그인 성공!!")
                 // id가 비어있지 않으면 로그인 성공
                 showToast("로그인 되었습니다.")

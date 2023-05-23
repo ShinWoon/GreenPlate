@@ -1,4 +1,4 @@
-package com.ssafy.smartstore_jetpack.src.main.login
+package com.ssafy.green_plate.src.main.login
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.ssafy.green_plate.dto.User
 import com.ssafy.green_plate.util.RetrofitUtil
 import kotlinx.coroutines.launch
-import java.util.*
 
 private const val TAG = "LoginFragmentViewModel_싸피"
 class LoginFragmentViewModel : ViewModel() {

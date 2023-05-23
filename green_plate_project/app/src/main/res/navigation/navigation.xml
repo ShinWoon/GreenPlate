@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ssafy.green_plate.HomeFragment"
+        android:name="com.ssafy.green_plate.src.main.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
-        android:name="com.ssafy.green_plate.OrderFragment"
+        android:name="com.ssafy.green_plate.src.main.order.OrderFragment"
         android:label="fragment_order"
         tools:layout="@layout/fragment_order" >
         <action
@@ -26,18 +26,10 @@
         <action
             android:id="@+id/action_orderFragment_to_shoppingCartFragment"
             app:destination="@id/shoppingCartFragment" />
-        <action
-            android:id="@+id/action_orderFragment_to_menuDetailFragment"
-            app:destination="@id/menuDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/menuDetailFragment"
-        android:name="com.ssafy.green_plate.MenuDetailFragment"
-        android:label="fragment_menu_detail"
-        tools:layout="@layout/fragment_menu_detail" />
-    <fragment
         android:id="@+id/mypageFragment"
-        android:name="com.ssafy.green_plate.MypageFragment"
+        android:name="com.ssafy.green_plate.src.main.mypage.MypageFragment"
         android:label="fragment_mypage"
         tools:layout="@layout/fragment_mypage" >
         <action
@@ -50,18 +42,18 @@
 
     <fragment
         android:id="@+id/couponFragment"
-        android:name="com.ssafy.green_plate.CouponFragment"
+        android:name="com.ssafy.green_plate.src.main.mypage.CouponFragment"
         android:label="fragment_coupon"
         tools:layout="@layout/fragment_coupon"/>
 
     <fragment
         android:id="@+id/orderDetailFragment"
-        android:name="com.ssafy.green_plate.OrderDetailFragment"
+        android:name="com.ssafy.green_plate.src.main.order.OrderDetailFragment"
         android:label="fragment_order_detail"
         tools:layout="@layout/fragment_order_detail" />
     <fragment
         android:id="@+id/orderHistoryFragment"
-        android:name="com.ssafy.green_plate.OrderHistoryFragment"
+        android:name="com.ssafy.green_plate.src.main.mypage.OrderHistoryFragment"
         android:label="fragment_order_history"
         tools:layout="@layout/fragment_order_history" >
         <action
@@ -70,17 +62,17 @@
     </fragment>
     <fragment
         android:id="@+id/orderHistoryDetailFragment"
-        android:name="com.ssafy.green_plate.OrderHistoryDetailFragment"
+        android:name="com.ssafy.green_plate.src.main.mypage.OrderHistoryDetailFragment"
         android:label="fragment_order_history_detail"
         tools:layout="@layout/fragment_order_history_detail" />
     <fragment
         android:id="@+id/payingFragment"
-        android:name="com.ssafy.green_plate.PayingFragment"
+        android:name="com.ssafy.green_plate.src.main.order.PayingFragment"
         android:label="fragment_paying"
         tools:layout="@layout/fragment_paying" />
     <fragment
         android:id="@+id/shoppingCartFragment"
-        android:name="com.ssafy.green_plate.ShoppingcartFragment"
+        android:name="com.ssafy.green_plate.src.main.order.shoppingcart.ShoppingcartFragment"
         android:label="fragment_shoppingcart"
         tools:layout="@layout/fragment_shoppingcart" >
         <action
@@ -100,6 +92,39 @@
         <action
             android:id="@+id/action_loginFragment_to_joinFragment"
             app:destination="@id/joinFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/firstBannerFragment"
+        android:name="com.ssafy.green_plate.src.main.home.FirstBannerFragment"
+        android:label="fragment_first_banner"
+        tools:layout="@layout/fragment_first_banner">
+        <action
+            android:id="@+id/action_firstBannerFragment_to_menuDetail"
+            app:destination="@id/orderDetailFragment"/>
+        <argument
+            android:name="firstBannerItem"
+            app:argType="Product"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/secondBannerFragment"
+        android:name="com.ssafy.green_plate.src.main.home.SecondBannerFragment"
+        android:label="fragment_second_banner"
+        tools:layout="@layout/fragment_second_banner">
+        <action
+            android:id="@+id/action_secondBannerFragment_to_menuDetail"
+            app:destination="@id/orderDetailFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/thirdBannerFragment"
+        android:name="com.ssafy.green_plate.src.main.home.ThirdBannerFragment"
+        android:label="fragment_third_banner"
+        tools:layout="@layout/fragment_third_banner">
+        <action
+            android:id="@+id/action_thirdBannerFragment_to_menuDetail"
+            app:destination="@id/orderDetailFragment"/>
     </fragment>
 
 </navigation>

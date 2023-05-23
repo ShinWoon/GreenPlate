@@ -58,4 +58,6 @@ public interface OrderService {
      * @return
      */
     List<Map<String, Object>> getLatestFiveOrder(String id);
+    
+    List<Map<String, Object>> getLastMonthOrder(String id);
 }

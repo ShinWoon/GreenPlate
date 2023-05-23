@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingVertical="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/first_banner_shape"
-    tools:context=".FirstBannerFragment">
+    tools:context=".src.main.home.FirstBannerFragment">
 
     <LinearLayout
         android:id="@+id/linear_layout"
@@ -21,6 +22,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:text="연어 샐러드"
+            android:textColor= "#2F4858"
+            android:fontFamily="@font/lineseedkr_bd"
             android:textSize="20sp"/>
 
         <TextView
@@ -30,7 +33,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginLeft="20dp"
             android:text="훈제 연어, 양파, 스윗포테이토의 달콤고소한 조합"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            android:textColor="#2F4858"
+            android:lineSpacingExtra="5dp"/>
     </LinearLayout>
     <ImageView
         android:id="@+id/first_recommand_img"
