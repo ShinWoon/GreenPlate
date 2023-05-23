@@ -77,6 +77,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             activityViewModel.setSaladMenuList()
             activityViewModel.setYogurtMenuList()
             activityViewModel.setAllMenuList()
+            activityViewModel.setSaladToppingList()
+            activityViewModel.setYogurtToppingList()
         }
     }
 

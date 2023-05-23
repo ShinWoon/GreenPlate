@@ -17,7 +17,7 @@ import com.ssafy.green_plate.src.main.MainActivity
 
 class OrderDetailFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
-    private var _binding : FragmentOrderDetailBinding? = null
+    private var _binding: FragmentOrderDetailBinding? = null
     private val binding
         get() = _binding!!
 
@@ -30,6 +30,7 @@ class OrderDetailFragment : Fragment() {
         super.onAttach(context)
         mainActivity = context as MainActivity
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainActivity.hideBottomNav(true)
@@ -40,17 +41,13 @@ class OrderDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentOrderDetailBinding.inflate(inflater,container,false)
+        _binding = FragmentOrderDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.orderToppingRv.apply {
-            adapter = OrderDetailToppingAdapter(requireContext(), toppingList)
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        }
 
         activityViewModel.menuDetailInfo.observe(viewLifecycleOwner) {
             binding.apply {
@@ -60,17 +57,35 @@ class OrderDetailFragment : Fragment() {
                 Glide.with(view)
                     .load("${ApplicationClass.MENU_IMGS_URL}${it.img}")
                     .into(orderDetailMenuIv)
-                if(it.type.equals("yogurt")) dressingListLayout.visibility = View.GONE
+                if (it.type.equals("yogurt")) dressingListLayout.visibility = View.GONE
             }
+
+
+            binding.orderToppingRv.apply {
+                if (it.type.equals("salad")) {
+                    adapter = OrderDetailToppingAdapter(
+                        requireContext(),
+                        activityViewModel.saladToppingList
+                    )
+                } else {
+                    adapter = OrderDetailToppingAdapter(
+                        requireContext(),
+                        activityViewModel.yogurtToppingList
+                    )
+                }
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            }
+
         }
 
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
         mainActivity.hideBottomNav(false)
     }
-
 
 
     companion object {
