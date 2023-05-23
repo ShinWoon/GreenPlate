@@ -16,7 +16,7 @@ class TabAdapter (val context : Context, private var items : List<Product>) : Re
         : RecyclerView.ViewHolder(binding.root) {
             fun bindInfo(data : Product) {
                 binding.orderPageMenuNameTv.text = data.name
-                binding.orderPageMenuEngNameTv.text = data.engName
+                binding.orderPageMenuEngNameTv.text = data.englishName
                 binding.orderPageMenuPriceTv.text = CommonUtils.makeComma(data.price)
                 Glide.with(itemView)
                     .load("${ApplicationClass.MENU_IMGS_URL}${data.img}")
