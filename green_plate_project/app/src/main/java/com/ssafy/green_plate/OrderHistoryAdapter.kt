@@ -4,9 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.ItemOrderHistoryBinding
+import com.ssafy.green_plate.models.MenuDetailWithProductInfo
+import com.ssafy.green_plate.util.CommonUtils
+import java.util.*
 
-class OrderHistoryAdapter (val context : Context, private var items : List<String>): RecyclerView.Adapter<OrderHistoryAdapter.OrderHistoryViewHolder>() {
+class OrderHistoryAdapter(val context: Context, private var items: MutableList<MenuDetailWithProductInfo>): RecyclerView.Adapter<OrderHistoryAdapter.OrderHistoryViewHolder>() {
 
 
     inner class OrderHistoryViewHolder(private val binding : ItemOrderHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -18,8 +23,14 @@ class OrderHistoryAdapter (val context : Context, private var items : List<Strin
                 }
             }
         }
-        fun bindInfo(item: String) {
-            binding.orderItemNameTv.text = item
+        fun bindInfo(item: MenuDetailWithProductInfo) {
+            binding.orderItemNameTv.text = item.productName
+            binding.orderItemPriceTv.text = CommonUtils.makeComma(item.price)
+            binding.orderItemDateTv.text = item.orderTime
+
+            Glide.with(itemView)
+                .load("${ApplicationClass.MENU_IMGS_URL}${item.productImg}")
+                .into(binding.orderItemImgIv)
 
         }
     }

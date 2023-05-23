@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentOrderHistoryBinding
+import com.ssafy.green_plate.models.MenuDetailWithProductInfo
 import com.ssafy.green_plate.src.main.MainActivity
 
 class OrderHistoryFragment : BaseFragment<FragmentOrderHistoryBinding>(FragmentOrderHistoryBinding::bind, R.layout.fragment_order_history) {
@@ -27,22 +28,26 @@ class OrderHistoryFragment : BaseFragment<FragmentOrderHistoryBinding>(FragmentO
         val user = ApplicationClass.sharedPreferencesUtil.getUser()
         activityViewModel.setUserOrderedMenu(user.id)
 
+
+        orderHistoryAdapter = OrderHistoryAdapter(mainActivity, mutableListOf<MenuDetailWithProductInfo>())
+
         activityViewModel.userOrderedMenu.observe(viewLifecycleOwner) {
-            
+            orderHistoryAdapter = OrderHistoryAdapter(mainActivity, it)
+            orderHistoryAdapter.notifyDataSetChanged()
+            binding.orderHistoryRv.apply {
+                adapter = orderHistoryAdapter
+                layoutManager = LinearLayoutManager(mainActivity)
+            }
         }
 
         var items = listOf("item1", "item2", "item3", "item4", "item5")
 
-        orderHistoryAdapter = OrderHistoryAdapter(mainActivity, items)
         orderHistoryAdapter.setOnItemClickListener { position ->
             val clickedItem = items[position]
             Navigation.findNavController(view).navigate(R.id.action_orderHistoryFragment_to_orderHistoryDetailFragment)
         }
 
-        binding.orderHistoryRv.apply {
-            adapter = orderHistoryAdapter
-            layoutManager = LinearLayoutManager(mainActivity)
-        }
+
 
 
     }

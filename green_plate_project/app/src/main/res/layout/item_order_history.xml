@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/orderItemImgIv"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/shape"
             android:src="@mipmap/ic_launcher_round" />
@@ -29,18 +29,21 @@
                 android:id="@+id/orderStoreNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/Text.regular.kr"
                 android:text="그린플레이트 싸피점" />
 
             <TextView
                 android:id="@+id/orderItemNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/Text.regular.kr"
                 android:text="샐러드1 외 1건" />
 
             <TextView
                 android:id="@+id/orderItemPriceTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/Text.regular.kr"
                 android:text="30,000원" />
 
             <LinearLayout
@@ -52,6 +55,7 @@
                     android:id="@+id/orderItemDateTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/Text.regular.small.kr"
                     android:text="2023. 05. 18" />
             </LinearLayout>
 
