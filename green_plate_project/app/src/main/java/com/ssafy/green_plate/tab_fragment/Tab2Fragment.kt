@@ -42,6 +42,7 @@ class Tab2Fragment : Fragment() {
         activityViewModel.saladMenuList.observe(viewLifecycleOwner) {
             tabAdapter = TabAdapter(requireContext(), it)
             tabAdapter.setItemClickListener(object : TabAdapter.ItemClickListener{
+
                 override fun onClick(data: Product) {
                     activityViewModel.setMenuDetailInfo(data)
                     Navigation.findNavController(view).navigate(R.id.action_orderFragment_to_orderDetailFragment)

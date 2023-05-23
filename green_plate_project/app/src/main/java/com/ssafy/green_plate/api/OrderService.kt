@@ -13,8 +13,12 @@ interface OrderService {
 //    @GET("rest/order/{orderId}")
 //    suspend fun getOrderDetail(@Path("orderId") orderId: Int): List<OrderDetailResponse>
 
-    // {id}에 해당하는 사용자의 최근 1개월간 주문 내역을 반환한다.
-    // 반환 정보는 1차 주문번호 내림차순, 2차 주문 상세 내림차순으로 정렬된다.
+
     @GET("rest/order/byUser")
     suspend fun getLatestOrder(@Query("id") id: String): List<MenuDetailWithProductInfo>
+
+    // {id}에 해당하는 사용자의 최근 1개월간 주문 내역을 반환한다.
+    // 반환 정보는 1차 주문번호 내림차순, 2차 주문 상세 내림차순으로 정렬된다.
+    @GET("rest/order/getMonthOrder")
+    suspend fun getMonthOrder(@Query("id") id: String): List<MenuDetailWithProductInfo>
 }

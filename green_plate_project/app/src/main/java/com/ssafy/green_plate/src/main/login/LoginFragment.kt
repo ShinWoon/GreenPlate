@@ -40,7 +40,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(
         }
     }
 
-    fun registerObserver() {
+    private fun registerObserver() {
         viewModel.user.observe(viewLifecycleOwner) {
             Log.d(TAG, "registerObserver: ${it.id}")
             if (it.id.isNotEmpty()) {

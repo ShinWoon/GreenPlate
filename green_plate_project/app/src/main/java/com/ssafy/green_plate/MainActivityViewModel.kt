@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.models.MenuDetailWithProductInfo
 import com.ssafy.green_plate.util.RetrofitUtil
@@ -96,20 +98,35 @@ class MainActivityViewModel : ViewModel(){
         _menuDetailInfo.value = data
     }
 
-    private var _saladToppingList = mutableListOf<Product>()
-    val saladToppingList : List<Product>
-        get() = _saladToppingList
+    private var _userOrderedMenu = MutableLiveData<MutableList<MenuDetailWithProductInfo>>()
+    val userOrderedMenu : LiveData<MutableList<MenuDetailWithProductInfo>>
+        get() = _userOrderedMenu
 
-    fun setSaladToppingList() {
-        for (i in 12..21) _saladToppingList.add(_productList.value!!.get(i))
+    fun setUserOrderedMenu(userId: String) {
+        var info : MutableList<MenuDetailWithProductInfo>
+        viewModelScope.launch {
+            try {
+                info = RetrofitUtil.orderService.getLatestOrder(userId) as MutableList<MenuDetailWithProductInfo>
+            } catch (e : Exception) {
+                info = arrayListOf()
+            }
+            _userOrderedMenu.value = info
+        }
     }
 
-    private var _yogurtToppingList = mutableListOf<Product>()
-    val yogurtToppingList : List<Product>
-        get() = _yogurtToppingList
-
-    fun setYogurtToppingList() {
-        for (i in 22..29) _yogurtToppingList.add(_productList.value!!.get(i))
+    fun getUserInfo(userId: String) {
+        Log.d(TAG, "getUserInfo: $userId")
+        viewModelScope.launch {
+            try {
+                val userInfo = RetrofitUtil.userService.getInfo(userId)
+                Log.d(TAG, "getUserInfo: ${userInfo}")
+//                _gradeInfo.value = Gson().fromJson<Grade>(
+//                    userInfo["grade"].toString(),
+//                    object : TypeToken<Grade>() {}.type
+//                )
+            } catch (e: Exception) {
+                Log.d(TAG, "getUserInfo: $e")
+            }
+        }
     }
-
 }

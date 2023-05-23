@@ -45,4 +45,11 @@ public class OrderRestController {
     public List<Map<String, Object>> getLatestFiveOrder(String id) {
         return oService.getLatestFiveOrder(id);
     }
+    
+    @GetMapping("/getMonthOrder")
+    @ApiOperation(value="{id}에 해당하는 사용자의 최근 1개월간 주문 내역을 반환한다."
+            + "반환 정보는 1차 주문번호 내림차순, 2차 주문 상세 내림차순으로 정렬된다.", response = List.class)
+    public List<Map<String, Object>> getLastMonthOrder(String id) {
+        return oService.getLastMonthOrder(id);
+    }
 }

@@ -3,8 +3,10 @@ package com.ssafy.green_plate
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentOrderHistoryBinding
 import com.ssafy.green_plate.src.main.MainActivity
@@ -12,6 +14,7 @@ import com.ssafy.green_plate.src.main.MainActivity
 class OrderHistoryFragment : BaseFragment<FragmentOrderHistoryBinding>(FragmentOrderHistoryBinding::bind, R.layout.fragment_order_history) {
 
     private lateinit var mainActivity: MainActivity
+    private val activityViewModel : MainActivityViewModel by activityViewModels()
     private lateinit var orderHistoryAdapter: OrderHistoryAdapter
 
     override fun onAttach(context: Context) {
@@ -20,6 +23,13 @@ class OrderHistoryFragment : BaseFragment<FragmentOrderHistoryBinding>(FragmentO
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val user = ApplicationClass.sharedPreferencesUtil.getUser()
+        activityViewModel.setUserOrderedMenu(user.id)
+
+        activityViewModel.userOrderedMenu.observe(viewLifecycleOwner) {
+            
+        }
 
         var items = listOf("item1", "item2", "item3", "item4", "item5")
 

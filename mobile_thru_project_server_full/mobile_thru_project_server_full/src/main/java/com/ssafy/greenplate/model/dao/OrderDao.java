@@ -31,4 +31,6 @@ public interface OrderDao {
      * @return
      */
     List<Map<String, Object>> getLatestFiveOrder(String id);
+    
+    List<Map<String, Object>> getLastMonthOrder(String id);
 }
