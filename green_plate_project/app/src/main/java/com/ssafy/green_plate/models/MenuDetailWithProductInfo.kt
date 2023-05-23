@@ -12,5 +12,7 @@ data class MenuDetailWithProductInfo (
     @SerializedName("name") val productName : String,
     @SerializedName("order_time") val orderTime : String,
     @SerializedName("type") val productType : String,
-    @SerializedName("added_quantity") val addedQuantity : String
+    @SerializedName("added_quantity") val addedQuantity : String,
+    @SerializedName("english_name") val engName : String,
+    @SerializedName("store_name") val storeName : String
         )
