@@ -147,7 +147,7 @@ class MainActivityViewModel : ViewModel(){
         }
     }
 
-    private val _shoppingList = MutableLiveData<MutableList<ShoppingCart>>(mutableListOf())
+    private var _shoppingList = MutableLiveData<MutableList<ShoppingCart>>(mutableListOf())
     val shoppingList: LiveData<MutableList<ShoppingCart>>
         get() = _shoppingList
 
@@ -168,6 +168,14 @@ class MainActivityViewModel : ViewModel(){
 
     fun clearShoppingList() {
         _shoppingList.value = mutableListOf()
+    }
+
+    private var _clickedOrderHistoryItem : MenuDetailWithProductInfo = MenuDetailWithProductInfo()
+    val clickedOrderHistoryItem : MenuDetailWithProductInfo
+        get() = _clickedOrderHistoryItem
+
+    fun setClickedItem(clickedItem: MenuDetailWithProductInfo) {
+        _clickedOrderHistoryItem = clickedItem
     }
 
 }

@@ -33,13 +33,6 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/subToppingCntTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="2" />
-
-            <TextView
                 android:id="@+id/subToppingPriceTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

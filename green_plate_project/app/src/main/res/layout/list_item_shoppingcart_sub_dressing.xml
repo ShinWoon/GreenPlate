@@ -33,13 +33,6 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/subDressingCntTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="1" />
-
-            <TextView
                 android:id="@+id/subDressingPriceTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

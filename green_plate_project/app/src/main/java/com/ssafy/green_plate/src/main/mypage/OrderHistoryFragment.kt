@@ -2,6 +2,7 @@ package com.ssafy.green_plate.src.main.mypage
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -13,6 +14,7 @@ import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentOrderHistoryBinding
 import com.ssafy.green_plate.src.main.MainActivity
 
+private const val TAG = "OrderHistoryFragment_싸피"
 class OrderHistoryFragment : BaseFragment<FragmentOrderHistoryBinding>(
     FragmentOrderHistoryBinding::bind,
     R.layout.fragment_order_history
@@ -35,10 +37,13 @@ class OrderHistoryFragment : BaseFragment<FragmentOrderHistoryBinding>(
 
 
         activityViewModel.userOrderedMenu.observe(viewLifecycleOwner) {
+            Log.d(TAG, "onViewCreated: ${it[0]}, ${it.size}")
             orderHistoryAdapter = OrderHistoryAdapter(mainActivity, it)
             orderHistoryAdapter.notifyDataSetChanged()
             orderHistoryAdapter.setOnItemClickListener { position ->
-//                val clickedItem = items[position]
+                Log.d(TAG, "onViewCreated: $position")
+                val clickedItem = it[position]
+                activityViewModel.setClickedItem(clickedItem)
                 Navigation.findNavController(view)
                     .navigate(R.id.action_orderHistoryFragment_to_orderHistoryDetailFragment)
             }

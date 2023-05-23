@@ -1,16 +1,15 @@
 package com.ssafy.green_plate.dto
 
 data class ShoppingCart(
-    val menuId: Int,
-    val menuImg: String,
-    val menuName: String,
+    var productId: Int,
+    var productImg : String,
+    var productName: String,
     var menuCnt: Int,
     var dressingId : Int,
-    val addedStuff : String,
-    val addedQuantity : String,
-    val menuPrice: Int,
-    var totalPrice: Int = menuCnt*menuPrice,
-    val type: String
+    var addedStuff : List<Product>,
+    var productPrice: Int,
+    var totalPrice: Int = menuCnt*productPrice,
+    var type: String
 ){
-    constructor() : this(0, "", "", 0, 0, "", "", 0, 0, "")
+    constructor() : this(0, "","", 1, 0,  arrayListOf(),0, 0, "")
 }
