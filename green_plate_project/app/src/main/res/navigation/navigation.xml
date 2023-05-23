@@ -26,15 +26,7 @@
         <action
             android:id="@+id/action_orderFragment_to_shoppingCartFragment"
             app:destination="@id/shoppingCartFragment" />
-        <action
-            android:id="@+id/action_orderFragment_to_menuDetailFragment"
-            app:destination="@id/menuDetailFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/menuDetailFragment"
-        android:name="com.ssafy.green_plate.MenuDetailFragment"
-        android:label="fragment_menu_detail"
-        tools:layout="@layout/fragment_menu_detail" />
     <fragment
         android:id="@+id/mypageFragment"
         android:name="com.ssafy.green_plate.src.main.mypage.MypageFragment"
@@ -100,6 +92,39 @@
         <action
             android:id="@+id/action_loginFragment_to_joinFragment"
             app:destination="@id/joinFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/firstBannerFragment"
+        android:name="com.ssafy.green_plate.src.main.home.FirstBannerFragment"
+        android:label="fragment_first_banner"
+        tools:layout="@layout/fragment_first_banner">
+        <action
+            android:id="@+id/action_firstBannerFragment_to_menuDetail"
+            app:destination="@id/orderDetailFragment"/>
+        <argument
+            android:name="firstBannerItem"
+            app:argType="Product"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/secondBannerFragment"
+        android:name="com.ssafy.green_plate.src.main.home.SecondBannerFragment"
+        android:label="fragment_second_banner"
+        tools:layout="@layout/fragment_second_banner">
+        <action
+            android:id="@+id/action_secondBannerFragment_to_menuDetail"
+            app:destination="@id/orderDetailFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/thirdBannerFragment"
+        android:name="com.ssafy.green_plate.src.main.home.ThirdBannerFragment"
+        android:label="fragment_third_banner"
+        tools:layout="@layout/fragment_third_banner">
+        <action
+            android:id="@+id/action_thirdBannerFragment_to_menuDetail"
+            app:destination="@id/orderDetailFragment"/>
     </fragment>
 
 </navigation>
