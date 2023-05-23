@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.ListItemOrderPageBinding
 import com.ssafy.green_plate.dto.Product
+import com.ssafy.green_plate.util.CommonUtils
 
 class TabAdapter (val context : Context, private var items : List<Product>) : RecyclerView.Adapter<TabAdapter.TabViewHolder>() {
     inner class TabViewHolder(private val binding: ListItemOrderPageBinding)
@@ -16,7 +17,7 @@ class TabAdapter (val context : Context, private var items : List<Product>) : Re
             fun bindInfo(data : Product) {
                 binding.orderPageMenuNameTv.text = data.name
                 binding.orderPageMenuEngNameTv.text = data.engName
-                binding.orderPageMenuPriceTv.text = "${data.price.toString()}원"
+                binding.orderPageMenuPriceTv.text = CommonUtils.makeComma(data.price)
                 Glide.with(itemView)
                     .load("${ApplicationClass.MENU_IMGS_URL}${data.img}")
                     .into(binding.orderPageMenuIv)
