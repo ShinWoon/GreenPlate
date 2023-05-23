@@ -10,4 +10,8 @@ class Product(
     val img : String
 ) {
     constructor() : this(0,"","", "","",0,"")
+
+    override fun toString(): String {
+        return "[ id = $id, name = $name, englishName = $englishName, type = $type, discription = $discription, price = $price, img = $img]"
+    }
 }
