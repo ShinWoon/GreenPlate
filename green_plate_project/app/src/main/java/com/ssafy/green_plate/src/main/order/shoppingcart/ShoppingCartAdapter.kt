@@ -5,27 +5,43 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.ListItemShoppingcartBinding
+import com.ssafy.green_plate.dto.Product
+import com.ssafy.green_plate.dto.ShoppingCart
 import com.ssafy.green_plate.src.main.SubDressingAdapter
 import com.ssafy.green_plate.src.main.SubToppingAdapter
+import com.ssafy.green_plate.util.CommonUtils
 
 private const val TAG = "ShoppingCartAdapter_싸피"
-class ShoppingCartAdapter(val context : Context, private var items : List<String>) : RecyclerView.Adapter<ShoppingCartAdapter.ShoppingCartViewHolder>() {
+class ShoppingCartAdapter(val context : Context, private var items : List<ShoppingCart>, private val listener: OnItemDeleteClickListener?) : RecyclerView.Adapter<ShoppingCartAdapter.ShoppingCartViewHolder>() {
 
+    interface OnItemDeleteClickListener {
+        fun onItemDeleteClick(position: Int)
+    }
     inner class ShoppingCartViewHolder(private val binding: ListItemShoppingcartBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
-            var subItems = listOf("토핑1", "토핑2")
-            binding.subDressingRv.adapter = SubDressingAdapter(context, subItems)
-            binding.subToppingRv.adapter = SubToppingAdapter(context, subItems)
-
-            Log.d(TAG, ": $subItems")
+            binding.shoppingItemCancelBtn.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener?.onItemDeleteClick(position)
+                }
+            }
         }
-        fun bind(item: String) {
-            binding.shoppingItemNameTv.text = item
-            Log.d(TAG, "bind: $item")
 
+        fun bind(item: ShoppingCart) {
+            binding.shoppingItemNameTv.text = item.productName
+            binding.shoppingItemPriceTv.text = CommonUtils.makeComma(item.productPrice)
+            binding.shoppingItemCntTv.text = item.menuCnt.toString()
+            Glide.with(context)
+                .load("${ApplicationClass.MENU_IMGS_URL}${item.productImg}")
+                .into(binding.shoppingItemImgIv)
+            binding.subToppingRv.adapter = SubToppingAdapter(context, item.addedStuff)
+
+            Log.d(TAG, "bind: $item")
 
         }
     }
