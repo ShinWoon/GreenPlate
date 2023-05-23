@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.ssafy.green_plate.R
@@ -29,6 +31,8 @@ class OrderDetailFragment : Fragment() {
     private val activityViewModel: MainActivityViewModel by activityViewModels()
     private val shoppingCart = ShoppingCart()
     private val DRESSING_DEFAULT_ID =  30
+    
+    lateinit var orderDetailToppingAdapter : OrderDetailToppingAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -55,7 +59,7 @@ class OrderDetailFragment : Fragment() {
         Log.d(TAG, "onViewCreated: 화면 생성")
 
         activityViewModel.pageType.observe(viewLifecycleOwner) {
-            if(it.equals("recommend")){
+            if (it.equals("recommend")) {
                 activityViewModel.selectedMenu.observe(viewLifecycleOwner) {
                     Log.d(TAG, "onViewCreated: ${it}")
                     binding.apply {
@@ -80,11 +84,20 @@ class OrderDetailFragment : Fragment() {
                             )
                         }
                         layoutManager =
-                            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                            LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.VERTICAL,
+                                false
+                            )
                     }
                 }
             } else if (it.equals("menuPage")) {
                 activityViewModel.menuDetailInfo.observe(viewLifecycleOwner) {
+                    shoppingCart.productPrice = it.price
+                    shoppingCart.productName = it.name
+                    shoppingCart.type = it.type
+                    shoppingCart.productId = it.id
+                    shoppingCart.productImg = it.img
                     binding.apply {
                         Log.d(TAG, "onViewCreated: menu 화면에서 이동 ${it}")
                         orderDetailMenuNameTv.text = it.name
@@ -97,24 +110,29 @@ class OrderDetailFragment : Fragment() {
                     }
 
                     binding.orderToppingRv.apply {
-                        if (it.type.equals("salad")) {
-                            adapter = OrderDetailToppingAdapter(
-                                requireContext(),
-                                activityViewModel.saladToppingList
-                            )
+                        if (it.type == "salad") {
+                            orderDetailToppingAdapter = OrderDetailToppingAdapter(mainActivity, activityViewModel.saladToppingList)
+                            adapter = orderDetailToppingAdapter
+
+                            orderDetailToppingAdapter.notifyDataSetChanged()
                         } else {
-                            adapter = OrderDetailToppingAdapter(
-                                requireContext(),
-                                activityViewModel.yogurtToppingList
-                            )
+                            orderDetailToppingAdapter = OrderDetailToppingAdapter(mainActivity, activityViewModel.yogurtToppingList)
+                            adapter = orderDetailToppingAdapter
+
                         }
                         layoutManager =
                             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
                     }
 
                 }
+
+                setListner(view)
             }
         }
+    }
+
+    private fun setListner(view: View) {
 
 
         binding.dressingRadioGroup.setOnCheckedChangeListener { group, checkedId ->
@@ -145,12 +163,14 @@ class OrderDetailFragment : Fragment() {
         }
 
         binding.addShoppingcartBtn.setOnClickListener {
-            Log.d(TAG, "onViewCreated: ${activityViewModel.allMenuList.value}")
 
-            Log.d(TAG, "onViewCreated: ${activityViewModel.productList.value}")
-            Log.d(TAG, "onViewCreated: ${activityViewModel.saladToppingList}")
+            val checkedItems = orderDetailToppingAdapter.getCheckedItems()
+            Log.d(TAG, "onViewCreated: $checkedItems")
+            shoppingCart.addedStuff = checkedItems
+            activityViewModel.addShoppingList(shoppingCart)
+            Toast.makeText(context, "상품이 장바구니에 담겼습니다.", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(view).navigate(R.id.action_orderDetailFragment_to_orderFragment)
         }
-
 
     }
 
