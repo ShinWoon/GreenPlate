@@ -63,9 +63,13 @@ class MypageFragment : Fragment() {
         activityViewModel.getUserInfo(id)
     }
 
+    
+
     private fun getUserData():String{
         val user = ApplicationClass.sharedPreferencesUtil.getUser()
         binding.mypageNameTv.text = user.name + " 님"
+
+
 
         return user.id
     }

@@ -14,6 +14,7 @@ import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.FragmentOrderDetailBinding
 import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.src.main.MainActivity
+import com.ssafy.green_plate.util.CommonUtils
 
 class OrderDetailFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
@@ -52,8 +53,8 @@ class OrderDetailFragment : Fragment() {
         activityViewModel.menuDetailInfo.observe(viewLifecycleOwner) {
             binding.apply {
                 orderDetailMenuNameTv.text = it.name
-                orderDetailMenuEngNameTv.text = it.engName
-                orderDetailMenuPrice.text = it.price.toString()
+                orderDetailMenuEngNameTv.text = it.englishName
+                orderDetailMenuPrice.text = CommonUtils.makeComma(it.price)
                 Glide.with(view)
                     .load("${ApplicationClass.MENU_IMGS_URL}${it.img}")
                     .into(orderDetailMenuIv)
