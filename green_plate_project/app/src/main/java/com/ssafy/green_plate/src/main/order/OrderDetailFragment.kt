@@ -37,6 +37,7 @@ class OrderDetailFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
+        Log.d(TAG, "onAttach: 메인")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -173,6 +174,61 @@ class OrderDetailFragment : Fragment() {
         }
 
     }
+private val menuDetailInfoObserver = Observer<Product> {
+    binding.apply {
+        Log.d(TAG, "onViewCreated: menu 화면에서 이동 ${it}")
+        orderDetailMenuNameTv.text = it.name
+        orderDetailMenuEngNameTv.text = it.englishName
+        orderDetailMenuPrice.text = CommonUtils.makeComma(it.price)
+        Glide.with(requireView())
+            .load("${ApplicationClass.MENU_IMGS_URL}${it.img}")
+            .into(orderDetailMenuIv)
+        if (it.type == "yogurt") dressingListLayout.visibility = View.GONE
+    }
+
+    binding.orderToppingRv.apply {
+        if (it.type.equals("salad")) {
+            adapter = OrderDetailToppingAdapter(
+                requireContext(),
+                activityViewModel.saladToppingList
+            )
+        } else {
+            adapter = OrderDetailToppingAdapter(
+                requireContext(),
+                activityViewModel.yogurtToppingList
+            )
+        }
+        layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+    }
+}
+    private val selectedMenuObserver = Observer<Product> {
+            Log.d(TAG, "onViewCreated: ${it}")
+            binding.apply {
+                orderDetailMenuNameTv.text = it.name
+                orderDetailMenuEngNameTv.text = it.englishName
+                orderDetailMenuPrice.text = CommonUtils.makeComma(it.price)
+                Glide.with(requireView())
+                    .load("${ApplicationClass.MENU_IMGS_URL}${it.img}")
+                    .into(orderDetailMenuIv)
+                if (it.type == "yogurt") dressingListLayout.visibility = View.GONE
+            }
+            binding.orderToppingRv.apply {
+                if (it.type.equals("salad")) {
+                    adapter = OrderDetailToppingAdapter(
+                        requireContext(),
+                        activityViewModel.saladToppingList
+                    )
+                } else {
+                    adapter = OrderDetailToppingAdapter(
+                        requireContext(),
+                        activityViewModel.yogurtToppingList
+                    )
+                }
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            }
+    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -180,5 +236,9 @@ class OrderDetailFragment : Fragment() {
         mainActivity.hideBottomNav(false)
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        activityViewModel.selectedMenu.removeObserver(selectedMenuObserver)
+        activityViewModel.menuDetailInfo.removeObserver(menuDetailInfoObserver)
+    }
 }

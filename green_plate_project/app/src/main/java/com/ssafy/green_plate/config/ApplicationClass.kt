@@ -19,7 +19,8 @@ class ApplicationClass : Application() {
 //        const val SERVER_URL = "http://mobile-pjt.sample.ssafy.io/"
 //        const val SERVER_URL = "http://172.30.1.26:9999/"
 //        const val SERVER_URL = "http://192.168.33.111:9999/"
-        const val SERVER_URL = "http://192.168.0.7:9999/"
+//        const val SERVER_URL = "http://192.168.0.7:9999/"
+        const val SERVER_URL = "http://192.168.45.47:9999/" // 신운
 
 //        const val SERVER_URL = "http://175.121.145.246:8080/rest/posts"
         const val MENU_IMGS_URL = "${SERVER_URL}imgs/menu/"
