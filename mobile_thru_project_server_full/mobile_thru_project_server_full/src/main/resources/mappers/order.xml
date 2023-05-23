@@ -95,7 +95,7 @@
 
 	<!-- 사용자가 최근에 주문한 메뉴 5개  -->
 	<select id="getLatestFiveOrder" parameterType="string" resultType="map">
-	select o.o_id, o.user_id, o.order_time, d.quantity, p.name, p.type, d.added_stuff, d.added_quantity, d.dressing_id, d.quantity, p.price, p.img
+	select o.o_id, o.user_id, o.order_time, d.quantity, p.name, p.english_name, p.type, d.added_stuff, d.added_quantity, d.dressing_id, d.quantity, p.price, p.img
 		from t_order o join t_order_detail d on d.order_id=o.o_id
                join t_product p on d.product_id = p.id
 		where user_id='id 01'
@@ -104,7 +104,7 @@
 </select>
 
 	<select id="getLastMonthOrder" parameterType="string" resultType="map">
-	select o.o_id, o.user_id, o.order_time, d.quantity, p.name, p.type, p.price, p.img
+	select o.o_id, o.user_id, o.order_time, d.quantity, p.name, p.type, p.price, p.img, o.store_name
 		from t_order o join t_order_detail d on d.order_id=o.o_id
                join t_product p on d.product_id = p.id
 		where user_id=#{id} and order_time > date_add(now(), interval -1 month)
