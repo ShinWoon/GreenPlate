@@ -98,6 +98,23 @@ class MainActivityViewModel : ViewModel(){
         _menuDetailInfo.value = data
     }
 
+    private var _saladToppingList = mutableListOf<Product>()
+    val saladToppingList : List<Product>
+        get() = _saladToppingList
+
+    fun setSaladToppingList() {
+        for (i in 12..21) _saladToppingList.add(_productList.value!!.get(i))
+    }
+
+    private var _yogurtToppingList = mutableListOf<Product>()
+    val yogurtToppingList : List<Product>
+        get() = _yogurtToppingList
+
+    fun setYogurtToppingList() {
+        for (i in 22..29) _yogurtToppingList.add(_productList.value!!.get(i))
+    }
+
+
     private var _userOrderedMenu = MutableLiveData<MutableList<MenuDetailWithProductInfo>>()
     val userOrderedMenu : LiveData<MutableList<MenuDetailWithProductInfo>>
         get() = _userOrderedMenu
