@@ -21,5 +21,6 @@ data class OrderDetailResponse(
     @SerializedName("added_quantity") val addedQuantity : String,
     @SerializedName("discount") val discount : Int,
     @SerializedName("store_name") val storeName : String,
-    @SerializedName
+    @SerializedName("dressing_id") val dressingId : Int,
+    @SerializedName("pay_type") val payType : String
 )

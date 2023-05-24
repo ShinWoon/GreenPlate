@@ -194,12 +194,14 @@ class MainActivityViewModel : ViewModel(){
         _pageType.value = type
     }
 
-    private lateinit var _clickedOrderHistoryItem : MutableList<OrderDetailResponse>
-    val clickedOrderHistoryItem : MutableList<OrderDetailResponse>
+    private var _clickedOrderHistoryItem = MutableLiveData<MutableList<OrderDetailResponse>>()
+    val clickedOrderHistoryItem : LiveData<MutableList<OrderDetailResponse>>
         get() = _clickedOrderHistoryItem
 
     fun setClickedItem(clickedItem: MutableList<OrderDetailResponse>) {
-        _clickedOrderHistoryItem = clickedItem
+        _clickedOrderHistoryItem.value = clickedItem
     }
+
+    val dressingInfo = mapOf(31 to "시저 드레싱", 32 to "오리엔탈 드레싱", 33 to "발사믹 드레싱", 34 to "레몬 드레싱", 35 to "머스타드 드레싱", 36 to "칠리 드레싱", 37 to "")
 
 }
