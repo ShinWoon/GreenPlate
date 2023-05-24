@@ -90,4 +90,9 @@ public class OrderServiceImpl implements OrderService {
         return oDao.getLastMonthOrder(id);
     }
 
+	@Override
+	public int updateCompletedYes(int orderId) {
+		return oDao.updateCompletedYes(orderId);
+	}
+
 }

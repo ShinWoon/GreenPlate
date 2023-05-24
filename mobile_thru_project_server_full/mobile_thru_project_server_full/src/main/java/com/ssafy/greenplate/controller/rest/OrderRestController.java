@@ -52,4 +52,10 @@ public class OrderRestController {
     public List<Map<String, Object>> getLastMonthOrder(String id) {
         return oService.getLastMonthOrder(id);
     }
+    
+    @GetMapping("/orderCompleted/{orderId}")
+    @ApiOperation(value = "{orderId}에 해당하는 주문의 completed를 'Y'로 업데이트한다.", response = Integer.class)
+	public int updateCompletedYes(@PathVariable int orderId) {
+		return oService.updateCompletedYes(orderId);
+	}
 }
