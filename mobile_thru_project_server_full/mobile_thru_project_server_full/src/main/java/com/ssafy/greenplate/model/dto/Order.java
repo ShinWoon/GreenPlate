@@ -12,10 +12,11 @@ public class Order {
 	private String storeName;
 	private Integer discountAmount;
 	private String payType;
+	private Integer totalOrderPrice;
 	private List<OrderDetail> details;
 
 	public Order(Integer id, String userId, String orderTable, Date orderTime, Character complited, String storeName,
-			Integer discountAmount, String payType) {
+			Integer discountAmount, String payType, Integer totalOrderPrice) {
 		this.id = id;
 		this.userId = userId;
 		this.orderTable = orderTable;
@@ -24,10 +25,11 @@ public class Order {
 		this.storeName = storeName;
 		this.discountAmount = discountAmount;
 		this.payType = payType;
+		this.totalOrderPrice = totalOrderPrice;
 	}
 
 	public Order(String userId, String orderTable, Date orderTime, Character complited, String storeName,
-			Integer discountAmount, String payType) {
+			Integer discountAmount, String payType, Integer totalOrderPrice) {
 		this.userId = userId;
 		this.orderTable = orderTable;
 		this.orderTime = orderTime;
@@ -35,6 +37,8 @@ public class Order {
 		this.storeName = storeName;
 		this.discountAmount = discountAmount;
 		this.payType = payType;
+		this.totalOrderPrice = totalOrderPrice;
+		
 	}
 
 	public Order() {
@@ -110,6 +114,14 @@ public class Order {
 
 	public void setPayType(String payType) {
 		this.payType = payType;
+	}
+
+	public Integer getTotalOrderPrice() {
+		return totalOrderPrice;
+	}
+
+	public void setTotalOrderedPrice(Integer totalOrderPrice) {
+		this.totalOrderPrice = totalOrderPrice;
 	}
 
 	@Override

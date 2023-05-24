@@ -25,7 +25,7 @@ class OrderHistoryAdapter(val context: Context, private var items: MutableList<L
         }
         fun bindInfo(items: List<OrderDetailResponse>) {
             binding.orderItemNameTv.text = if(items.size == 1) items[0].productName else "${items[0].productName} 외 ${items.size-1}개"
-            binding.orderItemPriceTv.text = CommonUtils.makeComma(items[0].finalPrice)
+            binding.orderItemPriceTv.text = CommonUtils.makeComma(items[0].totalOrderPrice)
             binding.orderItemDateTv.text = CommonUtils.getFormattedString(items[0].orderDate)
             binding.orderStoreNameTv.text = items[0].storeName
 

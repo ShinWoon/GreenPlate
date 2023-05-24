@@ -5,7 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ssafy.green_plate.databinding.ListItemOrderHistoryDetailBinding
+import com.ssafy.green_plate.dto.AddedStuffInfo
 import com.ssafy.green_plate.dto.OrderHistory
+import com.ssafy.green_plate.src.main.HistoryDressingAdapter
+import com.ssafy.green_plate.src.main.HistoryToppingAdapter
+import com.ssafy.green_plate.src.main.SubToppingAdapter
 import com.ssafy.green_plate.util.CommonUtils
 
 class OrderHistoryDetailAdapter(val context: Context, private var items: MutableList<OrderHistory>): RecyclerView.Adapter<OrderHistoryDetailAdapter.OrderHistoryDetailViewHolder>() {
@@ -18,6 +22,15 @@ class OrderHistoryDetailAdapter(val context: Context, private var items: Mutable
                     orderHistoryItemCntTv.text = "1"
                     orderHistoryItemPriceTv.text = CommonUtils.makeComma(data.productPrice)
                     orderHistoryMainDressingTv.text = if(data.dressingName.equals("")) "X" else data.dressingName
+
+//                    orderHistorySubDressingRv.apply {
+//                        adapter = HistoryDressingAdapter(context, data.addedStuff as MutableList<AddedStuffInfo>)
+//                    }
+                    orderHistorySubToppingRv.apply {
+                        adapter = HistoryToppingAdapter(context,
+                            data.addedStuff as MutableList<AddedStuffInfo>
+                        )
+                    }
                 }
             }
         }

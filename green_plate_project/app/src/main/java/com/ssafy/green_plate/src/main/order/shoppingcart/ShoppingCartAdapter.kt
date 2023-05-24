@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.ListItemShoppingcartBinding
-import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.dto.ShoppingCart
-import com.ssafy.green_plate.src.main.SubDressingAdapter
 import com.ssafy.green_plate.src.main.SubToppingAdapter
 import com.ssafy.green_plate.util.CommonUtils
 
