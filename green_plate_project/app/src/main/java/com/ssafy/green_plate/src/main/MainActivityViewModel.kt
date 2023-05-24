@@ -159,7 +159,7 @@ class MainActivityViewModel : ViewModel(){
                         result.add(
                             OrderHistory(it.productName, it.unitPrice, it.quantity,
                                 productList.value!![it.dressingId-1].name,
-                                mutableListOf<AddedStuffInfo>(), totalPriceSum, it.discount,it.storeName, it.orderDate, it.img, info.size, it.orderId, it.payType
+                                mutableListOf<AddedStuffInfo>(), totalPriceSum, it.discount,it.storeName, it.orderDate, it.img, info.size, it.orderId, it.payType, it.orderCompleted
                             )
                         )
                     } else {
@@ -177,7 +177,7 @@ class MainActivityViewModel : ViewModel(){
                         result.add(
                             OrderHistory(it.productName, it.unitPrice, it.quantity,
                                 productList.value!![it.dressingId-1].name,
-                                stuffResult, totalPriceSum, it.discount,it.storeName, it.orderDate, it.img, info.size, it.orderId, it.payType
+                                stuffResult, totalPriceSum, it.discount,it.storeName, it.orderDate, it.img, info.size, it.orderId, it.payType, it.orderCompleted
                             )
                         )
                     }
@@ -275,13 +275,22 @@ class MainActivityViewModel : ViewModel(){
             }
         }
     }
-
     fun addCoupon(coupon : Coupon) {
         viewModelScope.launch {
             try {
                 RetrofitUtil.couponService.addCoupon(coupon)
             }catch (e: Exception) {
 
+            }
+        }
+    }
+
+    fun pickUpCompleted(orderId: Int) {
+        viewModelScope.launch {
+            try {
+                RetrofitUtil.orderService.updateOrderCompleted(orderId)
+            } catch (e: Exception) {
+                Log.d(TAG, "pickUpCompleted: $e")
             }
         }
     }

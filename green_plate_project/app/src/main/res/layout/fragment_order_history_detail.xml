@@ -43,13 +43,14 @@
                     android:layout_height="wrap_content">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/orderHistoryDeleteBtn"
+                        android:id="@+id/orderHistoryPickUpBtn"
                         android:layout_width="80dp"
                         android:layout_height="40dp"
                         android:layout_marginEnd="12dp"
                         android:background="@drawable/order_choose_shape"
-                        android:text="픽업 완료"
-                        android:enabled="false"
+
+                        android:text="픽업"
+                        android:enabled="true"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>

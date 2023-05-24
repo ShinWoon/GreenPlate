@@ -23,4 +23,8 @@ interface OrderService {
     // 반환 정보는 1차 주문번호 내림차순, 2차 주문 상세 내림차순으로 정렬된다.
     @GET("rest/order/getMonthOrder")
     suspend fun getMonthOrder(@Query("id") id: String): List<MenuDetailWithProductInfo>
+
+    // {orderId}에 해당하는 complete를 'Y'로 업데이트 해준다.
+    @GET("rest/order/orderCompleted/{orderId}")
+    suspend fun updateOrderCompleted(@Path("orderId") orderId: Int) : Int
 }
