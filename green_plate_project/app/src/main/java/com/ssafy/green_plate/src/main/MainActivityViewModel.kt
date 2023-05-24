@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ssafy.green_plate.config.ApplicationClass
+import com.ssafy.green_plate.dto.Coupon
 import com.ssafy.green_plate.dto.Order
 import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.dto.ShoppingCart
@@ -202,6 +204,20 @@ class MainActivityViewModel : ViewModel(){
         _clickedOrderHistoryItem.value = clickedItem
     }
 
-    val dressingInfo = mapOf(31 to "시저 드레싱", 32 to "오리엔탈 드레싱", 33 to "발사믹 드레싱", 34 to "레몬 드레싱", 35 to "머스타드 드레싱", 36 to "칠리 드레싱", 37 to "")
+    private var _couponList = MutableLiveData<List<Coupon>>(mutableListOf())
+    val couponList : LiveData<List<Coupon>>
+        get() = _couponList
+
+    fun getCouponList() {
+        val user = ApplicationClass.sharedPreferencesUtil.getUser()
+        viewModelScope.launch {
+            try {
+                _couponList.value = RetrofitUtil.couponService.getCoupon(user.id)
+                Log.d(TAG, "getCouponList: ${couponList.value}")
+            } catch (e : Exception) {
+
+            }
+        }
+    }
 
 }
