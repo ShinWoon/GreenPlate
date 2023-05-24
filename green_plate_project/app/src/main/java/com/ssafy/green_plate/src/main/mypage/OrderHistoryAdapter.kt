@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.ItemOrderHistoryBinding
-import com.ssafy.green_plate.models.MenuDetailWithProductInfo
+import com.ssafy.green_plate.dto.OrderHistory
 import com.ssafy.green_plate.models.OrderDetailResponse
 import com.ssafy.green_plate.util.CommonUtils
 
@@ -25,14 +25,13 @@ class OrderHistoryAdapter(val context: Context, private var items: MutableList<L
         }
         fun bindInfo(items: List<OrderDetailResponse>) {
             binding.orderItemNameTv.text = if(items.size == 1) items[0].productName else "${items[0].productName} 외 ${items.size-1}개"
-            binding.orderItemPriceTv.text = CommonUtils.makeComma(items[0].totalPrice)
+            binding.orderItemPriceTv.text = CommonUtils.makeComma(items[0].finalPrice)
             binding.orderItemDateTv.text = CommonUtils.getFormattedString(items[0].orderDate)
             binding.orderStoreNameTv.text = items[0].storeName
 
             Glide.with(itemView)
                 .load("${ApplicationClass.MENU_IMGS_URL}${items[0].img}")
                 .into(binding.orderItemImgIv)
-
         }
     }
 

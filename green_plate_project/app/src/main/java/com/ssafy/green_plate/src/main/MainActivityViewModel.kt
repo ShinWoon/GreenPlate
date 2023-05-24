@@ -6,10 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ssafy.green_plate.config.ApplicationClass
-import com.ssafy.green_plate.dto.Coupon
-import com.ssafy.green_plate.dto.Order
-import com.ssafy.green_plate.dto.Product
-import com.ssafy.green_plate.dto.ShoppingCart
+import com.ssafy.green_plate.dto.*
 import com.ssafy.green_plate.models.MenuDetailWithProductInfo
 import com.ssafy.green_plate.models.OrderDetailResponse
 import com.ssafy.green_plate.util.RetrofitUtil
@@ -118,7 +115,6 @@ class MainActivityViewModel : ViewModel(){
         for (i in 22..29) _yogurtToppingList.add(_productList.value!!.get(i))
     }
 
-
     private var _userOrderedMenu = MutableLiveData<MutableList<List<OrderDetailResponse>>>()
     val userOrderedMenu : LiveData<MutableList<List<OrderDetailResponse>>>
         get() = _userOrderedMenu
@@ -126,6 +122,7 @@ class MainActivityViewModel : ViewModel(){
     fun setUserOrderedMenu(userId: String) {
         var orderInfo : MutableList<MenuDetailWithProductInfo>
         var info : MutableList<List<OrderDetailResponse>> = mutableListOf()
+
         viewModelScope.launch {
             try {
                 orderInfo = RetrofitUtil.orderService.getMonthOrder(userId) as MutableList<MenuDetailWithProductInfo>
@@ -136,6 +133,58 @@ class MainActivityViewModel : ViewModel(){
                 info = arrayListOf()
             }
             _userOrderedMenu.value = info
+        }
+    }
+    private var _clickedOrderHistoryItem= MutableLiveData<MutableList<OrderHistory>>()
+    val clickedOrderHistoryItem : LiveData<MutableList<OrderHistory>>
+        get() = _clickedOrderHistoryItem
+
+    fun setClickedItem(orderId: Int) {
+
+        var info : MutableList<OrderDetailResponse> = mutableListOf()
+        var result : MutableList<OrderHistory> = mutableListOf()
+        Log.d(TAG, "setClickedItem: ${orderId}")
+        viewModelScope.launch {
+            try {
+                info = RetrofitUtil.orderService.getOrderDetail(orderId) as MutableList<OrderDetailResponse>
+                info.forEach {
+                    var totalPriceSum = it.totalPrice
+                    Log.d(TAG, "setClickedItem: sum ${totalPriceSum}")
+                    Log.d(TAG, "setClickedItem: test ${it.addedStuff}")
+                    Log.d(TAG, "setClickedItem: ${it.productName}, ${it.unitPrice}, ${it.quantity},\n" +
+                            "                               ${it.dressingId}")
+                    if (it.addedStuff == "") {
+                        result.add(
+                            OrderHistory(it.productName, it.unitPrice, it.quantity,
+                                productList.value!![it.dressingId-1].name,
+                                mutableListOf<AddedStuffInfo>(), totalPriceSum, it.discount,it.storeName, it.orderDate, it.img, info.size, it.orderId
+                            )
+                        )
+                    } else {
+                        val stuffList = it.addedStuff.split(",")
+                        val stuffResult = mutableListOf<AddedStuffInfo>()
+                        stuffList.forEach {
+                            for(i in 0 until productList.value!!.size) {
+                                if(it == productList.value!![i].name) {
+                                    Log.d(TAG, "setClickedItem: added $it")
+                                    stuffResult.add(AddedStuffInfo(it,productList.value!![i].price))
+                                    totalPriceSum += productList.value!![i].price
+                                }
+                            }
+                        }
+                        result.add(
+                            OrderHistory(it.productName, it.unitPrice, it.quantity,
+                                productList.value!![it.dressingId-1].name,
+                                stuffResult, totalPriceSum, it.discount,it.storeName, it.orderDate, it.img, info.size, it.orderId
+                            )
+                        )
+                    }
+                    Log.d(TAG, "setUserOrderedMenu: result $result")
+                }
+            } catch (e : Exception) {
+                result = arrayListOf()
+            }
+            _clickedOrderHistoryItem.value = result
         }
     }
 
@@ -196,13 +245,7 @@ class MainActivityViewModel : ViewModel(){
         _pageType.value = type
     }
 
-    private var _clickedOrderHistoryItem = MutableLiveData<MutableList<OrderDetailResponse>>()
-    val clickedOrderHistoryItem : LiveData<MutableList<OrderDetailResponse>>
-        get() = _clickedOrderHistoryItem
 
-    fun setClickedItem(clickedItem: MutableList<OrderDetailResponse>) {
-        _clickedOrderHistoryItem.value = clickedItem
-    }
 
     private var _couponList = MutableLiveData<List<Coupon>>(mutableListOf())
     val couponList : LiveData<List<Coupon>>

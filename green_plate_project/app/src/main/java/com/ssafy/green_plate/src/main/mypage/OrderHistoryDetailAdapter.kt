@@ -5,19 +5,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ssafy.green_plate.databinding.ListItemOrderHistoryDetailBinding
-import com.ssafy.green_plate.models.OrderDetailResponse
+import com.ssafy.green_plate.dto.OrderHistory
 import com.ssafy.green_plate.util.CommonUtils
 
-class OrderHistoryDetailAdapter(val context: Context, private var items: MutableList<OrderDetailResponse>): RecyclerView.Adapter<OrderHistoryDetailAdapter.OrderHistoryDetailViewHolder>() {
+class OrderHistoryDetailAdapter(val context: Context, private var items: MutableList<OrderHistory>): RecyclerView.Adapter<OrderHistoryDetailAdapter.OrderHistoryDetailViewHolder>() {
 
     inner class OrderHistoryDetailViewHolder(private val binding: ListItemOrderHistoryDetailBinding)
         : RecyclerView.ViewHolder(binding.root) {
-            fun bindInfo(data : OrderDetailResponse) {
+            fun bindInfo(data : OrderHistory) {
                 binding.apply {
                     orderHistoryItemNameTv.text = data.productName
-                    orderHistoryItemCntTv.text = data.quantity.toString()
-                    orderHistoryItemPriceTv.text = CommonUtils.makeComma(data.unitPrice)
-                    orderHistoryMainDressingTv.text = if(dressingInfo.get(data.dressingId).equals("")) "X" else dressingInfo.get(data.dressingId)
+                    orderHistoryItemCntTv.text = "1"
+                    orderHistoryItemPriceTv.text = CommonUtils.makeComma(data.productPrice)
+                    orderHistoryMainDressingTv.text = if(data.dressingName.equals("")) "X" else data.dressingName
                 }
             }
         }
