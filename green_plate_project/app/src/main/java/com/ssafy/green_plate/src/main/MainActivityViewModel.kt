@@ -46,11 +46,11 @@ class MainActivityViewModel : ViewModel(){
     val recentOrderMenu : LiveData<MutableList<MenuDetailWithProductInfo>>
         get() = _recentOrderedMenu
 
-    fun putRecentOrderedMenu() {
+    fun putRecentOrderedMenu(userId : String) {
         var info : MutableList<MenuDetailWithProductInfo>
         viewModelScope.launch {
             try {
-                info = RetrofitUtil.orderService.getLatestOrder("id 01") as MutableList<MenuDetailWithProductInfo>
+                info = RetrofitUtil.orderService.getLatestOrder(userId) as MutableList<MenuDetailWithProductInfo>
             } catch (e : Exception) {
                 info = arrayListOf()
             }
