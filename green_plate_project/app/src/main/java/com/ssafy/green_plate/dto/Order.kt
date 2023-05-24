@@ -9,11 +9,8 @@ data class Order (
     var orderTime: String,
     var complited: String,
     var payType : String = "신용카드",
+    var discountAmount:Int = 0,
     val details: ArrayList<OrderDetail> = ArrayList() ){
-
-
-    var discountAmount:Int = 0
-//    var payType : String = "신용카드"
     var storeName : String = "구미 싸피점"
 
 

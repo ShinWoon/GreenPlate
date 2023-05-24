@@ -11,10 +11,10 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "ShoppingcartViewModel_싸피"
 class PayingOrderViewModel : ViewModel() {
-    fun makeOrder(orderInfo: MutableList<OrderDetail>, selectedCard : String) {
+    fun makeOrder(orderInfo: MutableList<OrderDetail>, selectedCard: String, discountAmount: Int) {
         val user = ApplicationClass.sharedPreferencesUtil.getUser()
         Log.d(TAG, "makeOrder: $selectedCard")
-        val order = Order(0, user.id, "", "", "", "신용카드 - $selectedCard", orderInfo as ArrayList<OrderDetail>)
+        val order = Order(0, user.id, "", "", "", "신용카드 - $selectedCard", discountAmount, orderInfo as ArrayList<OrderDetail>)
         Log.d(TAG, "makeOrder: $orderInfo")
         Log.d(TAG, "makeOrder: $order")
 
@@ -22,6 +22,16 @@ class PayingOrderViewModel : ViewModel() {
             try {
                 RetrofitUtil.orderService.makeOrder(order)
             } catch (e: Exception) {
+
+            }
+        }
+    }
+
+    fun deleteCoupon(id: Int) {
+        viewModelScope.launch {
+            try {
+                RetrofitUtil.couponService.deleteCoupon(id.toString())
+            }catch (e: Exception) {
 
             }
         }

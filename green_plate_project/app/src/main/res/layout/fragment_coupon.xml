@@ -46,7 +46,8 @@
             android:padding="10dp"
             android:layout_marginLeft="24dp"
             android:text="• 발급받으신 Green Plate 쿠폰을 사용하시는 경우 주문/결제 시 적용하실 수 있습니다.\n
-• 사용기간이 만료되거나 사용한 쿠폰을 보유 목록에서 자동으로 삭제됩니다."
+• 사용기간이 만료되거나 사용한 쿠폰을 보유 목록에서 자동으로 삭제됩니다.\n
+• 결제 금액보다 쿠폰 금액이 더 큰 경우, 결제 금액만큼만 쿠폰 할인이 가능합니다."
             android:textColor="@color/green_plate_info_color"
             android:lineHeight="14sp"
             android:textSize="10sp" />
