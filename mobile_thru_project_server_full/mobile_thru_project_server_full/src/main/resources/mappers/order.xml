@@ -88,7 +88,7 @@
 		parameterType="int">
 		select o.o_id, o.order_table, o.order_time , d.quantity, d.dressing_id, d.added_stuff, d.added_quantity, p.name, p.price as
 		unitprice, p.img, s.quantity as stamp, d.quantity*p.price as
-		totalprice, o.discount_amount as discount, o.pay_type, o.store_name, o.total_order_price
+		totalprice, o.discount_amount as discount, o.pay_type, o.store_name, o.total_order_price, o.completed
 		from t_order o join t_order_detail d on o.o_id = d.order_id
 		join t_product p on d.product_id =p.id
 		join t_stamp s on o.o_id=s.order_id
@@ -101,7 +101,7 @@
 	select o.o_id, o.user_id, o.order_time, d.quantity, p.name, p.english_name, p.type, d.added_stuff, d.added_quantity, d.dressing_id, d.quantity, p.price, p.img
 		from t_order o join t_order_detail d on d.order_id=o.o_id
                join t_product p on d.product_id = p.id
-		where user_id='id 01'
+		where user_id=#{id}
 		order by o.o_id desc, d.d_id desc
 		limit 5;
 </select>
