@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ssafy.green_plate.databinding.ListItemShoppingcartSubToppingBinding
+import com.ssafy.green_plate.dto.AddedStuffInfo
 import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.util.CommonUtils
 

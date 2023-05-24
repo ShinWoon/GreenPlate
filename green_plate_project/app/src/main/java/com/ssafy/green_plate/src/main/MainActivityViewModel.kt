@@ -159,7 +159,7 @@ class MainActivityViewModel : ViewModel(){
                         result.add(
                             OrderHistory(it.productName, it.unitPrice, it.quantity,
                                 productList.value!![it.dressingId-1].name,
-                                mutableListOf<AddedStuffInfo>(), totalPriceSum, it.discount,it.storeName, it.orderDate, it.img, info.size, it.orderId
+                                mutableListOf<AddedStuffInfo>(), totalPriceSum, it.discount,it.storeName, it.orderDate, it.img, info.size, it.orderId, it.payType
                             )
                         )
                     } else {
@@ -177,7 +177,7 @@ class MainActivityViewModel : ViewModel(){
                         result.add(
                             OrderHistory(it.productName, it.unitPrice, it.quantity,
                                 productList.value!![it.dressingId-1].name,
-                                stuffResult, totalPriceSum, it.discount,it.storeName, it.orderDate, it.img, info.size, it.orderId
+                                stuffResult, totalPriceSum, it.discount,it.storeName, it.orderDate, it.img, info.size, it.orderId, it.payType
                             )
                         )
                     }

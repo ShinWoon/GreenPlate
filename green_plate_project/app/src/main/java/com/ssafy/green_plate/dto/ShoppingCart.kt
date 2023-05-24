@@ -12,5 +12,5 @@ data class ShoppingCart(
     var totalPrice: Int = menuCnt*productPrice,
     var type: String
 ){
-    constructor() : this(0, "","", 1, 0, "",  arrayListOf(),0, 0, "")
+    constructor() : this(0, "","", 1, 37, "",  arrayListOf(),0, 0, "")
 }

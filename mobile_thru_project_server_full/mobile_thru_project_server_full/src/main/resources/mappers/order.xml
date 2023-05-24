@@ -12,13 +12,15 @@
 		order_table,
 		store_name,
 		discount_amount,
-		pay_type)
+		pay_type,
+		total_order_price)
 		VALUES
 		(#{userId},
 		#{orderTable},
 		#{storeName},
 		#{discountAmount},
-		#{payType})
+		#{payType},
+		#{totalOrderPrice})
 	</insert>
 
 	<update id="update" parameterType="Order">
@@ -70,6 +72,7 @@
 		<result column="store_name" property="storeName" />
 		<result column="discount_amount" property="discountAmount" />
 		<result column="pay_type" property="payType" />
+		<result column="total_order_price" property="totalOrderPrice"/>
 	</resultMap>
 
 	<resultMap type="Order" id="OrderWithDetail" extends="OrderBasic">
@@ -85,7 +88,7 @@
 		parameterType="int">
 		select o.o_id, o.order_table, o.order_time , d.quantity, d.dressing_id, d.added_stuff, d.added_quantity, p.name, p.price as
 		unitprice, p.img, s.quantity as stamp, d.quantity*p.price as
-		totalprice, o.discount_amount as discount, o.pay_type, o.store_name 
+		totalprice, o.discount_amount as discount, o.pay_type, o.store_name, o.total_order_price
 		from t_order o join t_order_detail d on o.o_id = d.order_id
 		join t_product p on d.product_id =p.id
 		join t_stamp s on o.o_id=s.order_id
