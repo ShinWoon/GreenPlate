@@ -107,7 +107,7 @@
 </select>
 
 	<select id="getLastMonthOrder" parameterType="string" resultType="map">
-	select o.o_id, o.user_id, o.order_time, d.quantity, p.name, p.type, p.price, p.img, o.store_name
+	select o.o_id, o.user_id, o.order_time, d.quantity, p.name, p.type, p.price, p.img, o.store_name, o.completed
 		from t_order o join t_order_detail d on d.order_id=o.o_id
                join t_product p on d.product_id = p.id
 		where user_id=#{id} and order_time > date_add(now(), interval -1 month)

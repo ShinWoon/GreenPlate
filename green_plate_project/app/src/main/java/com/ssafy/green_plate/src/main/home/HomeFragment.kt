@@ -104,9 +104,26 @@ class HomeFragment :
 
     private fun initScreen() {
         val user = ApplicationClass.sharedPreferencesUtil.getUser()
-        binding.greetingTv.text = "안녕하세요 ${user.name}님. "
 
-        binding.timeRecommendMenuTv.text = "${user.name}님을 위한 아침 추천 메뉴"
+        val calendar = Calendar.getInstance()
+        val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
+
+        val timeMenu : String = when (currentHour) {
+            in 6 .. 10 -> "님을 위한 아침 메뉴"
+            in 11..14 -> "님을 위한 점심 메뉴"
+            else -> "님을 위한 저녁 메뉴"
+        }
+
+        val timeGreeting : String = when (currentHour) {
+            in 6 .. 10 -> "활기찬 아침입니다!"
+            in 11..14 -> "오늘 점심 같이\n할래요?"
+            else -> "하루를 마무리하는\n저녁입니다."
+        }
+
+        binding.apply {
+            greetingTv.text = "안녕하세요 ${user.name}님. ${timeGreeting}"
+            timeRecommendMenuTv.text = "${user.name}${timeMenu}"
+        }
     }
 
 
