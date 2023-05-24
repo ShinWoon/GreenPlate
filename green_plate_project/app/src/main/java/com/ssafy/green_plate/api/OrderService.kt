@@ -2,6 +2,7 @@ package com.ssafy.green_plate.api
 
 import com.ssafy.green_plate.dto.Order
 import com.ssafy.green_plate.models.MenuDetailWithProductInfo
+import com.ssafy.green_plate.models.OrderDetailResponse
 import retrofit2.http.*
 
 interface OrderService {
@@ -11,8 +12,8 @@ interface OrderService {
 //
 //    // {orderId}에 해당하는 주문의 상세 내역을 목록 형태로 반환한다.
 //    // 사용자 정보 화면의 주문 내역 조회에서 사용된다.
-//    @GET("rest/order/{orderId}")
-//    suspend fun getOrderDetail(@Path("orderId") orderId: Int): List<OrderDetailResponse>
+    @GET("rest/order/{orderId}")
+    suspend fun getOrderDetail(@Path("orderId") orderId: Int): List<OrderDetailResponse>
 
 
     @GET("rest/order/byUser")

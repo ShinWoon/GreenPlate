@@ -5,9 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ssafy.green_plate.dto.Order
 import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.dto.ShoppingCart
 import com.ssafy.green_plate.models.MenuDetailWithProductInfo
+import com.ssafy.green_plate.models.OrderDetailResponse
 import com.ssafy.green_plate.util.RetrofitUtil
 import kotlinx.coroutines.launch
 
@@ -115,15 +117,19 @@ class MainActivityViewModel : ViewModel(){
     }
 
 
-    private var _userOrderedMenu = MutableLiveData<MutableList<MenuDetailWithProductInfo>>()
-    val userOrderedMenu : LiveData<MutableList<MenuDetailWithProductInfo>>
+    private var _userOrderedMenu = MutableLiveData<MutableList<List<OrderDetailResponse>>>()
+    val userOrderedMenu : LiveData<MutableList<List<OrderDetailResponse>>>
         get() = _userOrderedMenu
 
     fun setUserOrderedMenu(userId: String) {
-        var info : MutableList<MenuDetailWithProductInfo>
+        var orderInfo : MutableList<MenuDetailWithProductInfo>
+        var info : MutableList<List<OrderDetailResponse>> = mutableListOf()
         viewModelScope.launch {
             try {
-                info = RetrofitUtil.orderService.getMonthOrder(userId) as MutableList<MenuDetailWithProductInfo>
+                orderInfo = RetrofitUtil.orderService.getMonthOrder(userId) as MutableList<MenuDetailWithProductInfo>
+                orderInfo.forEach {
+                    info.add(RetrofitUtil.orderService.getOrderDetail(it.orderId))
+                }
             } catch (e : Exception) {
                 info = arrayListOf()
             }
@@ -188,11 +194,11 @@ class MainActivityViewModel : ViewModel(){
         _pageType.value = type
     }
 
-    private var _clickedOrderHistoryItem : MenuDetailWithProductInfo = MenuDetailWithProductInfo()
-    val clickedOrderHistoryItem : MenuDetailWithProductInfo
+    private lateinit var _clickedOrderHistoryItem : MutableList<OrderDetailResponse>
+    val clickedOrderHistoryItem : MutableList<OrderDetailResponse>
         get() = _clickedOrderHistoryItem
 
-    fun setClickedItem(clickedItem: MenuDetailWithProductInfo) {
+    fun setClickedItem(clickedItem: MutableList<OrderDetailResponse>) {
         _clickedOrderHistoryItem = clickedItem
     }
 

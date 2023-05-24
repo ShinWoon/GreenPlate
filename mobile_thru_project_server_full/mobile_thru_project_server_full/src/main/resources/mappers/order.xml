@@ -85,7 +85,7 @@
 		parameterType="int">
 		select o.o_id, o.order_table, o.order_time , d.quantity, d.dressing_id, d.added_stuff, d.added_quantity, p.name, p.price as
 		unitprice, p.img, s.quantity as stamp, d.quantity*p.price as
-		totalprice
+		totalprice, o.discount_amount as discount, o.pay_type, 
 		from t_order o join t_order_detail d on o.o_id = d.order_id
 		join t_product p on d.product_id =p.id
 		join t_stamp s on o.o_id=s.order_id
