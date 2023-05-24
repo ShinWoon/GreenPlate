@@ -5,11 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.ssafy.green_plate.config.ApplicationClass
-import com.ssafy.green_plate.dto.Coupon
-import com.ssafy.green_plate.dto.Order
-import com.ssafy.green_plate.dto.Product
-import com.ssafy.green_plate.dto.ShoppingCart
+import com.ssafy.green_plate.dto.*
 import com.ssafy.green_plate.models.MenuDetailWithProductInfo
 import com.ssafy.green_plate.models.OrderDetailResponse
 import com.ssafy.green_plate.util.RetrofitUtil
@@ -139,17 +138,26 @@ class MainActivityViewModel : ViewModel(){
         }
     }
 
+
+    private var _userInfo = MutableLiveData<User>()
+    val userInfo: LiveData<User>
+        get() = _userInfo
+
+    private var _gradeInfo = MutableLiveData<Grade>()
+    val gradeInfo: LiveData<Grade>
+        get() = _gradeInfo
     fun getUserInfo(userId: String) {
         Log.d(TAG, "getUserInfo: $userId")
         viewModelScope.launch {
             try {
-                val userInfo = RetrofitUtil.userService.getInfo(userId)
-                Log.d(TAG, "getUserInfo: ${userInfo}")
-//                _gradeInfo.value = Gson().fromJson<Grade>(
-//                    userInfo["grade"].toString(),
-//                    object : TypeToken<Grade>() {}.type
-//                )
+                val userAllInfo = RetrofitUtil.userService.getInfo(userId)
+                Log.d(TAG, "getUserInfo: ${userAllInfo}")
+                _gradeInfo.value = userAllInfo.grade
+                Log.d(TAG, "getUserInfo: ${gradeInfo.value}")
+                Log.d(TAG, "getUserInfo: ${userAllInfo.user}")
+                _userInfo.value = userAllInfo.user
             } catch (e: Exception) {
+                e.printStackTrace()
                 Log.d(TAG, "getUserInfo: $e")
             }
         }
@@ -204,6 +212,8 @@ class MainActivityViewModel : ViewModel(){
         _clickedOrderHistoryItem.value = clickedItem
     }
 
+    // liveData가 업데이트 되게 전 스탬프 값을 저장하기 위한 변수
+    var previousStamps = 0
     private var _couponList = MutableLiveData<List<Coupon>>(mutableListOf())
     val couponList : LiveData<List<Coupon>>
         get() = _couponList
@@ -215,6 +225,16 @@ class MainActivityViewModel : ViewModel(){
                 _couponList.value = RetrofitUtil.couponService.getCoupon(user.id)
                 Log.d(TAG, "getCouponList: ${couponList.value}")
             } catch (e : Exception) {
+
+            }
+        }
+    }
+
+    fun addCoupon(coupon : Coupon) {
+        viewModelScope.launch {
+            try {
+                RetrofitUtil.couponService.addCoupon(coupon)
+            }catch (e: Exception) {
 
             }
         }

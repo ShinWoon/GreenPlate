@@ -14,7 +14,7 @@ class PayingOrderViewModel : ViewModel() {
     fun makeOrder(orderInfo: MutableList<OrderDetail>, selectedCard: String, discountAmount: Int) {
         val user = ApplicationClass.sharedPreferencesUtil.getUser()
         Log.d(TAG, "makeOrder: $selectedCard")
-        val order = Order(0, user.id, "", "", "", "신용카드 - $selectedCard", discountAmount, orderInfo as ArrayList<OrderDetail>)
+        val order = Order(0, user.id, "", "", "", "신용카드 - $selectedCard", discountAmount, "", orderInfo as ArrayList<OrderDetail>)
         Log.d(TAG, "makeOrder: $orderInfo")
         Log.d(TAG, "makeOrder: $order")
 

@@ -103,9 +103,9 @@ public class UserRestController {
     @PostConstruct
     public void setup() {
         levels = new ArrayList<>();
-        levels.add(new Level("옥수수", "억수로 귀여운", 5, 5, "corn.png"));
-        levels.add(new Level("당근", "바니바니", 10, 15, "carrot.png"));
         levels.add(new Level("토마토", "멋쟁이", Integer.MAX_VALUE, Integer.MAX_VALUE, "tomato.png"));
+        levels.add(new Level("샐러리", "샐럽", 10, 15, "celery.png"));
+        levels.add(new Level("옥수수", "옥수로 멋진", 5, 5, "corn.png"));
     }
 
     class Level {

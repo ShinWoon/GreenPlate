@@ -42,6 +42,15 @@
         <item name="android:fontFamily">@font/lineseedkr_bd</item>
         <item name="android:includeFontPadding">false</item>
     </style>
+    <style name="Text.Title.bold.white.kr" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/lineseedkr_bd</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
     <style name="Text.bold.kr" parent="android:TextAppearance">
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">18sp</item>

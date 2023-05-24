@@ -13,7 +13,6 @@ class CouponAdapter (val context : Context, private var items : List<Coupon>) : 
     inner class CouponViewHolder(private val binding: ItemCouponRecyclerViewBinding)
         : RecyclerView.ViewHolder(binding.root) {
             fun bindInfo(data : Coupon) {
-                Log.d(TAG, "bindInfo: $data")
                 binding.couponInfoTv.text = "[${data.type}] ${data.discountAmount}원 할인 쿠폰"
             }
         }

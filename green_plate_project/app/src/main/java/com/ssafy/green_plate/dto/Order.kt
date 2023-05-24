@@ -10,9 +10,8 @@ data class Order (
     var complited: String,
     var payType : String = "신용카드",
     var discountAmount:Int = 0,
+    var storeName : String = "구미 싸피점",
     val details: ArrayList<OrderDetail> = ArrayList() ){
-    var storeName : String = "구미 싸피점"
-
 
     constructor():this(0,"","","","","")
 }

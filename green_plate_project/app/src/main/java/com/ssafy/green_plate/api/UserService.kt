@@ -1,6 +1,7 @@
 package com.ssafy.green_plate.api
 
 import com.ssafy.green_plate.dto.User
+import com.ssafy.green_plate.dto.UserInfoResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -15,8 +16,10 @@ interface UserService {
     // userInfo["grade"]는 LinkedTreeMap<String,String>으로 들어오므로 Gson 의 Type을 이용하여
     // Object 로 바꾸어 준다.
     // val gradeInfo = Gson().fromJson<Grade>(userInfo["grade"].toString(), object: TypeToken<Grade>(){}.type)
+//    @POST("rest/user/info")
+//    suspend fun getInfo(@Query("id") id: String): HashMap<String, Any>
     @POST("rest/user/info")
-    suspend fun getInfo(@Query("id") id: String): HashMap<String, Any>
+    suspend fun getInfo(@Query("id") id: String): UserInfoResponse
 
     // request parameter로 전달된 id가 이미 사용중인지 반환한다.
     @GET("rest/user/isUsed")

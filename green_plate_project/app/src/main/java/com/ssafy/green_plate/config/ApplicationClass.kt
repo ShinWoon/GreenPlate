@@ -26,6 +26,7 @@ class ApplicationClass : Application() {
 //        const val SERVER_URL = "http://175.121.145.246:8080/rest/posts"
         const val MENU_IMGS_URL = "${SERVER_URL}imgs/menu/"
         const val IMGS_URL = "${SERVER_URL}imgs/"
+        const val GRADE_URL = "${SERVER_URL}imgs/grade/"
 
         lateinit var sharedPreferencesUtil: SharedPreferencesUtil
         lateinit var retrofit: Retrofit

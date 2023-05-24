@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ssafy.green_plate.dto.Coupon
 import com.ssafy.green_plate.dto.User
 import com.ssafy.green_plate.util.RetrofitUtil
 
@@ -21,8 +22,19 @@ class JoinFragmentViewModel : ViewModel() {
             try {
                 RetrofitUtil.userService.insert(User(joinId, joinName, joinPass, 0))
                 Log.d(TAG, "join: 회원가입 성공")
+
             } catch (e: Exception) {
                 RetrofitUtil.userService.insert(User())
+            }
+        }
+    }
+
+    fun addCoupon(coupon : Coupon) {
+        viewModelScope.launch {
+            try {
+                RetrofitUtil.couponService.addCoupon(coupon)
+            }catch (e: Exception) {
+
             }
         }
     }

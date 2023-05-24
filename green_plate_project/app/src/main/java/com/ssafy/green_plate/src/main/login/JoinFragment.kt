@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import com.ssafy.green_plate.R
 import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentJoinBinding
+import com.ssafy.green_plate.dto.Coupon
 import com.ssafy.green_plate.src.main.LoginActivity
 import com.ssafy.smartstore_jetpack.src.main.login.JoinFragmentViewModel
 
@@ -58,9 +59,6 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(FragmentJoinBinding::bind
             }
         }
 
-
-
-
         binding.btnJoin.setOnClickListener{
 
             if(checkedId) {
@@ -76,6 +74,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(FragmentJoinBinding::bind
                     } else {
                         // 값이 모두 들어 왔고, 비밀번호와 비밀번호확인이 같으면 회원가입 가능
                         viewModel.join(joinId, joinName, joinPassword)
+                        viewModel.addCoupon(Coupon(0, joinId, "신규 가입", 3000))
                         loginActivity.openFragment(3)
                     }
 

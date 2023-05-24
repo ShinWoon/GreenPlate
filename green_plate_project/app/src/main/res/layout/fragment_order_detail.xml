@@ -1,92 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".src.main.order.OrderDetailFragment">
 
-    <LinearLayout
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="16dp"
-        android:orientation="vertical">
-        
-        <FrameLayout
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_marginBottom="16dp"
-                android:layout_width="280dp"
-                android:layout_height="280dp"
-                android:layout_gravity="center"
-                android:background="@drawable/home_recommend_circle"/>
-            <ImageView
-                android:layout_marginBottom="16dp"
-                android:id="@+id/order_detail_menu_iv"
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_gravity="center"/>
+            android:layout_height="match_parent"
+            android:paddingTop="16dp"
+            android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/green_plate_mypage_gray"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="4dp"
-                android:layout_gravity="bottom"
-                android:layout_marginHorizontal="16dp"
-                android:paddingVertical="8dp"
-                android:layout_marginBottom="4dp">
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginBottom="16dp"
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/home_recommend_circle"/>
+                <ImageView
+                    android:layout_marginBottom="16dp"
+                    android:id="@+id/order_detail_menu_iv"
+                    android:layout_width="350dp"
+                    android:layout_height="350dp"
+                    android:layout_gravity="center"/>
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/green_plate_mypage_gray"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="4dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:layout_marginBottom="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/order_detail_menu_name_tv"
+                            style="@style/Text.Title.bold.kr"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:textSize="16sp"
+                            android:text="메뉴명"/>
+                        <TextView
+                            android:id="@+id/order_detail_menu_eng_name_tv"
+                            style="@style/Text.regular.small.kr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="4dp"
+                            android:textSize="12sp"
+                            android:text="메뉴명 (영어)"/>
+
+                        <TextView
+                            android:id="@+id/order_detail_menu_price"
+                            style="@style/Text.regular.kr"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="textEnd"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="가격"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EDEDED" />
+
+            <LinearLayout
+                android:id="@+id/dressing_list_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="10dp">
                     <TextView
-                        android:id="@+id/order_detail_menu_name_tv"
-                        style="@style/Text.Title.bold.kr"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:textSize="16sp"
-                        android:text="메뉴명"/>
-                    <TextView
-                        android:id="@+id/order_detail_menu_eng_name_tv"
-                        style="@style/Text.regular.small.kr"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="4dp"
-                        android:textSize="12sp"
-                        android:text="메뉴명 (영어)"/>
-
-                    <TextView
-                        android:id="@+id/order_detail_menu_price"
                         style="@style/Text.regular.kr"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:text="드레싱 선택"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:paddingVertical="4dp"
+                        android:paddingHorizontal="8dp"
+                        android:layout_margin="8dp"
+                        android:text="필수선택"
+                        style="@style/Text.regular.small.kr"
+                        android:textColor="@color/white"
+                        android:elevation="4dp"
+                        android:background="@drawable/order_essential_shape" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="12dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <RadioGroup
+                            android:id="@+id/dressing_radio_group"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/dressing_rbtn1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="시저 드레싱"
+                                android:elevation="8dp"/>
+                            <RadioButton
+                                android:id="@+id/dressing_rbtn2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="오리엔탈 드레싱"
+                                android:elevation="8dp"/>
+                            <RadioButton
+                                android:id="@+id/dressing_rbtn3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="발사믹 드레싱"
+                                android:elevation="8dp"/>
+                            <RadioButton
+                                android:id="@+id/dressing_rbtn4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="레몬 드레싱"
+                                android:elevation="8dp"/>
+                            <RadioButton
+                                android:id="@+id/dressing_rbtn5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="머스타드 드레싱"
+                                android:elevation="8dp"/>
+                            <RadioButton
+                                android:id="@+id/dressing_rbtn6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="칠리 드레싱"
+                                android:elevation="8dp"/>
+                            <RadioButton
+                                android:id="@+id/dressing_rbtn7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="드레싱 X"
+                                android:elevation="8dp"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="textEnd"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="16dp"
-                        android:text="가격"/>
+                        android:layout_marginTop="14dp"
+                        android:orientation="vertical">
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/dressing_price_tv1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                style="@style/Text.regular.small.kr"
+                                android:layout_marginRight="16dp"
+                                android:textAlignment="textEnd"
+                                android:text="1,000원"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginTop="24dp"
+                                style="@style/Text.regular.small.kr"
+                                android:layout_marginRight="16dp"
+                                android:textAlignment="textEnd"
+                                android:text="1,000원"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginTop="24dp"
+                                style="@style/Text.regular.small.kr"
+                                android:layout_marginRight="16dp"
+                                android:textAlignment="textEnd"
+                                android:text="1,000원"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginTop="24dp"
+                                style="@style/Text.regular.small.kr"
+                                android:layout_marginRight="16dp"
+                                android:textAlignment="textEnd"
+                                android:text="1,000원"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginTop="24dp"
+                                style="@style/Text.regular.small.kr"
+                                android:layout_marginRight="16dp"
+                                android:textAlignment="textEnd"
+                                android:text="1,000원"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginTop="24dp"
+                                style="@style/Text.regular.small.kr"
+                                android:layout_marginRight="16dp"
+                                android:textAlignment="textEnd"
+                                android:text="1,000원"/>
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginTop="24dp"
+                                style="@style/Text.regular.small.kr"
+                                android:layout_marginRight="16dp"
+                                android:textAlignment="textEnd"
+                                android:text="0원"/>
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </FrameLayout>
+            </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#EDEDED" />
 
-        <LinearLayout
-            android:id="@+id/dressing_list_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EDEDED" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,11 +287,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Text.regular.kr"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:text="드레싱 선택"/>
+                    style="@style/Text.regular.kr"
+                    android:text="토핑 선택"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -107,215 +299,32 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:paddingVertical="4dp"
-                    android:paddingHorizontal="8dp"
-                    android:layout_margin="8dp"
-                    android:text="필수선택"
+                    android:paddingHorizontal="4dp"
+                    android:text="추가선택"
                     style="@style/Text.regular.small.kr"
-                    android:textColor="@color/white"
-                    android:elevation="4dp"
-                    android:background="@drawable/order_essential_shape" />
+                    android:elevation="8dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/order_choose_shape" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/order_topping_rv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="12dp"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <RadioGroup
-                        android:id="@+id/dressing_radio_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <RadioButton
-                            android:id="@+id/dressing_rbtn1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="시저 드레싱"
-                            android:elevation="8dp"/>
-                        <RadioButton
-                            android:id="@+id/dressing_rbtn2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="오리엔탈 드레싱"
-                            android:elevation="8dp"/>
-                        <RadioButton
-                            android:id="@+id/dressing_rbtn3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="발사믹 드레싱"
-                            android:elevation="8dp"/>
-                        <RadioButton
-                            android:id="@+id/dressing_rbtn4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="레몬 드레싱"
-                            android:elevation="8dp"/>
-                        <RadioButton
-                            android:id="@+id/dressing_rbtn5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="머스타드 드레싱"
-                            android:elevation="8dp"/>
-                        <RadioButton
-                            android:id="@+id/dressing_rbtn6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="칠리 드레싱"
-                            android:elevation="8dp"/>
-                        <RadioButton
-                            android:id="@+id/dressing_rbtn7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="드레싱 X"
-                            android:elevation="8dp"/>
-                    </RadioGroup>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/dressing_price_tv1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            style="@style/Text.regular.small.kr"
-                            android:layout_marginRight="16dp"
-                            android:textAlignment="textEnd"
-                            android:text="1,000원"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="24dp"
-                            style="@style/Text.regular.small.kr"
-                            android:layout_marginRight="16dp"
-                            android:textAlignment="textEnd"
-                            android:text="1,000원"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="24dp"
-                            style="@style/Text.regular.small.kr"
-                            android:layout_marginRight="16dp"
-                            android:textAlignment="textEnd"
-                            android:text="1,000원"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="24dp"
-                            style="@style/Text.regular.small.kr"
-                            android:layout_marginRight="16dp"
-                            android:textAlignment="textEnd"
-                            android:text="1,000원"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="24dp"
-                            style="@style/Text.regular.small.kr"
-                            android:layout_marginRight="16dp"
-                            android:textAlignment="textEnd"
-                            android:text="1,000원"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="24dp"
-                            style="@style/Text.regular.small.kr"
-                            android:layout_marginRight="16dp"
-                            android:textAlignment="textEnd"
-                            android:text="1,000원"/>
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"/>
 
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="24dp"
-                            style="@style/Text.regular.small.kr"
-                            android:layout_marginRight="16dp"
-                            android:textAlignment="textEnd"
-                            android:text="0원"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addShoppingcartBtn"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cornerRadius="20dp"
+        style="@style/Text.bold.white.kr"
+        android:text="장바구니 담기" />
 
 
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#EDEDED" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                style="@style/Text.regular.kr"
-                android:text="토핑 선택"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:paddingVertical="4dp"
-                android:paddingHorizontal="4dp"
-                android:text="추가선택"
-                style="@style/Text.regular.small.kr"
-                android:elevation="8dp"
-                android:layout_margin="8dp"
-                android:background="@drawable/order_choose_shape" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/order_topping_rv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/addShoppingcartBtn"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cornerRadius="20dp"
-            style="@style/Text.bold.white.kr"
-            android:text="장바구니 담기" />
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>
