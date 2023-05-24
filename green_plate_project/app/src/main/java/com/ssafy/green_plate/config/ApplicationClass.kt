@@ -22,6 +22,7 @@ class ApplicationClass : Application() {
 //        const val SERVER_URL = "http://192.168.0.7:9999/"
 //        const val SERVER_URL = "http://192.168.101.60:9999/" // 신운
 
+
 //        const val SERVER_URL = "http://175.121.145.246:8080/rest/posts"
         const val MENU_IMGS_URL = "${SERVER_URL}imgs/menu/"
         const val IMGS_URL = "${SERVER_URL}imgs/"

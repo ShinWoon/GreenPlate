@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ssafy.green_plate.R
 import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentPayingBinding
@@ -56,6 +57,7 @@ class PayingFragment : BaseFragment<FragmentPayingBinding>(
 
         binding.payingBtn.setOnClickListener {
             setOrder(view)
+            mainActivity.findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE
         }
 
     }

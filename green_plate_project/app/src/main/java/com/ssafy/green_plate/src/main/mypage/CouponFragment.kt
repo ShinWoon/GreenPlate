@@ -6,13 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.FragmentCouponBinding
 import com.ssafy.green_plate.dto.Coupon
 import com.ssafy.green_plate.src.main.MainActivity
+import com.ssafy.smartstore_jetpack.src.main.login.JoinFragmentViewModel
 
 class CouponFragment :  Fragment() {
     private lateinit var mainActivity: MainActivity
+    private val viewModel : CouponViewModel by viewModels()
+
     private var _binding: FragmentCouponBinding? = null
     private val binding
         get() = _binding!!
@@ -45,6 +50,9 @@ class CouponFragment :  Fragment() {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
+
+        val user = ApplicationClass.sharedPreferencesUtil.getUser()
+        viewModel.getCouponList(user.id)
 
     }
 
