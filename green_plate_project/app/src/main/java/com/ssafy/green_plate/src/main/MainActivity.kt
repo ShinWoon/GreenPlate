@@ -15,18 +15,20 @@ import com.ssafy.green_plate.config.BaseActivity
 import com.ssafy.green_plate.databinding.ActivityMainBinding
 import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.util.RetrofitUtil
+import com.ssafy.green_plate.util.SharedPreferencesUtil
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 private const val TAG = "싸피"
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     private val activityViewModel : MainActivityViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        var user = ApplicationClass.sharedPreferencesUtil.getUser()
         setBottomNavigation()
         setRecommendMenu()
         setProductList()
-        activityViewModel.putRecentOrderedMenu()
+        activityViewModel.putRecentOrderedMenu(user.id)
     }
 
     private fun setBottomNavigation() {
@@ -84,7 +86,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         lifecycleScope.launch {
             var recommendList : MutableList<Product> = mutableListOf()
             val pList = activityViewModel.productList
-            val numbers = (0..11).shuffled().take(5)
+            val calendar = Calendar.getInstance()
+            val currrentHour = calendar.get(Calendar.HOUR_OF_DAY)
+
+            val numbers = when(currrentHour) {
+                in 6..10 -> (3..11).shuffled().take(5)
+                in 11..17 -> (0..11).shuffled().take(5)
+                else -> (0..6).shuffled().take(5)
+            }
             numbers.forEach {
                 Log.d(TAG, "getFiveRecommendMenu: ${it}")
                 recommendList.add(pList.value!!.get(it))
