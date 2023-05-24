@@ -28,13 +28,14 @@
                 style="@style/Text.bold.kr"
                 android:layout_marginTop="16dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="6dp"/>
             <TextView
                 android:id="@+id/timeGreetingTv"
-                android:text="활기찬 아침입니다!"
+                android:text=""
                 style="@style/Text.bold.kr"
                 android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
