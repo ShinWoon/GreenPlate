@@ -14,7 +14,8 @@ data class MenuDetailWithProductInfo (
     @SerializedName("type") val productType : String,
     @SerializedName("added_quantity") val addedQuantity : String,
     @SerializedName("english_name") val engName : String,
-    @SerializedName("store_name") val storeName : String
+    @SerializedName("store_name") val storeName : String,
+    @SerializedName("completed") val completed : Char
         ) {
-    constructor() : this("", 0, "", "", 0, 0, 0, "", "", "", "", "", "")
+    constructor() : this("", 0, "", "", 0, 0, 0, "", "", "", "", "", "", 'N')
 }
