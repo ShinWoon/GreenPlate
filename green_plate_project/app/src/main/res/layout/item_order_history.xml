@@ -90,8 +90,8 @@
 
         <View
             android:id="@+id/orderWaitCircle"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
             android:layout_marginStart="26dp"
             android:background="@drawable/circle_1" />
 
@@ -100,15 +100,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="주문대기"
             android:textColor="@color/green_plate_progress_gray"
-            android:textSize="12dp" />
+            android:textSize="14dp" />
 
         <View
             android:id="@+id/pickupWaitCircle"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/circle_1" />
 
@@ -117,15 +117,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="픽업대기"
             android:textColor="@color/green_plate_progress_gray"
-            android:textSize="12dp" />
+            android:textSize="14dp" />
 
         <View
             android:id="@+id/pickupCompleteCircle"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
             android:layout_gravity="end"
             android:layout_marginEnd="26dp"
             android:background="@drawable/circle_1" />
@@ -135,11 +135,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:text="픽업완료"
             android:textColor="@color/green_plate_progress_gray"
-            android:textSize="12dp" />
+            android:textSize="14dp" />
 
     </FrameLayout>
 
