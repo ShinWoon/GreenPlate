@@ -60,4 +60,6 @@ public interface OrderService {
     List<Map<String, Object>> getLatestFiveOrder(String id);
     
     List<Map<String, Object>> getLastMonthOrder(String id);
+    
+    int updateCompletedYes(int orderId);
 }
