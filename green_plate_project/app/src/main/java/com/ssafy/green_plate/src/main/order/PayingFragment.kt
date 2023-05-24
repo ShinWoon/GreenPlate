@@ -61,6 +61,7 @@ class PayingFragment : BaseFragment<FragmentPayingBinding>(
             }
         }
         binding.payingPriceTv.text = CommonUtils.makeComma(payingPrice)
+        binding.payingFinalPriceTv.text = CommonUtils.makeComma(payingPrice)
 
 
         // 쿠폰 선택
