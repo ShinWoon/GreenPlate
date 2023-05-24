@@ -15,7 +15,8 @@ data class OrderHistory (
     var img : String,
     var totalMenu : Int,
     var orderId : Int,
-    var payType : String
+    var payType : String,
+    var completed : Char
     ) {
-    constructor() : this("",0,0,"", arrayListOf(),0,0, "", Date(), "", 0,0, "")
+    constructor() : this("",0,0,"", arrayListOf(),0,0, "", Date(), "", 0,0, "", 'N')
 }
