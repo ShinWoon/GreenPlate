@@ -30,7 +30,7 @@ class OrderHistoryDetailFragment : BaseFragment<FragmentOrderHistoryDetailBindin
         super.onViewCreated(view, savedInstanceState)
 
 
-        Log.d(TAG, "onViewCreated: ${activityViewModel.clickedOrderHistoryItem}")
+//        Log.d(TAG, "onViewCreated: ${activityViewModel.clickedOrderHistoryItem}")
 
         var items = listOf("item1", "item2", "item3")
 //        binding.orderHistorySubDressingRv.apply {
