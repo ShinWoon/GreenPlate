@@ -196,12 +196,12 @@ class MainActivityViewModel : ViewModel(){
         _pageType.value = type
     }
 
-    private lateinit var _clickedOrderHistoryItem : MutableList<OrderDetailResponse>
-    val clickedOrderHistoryItem : MutableList<OrderDetailResponse>
+    private var _clickedOrderHistoryItem = MutableLiveData<MutableList<OrderDetailResponse>>()
+    val clickedOrderHistoryItem : LiveData<MutableList<OrderDetailResponse>>
         get() = _clickedOrderHistoryItem
 
     fun setClickedItem(clickedItem: MutableList<OrderDetailResponse>) {
-        _clickedOrderHistoryItem = clickedItem
+        _clickedOrderHistoryItem.value = clickedItem
     }
 
     private var _couponList = MutableLiveData<List<Coupon>>(mutableListOf())
