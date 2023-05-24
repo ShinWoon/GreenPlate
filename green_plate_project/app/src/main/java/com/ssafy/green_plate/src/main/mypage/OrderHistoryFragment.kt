@@ -12,6 +12,7 @@ import com.ssafy.green_plate.R
 import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentOrderHistoryBinding
+import com.ssafy.green_plate.models.OrderDetailResponse
 import com.ssafy.green_plate.src.main.MainActivity
 
 private const val TAG = "OrderHistoryFragment_싸피"
@@ -43,7 +44,7 @@ class OrderHistoryFragment : BaseFragment<FragmentOrderHistoryBinding>(
             orderHistoryAdapter.setOnItemClickListener { position ->
                 Log.d(TAG, "onViewCreated: $position")
                 val clickedItem = it[position]
-                activityViewModel.setClickedItem(clickedItem)
+                activityViewModel.setClickedItem(clickedItem as MutableList<OrderDetailResponse>)
                 Navigation.findNavController(view)
                     .navigate(R.id.action_orderHistoryFragment_to_orderHistoryDetailFragment)
             }
