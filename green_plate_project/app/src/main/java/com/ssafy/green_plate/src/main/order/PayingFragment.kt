@@ -33,6 +33,7 @@ class PayingFragment : BaseFragment<FragmentPayingBinding>(
     private var selectedCoupon = Coupon()
     private var selectedCard = ""
     private var discountAmount = 0
+    private var payingPrice = 0
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -53,7 +54,6 @@ class PayingFragment : BaseFragment<FragmentPayingBinding>(
         }
 
 
-        var payingPrice = 0
         for (items in activityViewModel.shoppingList.value!!) {
             payingPrice += items.productPrice
             for (item in items.addedStuff) {
@@ -91,9 +91,13 @@ class PayingFragment : BaseFragment<FragmentPayingBinding>(
     private fun setOrder(view: View) {
         var orderDetails: MutableList<OrderDetail> = mutableListOf()
         for (detail in activityViewModel.shoppingList.value!!) {
-            orderDetails.add(OrderDetail(detail.productId, detail.dressingId))
+            var stuffStr = ""
+            detail.addedStuff.forEach {
+                stuffStr += "${it.name},"
+            }
+            orderDetails.add(OrderDetail(detail.productId, detail.dressingId, stuffStr))
         }
-        payingOrderViewModel.makeOrder(orderDetails, selectedCard, discountAmount)
+        payingOrderViewModel.makeOrder(orderDetails, selectedCard, discountAmount, payingPrice)
         payingOrderViewModel.deleteCoupon(selectedCoupon.id)
         showToast("주문이 완료되었습니다.")
         // 장바구니 비워주기

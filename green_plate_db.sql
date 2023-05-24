@@ -31,6 +31,7 @@ create table t_order(
     store_name varchar(100) not null default '구미 싸피점',
     discount_amount integer default 0,
     pay_type varchar(20) default '신용카드', 
+    total_order_price integer default 0,
     constraint fk_order_user foreign key (user_id) references t_user(id) on delete cascade
 );
 
