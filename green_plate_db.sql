@@ -222,7 +222,7 @@ INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 09', '신규 �
 INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 10', '신규 가입', 7000);
 
 
-INSERT INTO t_store(name, latitude, longitude, phone_num) VALUES ('구미점', 36.128156, 128.332765, '01012345678');
+INSERT INTO t_store(name, latitude, longitude, phone_num) VALUES ('구미점', 36.107689, 128.402560, '01012345678');
 INSERT INTO t_store(name, latitude, longitude, phone_num) VALUES ('송정점', 36.116350, 128.350211, '01087654321');
 INSERT INTO t_store(name, latitude, longitude, phone_num) VALUES ('인동점', 36.107370, 128.49145, '01012225678');
 INSERT INTO t_store(name, latitude, longitude, phone_num) VALUES ('구미공단점', 36.101625, 128.386003, '01012345677');

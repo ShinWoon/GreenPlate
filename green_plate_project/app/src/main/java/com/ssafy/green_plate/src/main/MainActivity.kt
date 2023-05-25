@@ -1,10 +1,13 @@
 package com.ssafy.green_plate.src.main
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -14,6 +17,7 @@ import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.config.BaseActivity
 import com.ssafy.green_plate.databinding.ActivityMainBinding
 import com.ssafy.green_plate.dto.Product
+import com.ssafy.green_plate.util.CheckPermission
 import com.ssafy.green_plate.util.RetrofitUtil
 import com.ssafy.green_plate.util.SharedPreferencesUtil
 import kotlinx.coroutines.launch
@@ -22,6 +26,12 @@ import java.util.Calendar
 private const val TAG = "싸피"
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     private val activityViewModel : MainActivityViewModel by viewModels()
+    private val runtimePermissions = arrayOf(
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+    )
+    private lateinit var checkPermission: CheckPermission
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var user = ApplicationClass.sharedPreferencesUtil.getUser()
@@ -29,6 +39,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         setRecommendMenu()
         setProductList()
         activityViewModel.putRecentOrderedMenu(user.id)
+        setLocationPermission()
+
     }
 
     private fun setBottomNavigation() {
@@ -101,4 +113,35 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             activityViewModel.setRecomemndMenuInfo(recommendList)
         }
     }
+
+    private fun setLocationPermission() {
+        checkPermission = CheckPermission(this)
+        if (!checkPermission.runtimeCheckPermission(this, *runtimePermissions)) {
+            ActivityCompat.requestPermissions(this, runtimePermissions, PERMISSION_REQUEST_CODE)
+        } else { //이미 전체 권한이 있는 경우
+            activityViewModel.permissionCheck = true
+            Log.d(TAG, "setLocationPermission: ${activityViewModel.permissionCheck}")
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            PERMISSION_REQUEST_CODE -> if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) { // 권한을 모두 획득했다면.
+                activityViewModel.permissionCheck = true
+            } else {
+                checkPermission.requestPermission()
+            }
+        }
+    }
+
+    companion object {
+        private const val PERMISSION_REQUEST_CODE = 8
+    }
+
+
 }
