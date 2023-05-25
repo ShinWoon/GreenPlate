@@ -25,6 +25,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="연어 샐러드"
+        style="@style/Text.regular.kr"
         app:layout_constraintStart_toEndOf="@id/recent_recommend_iv"
         app:layout_constraintTop_toTopOf="parent" />
 

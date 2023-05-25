@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="장바구니"
+        style="@style/Text.Title.bold.kr"
         android:textAlignment="center"
         android:textSize="24sp" />
 

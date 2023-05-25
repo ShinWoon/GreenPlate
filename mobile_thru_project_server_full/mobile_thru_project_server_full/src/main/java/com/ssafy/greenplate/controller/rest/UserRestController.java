@@ -115,8 +115,8 @@ public class UserRestController {
     public void setup() {
         levels = new ArrayList<>();
         levels.add(new Level("토마토", "멋쟁이", Integer.MAX_VALUE, Integer.MAX_VALUE, "tomato.png"));
-        levels.add(new Level("샐러리", "샐럽", 10, 15, "celery.png"));
-        levels.add(new Level("옥수수", "옥수로 멋진", 5, 5, "corn.png"));
+        levels.add(new Level("샐러리", "샐럽", 10, 14, "celery.png"));
+        levels.add(new Level("옥수수", "옥수로 멋진", 5, 4, "corn.png"));
     }
 
     class Level {

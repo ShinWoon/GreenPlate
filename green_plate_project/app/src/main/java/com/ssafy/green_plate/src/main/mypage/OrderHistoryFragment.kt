@@ -41,7 +41,6 @@ class OrderHistoryFragment : BaseFragment<FragmentOrderHistoryBinding>(
         val user = ApplicationClass.sharedPreferencesUtil.getUser()
         activityViewModel.setUserOrderedMenu(user.id)
 
-
         activityViewModel.userOrderedMenu.observe(viewLifecycleOwner) {
             Log.d(TAG, "onViewCreated: ${it[0]}, ${it.size}")
             orderHistoryAdapter = OrderHistoryAdapter(mainActivity, it)

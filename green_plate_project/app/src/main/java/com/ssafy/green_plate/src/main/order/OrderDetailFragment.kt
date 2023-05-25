@@ -1,13 +1,20 @@
 package com.ssafy.green_plate.src.main.order
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.os.Build.VERSION_CODES.P
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
@@ -34,6 +41,7 @@ class OrderDetailFragment : Fragment() {
     private val DRESSING_DEFAULT_ID =  30
     
     lateinit var orderDetailToppingAdapter : OrderDetailToppingAdapter
+    var selectedMenu = Product()
     var selectedDressing = false
 
     override fun onAttach(context: Context) {
@@ -65,6 +73,7 @@ class OrderDetailFragment : Fragment() {
             if (it.equals("recommend")) {
                 activityViewModel.selectedMenu.observe(viewLifecycleOwner) {
                     Log.d(TAG, "onViewCreated: ${it}")
+                    selectedMenu = it
                     binding.apply {
                         orderDetailMenuNameTv.text = it.name
                         orderDetailMenuEngNameTv.text = it.englishName
@@ -96,6 +105,7 @@ class OrderDetailFragment : Fragment() {
                 }
             } else if (it.equals("menuPage")) {
                 activityViewModel.menuDetailInfo.observe(viewLifecycleOwner) {
+                    selectedMenu = it
                     shoppingCart.productPrice = it.price
                     shoppingCart.productName = it.name
                     shoppingCart.type = it.type
@@ -136,7 +146,6 @@ class OrderDetailFragment : Fragment() {
     }
 
     private fun setListner(view: View) {
-
 
         binding.dressingRadioGroup.setOnCheckedChangeListener { group, checkedId ->
             // 선택된 RadioButton에 따라 처리할 로직을 작성합니다.
@@ -181,8 +190,7 @@ class OrderDetailFragment : Fragment() {
         }
 
         binding.addShoppingcartBtn.setOnClickListener {
-
-            if (selectedDressing) {
+            if (selectedDressing || selectedMenu.type == "yogurt") {
                 val checkedItems = orderDetailToppingAdapter.getCheckedItems()
                 Log.d(TAG, "onViewCreated: $checkedItems")
                 shoppingCart.addedStuff = checkedItems
@@ -195,7 +203,20 @@ class OrderDetailFragment : Fragment() {
 
         }
 
+        binding.orderDetailMenuIv.setOnClickListener {
+            val dialog = Dialog(mainActivity)
+            dialog.setContentView(R.layout.custom_dialog_layout)
+
+            val imageView: ImageView = dialog.findViewById(R.id.dialog_image)
+            Glide.with(view)
+                .load("${ApplicationClass.MENU_IMGS_URL}${selectedMenu.img}")
+                .into(imageView)
+            dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            dialog.show()
+        }
+
     }
+
 private val menuDetailInfoObserver = Observer<Product> {
     binding.apply {
         Log.d(TAG, "onViewCreated: menu 화면에서 이동 ${it}")

@@ -39,13 +39,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="76dp"
+                        android:layout_height="76dp"
                         android:background="@drawable/circle_background" />
                     <ImageView
                         android:id="@+id/level_image_view"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="14dp"
                         android:layout_width="50dp"
                         android:layout_height="50dp" />
                 </FrameLayout>
@@ -176,8 +176,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="옥수수"
+                    android:layout_weight="0.5"
+                    android:text="옥수수   "
                     style="@style/Text.regular.kr"
                     android:textAlignment="textStart" />
 
@@ -185,9 +185,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="당근"
+                    android:text="샐러리"
+
                     style="@style/Text.regular.kr"
-                    android:textAlignment="center" />
+                    android:textAlignment="textStart" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -224,6 +225,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/mypage_level_disc_tv">
 
                 <ImageView
+                    android:layout_marginLeft="2dp"
                     android:layout_width="30dp"
                     android:layout_height="33dp"
                     android:layout_gravity="center"

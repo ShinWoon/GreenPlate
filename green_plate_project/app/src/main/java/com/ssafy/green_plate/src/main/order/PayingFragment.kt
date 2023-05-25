@@ -2,9 +2,12 @@ package com.ssafy.green_plate.src.main.order
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -80,9 +83,23 @@ class PayingFragment : BaseFragment<FragmentPayingBinding>(
             Log.d(TAG, "onViewCreated: $selectedCard")
         }
 
+
         binding.payingBtn.setOnClickListener {
-            setOrder(view)
-            mainActivity.findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE
+            if (selectedCard != "") {
+                val handlerThread = HandlerThread("NotificationThread")
+                handlerThread.start()
+                val handler = Handler(handlerThread.looper)
+
+                handler.postDelayed({
+                    mainActivity.createNotification()
+                    handlerThread.quit()
+                }, 5000) // 5초 뒤에 알림을 보내기
+                setOrder(view)
+                mainActivity.findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE
+            } else {
+                Toast.makeText(mainActivity, "결제하실 카드를 선택하세요.", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
 
