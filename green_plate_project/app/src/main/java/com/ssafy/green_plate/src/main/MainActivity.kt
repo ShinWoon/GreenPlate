@@ -180,8 +180,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         val builder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.carrot)
-            .setContentTitle("Notification Title")
-            .setContentText("Notification Content")
+            .setContentTitle("그린 플레이트")
+            .setContentText("주문하신 메뉴가 픽업 준비되었습니다!")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
