@@ -25,8 +25,8 @@ create table t_product(
 create table t_store(
 	id integer auto_increment primary key,
     name varchar(100) not null,
-    latitude long,
-    longitude long,
+    latitude double,
+    longitude double,
     phone_num varchar(100) not null
 );
 
