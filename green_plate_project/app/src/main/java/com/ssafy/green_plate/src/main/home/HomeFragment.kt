@@ -72,13 +72,11 @@ class HomeFragment :
             }
             recommendAdapter.setItemClickListener(object : HomeRecommendAdapter.ItemClickListener{
                 override fun onClick(view: View, position: Int, menu : Product) {
-                    lifecycleScope.launch {
                         Log.d(TAG, "onClick: ${menu}")
                         activityViewModel.setPageType("recommend")
                         activityViewModel.addSelectedMenu(menu)
                         Navigation.findNavController(view)
                             .navigate(R.id.action_homeFragment_to_orderDetailFragment)
-                    }
                 }
 
             })

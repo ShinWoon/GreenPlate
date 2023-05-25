@@ -130,9 +130,16 @@ class MainActivityViewModel : ViewModel(){
 
         viewModelScope.launch {
             try {
-                orderInfo = RetrofitUtil.orderService.getMonthOrder(userId) as MutableList<MenuDetailWithProductInfo>
+                orderInfo = RetrofitUtil.orderService.getLatestOrder(userId) as MutableList<MenuDetailWithProductInfo>
                 orderInfo.forEach {
-                    info.add(RetrofitUtil.orderService.getOrderDetail(it.orderId))
+                    val tmp = RetrofitUtil.orderService.getOrderDetail(it.orderId)
+                    if(info.size == 0) {
+                        info.add(RetrofitUtil.orderService.getOrderDetail(it.orderId))
+                    } else {
+                        if(info[info.lastIndex][0].orderId != tmp[0].orderId){
+                            info.add(RetrofitUtil.orderService.getOrderDetail(it.orderId))
+                        }
+                    }
                 }
             } catch (e : Exception) {
                 info = arrayListOf()

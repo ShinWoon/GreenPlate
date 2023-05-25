@@ -13,7 +13,9 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_orderDetailFragment"
-            app:destination="@id/orderDetailFragment" />
+            app:popUpTo="@id/orderDetailFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/orderDetailFragment"/>
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
@@ -62,6 +64,11 @@
         <action
             android:id="@+id/action_orderDetailFragment_to_orderFragment"
             app:popUpTo="@id/orderFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_orderDetailFragment_to_orderFragment1"
+            app:popUpTo="@id/homeFragment"
             app:destination="@id/orderFragment" />
     </fragment>
     <fragment
@@ -119,6 +126,7 @@
         tools:layout="@layout/fragment_first_banner">
         <action
             android:id="@+id/action_firstBannerFragment_to_menuDetail"
+            app:popUpTo="@id/orderDetailFragment"
             app:destination="@id/orderDetailFragment"/>
     </fragment>
 
@@ -129,6 +137,7 @@
         tools:layout="@layout/fragment_second_banner">
         <action
             android:id="@+id/action_secondBannerFragment_to_menuDetail"
+            app:popUpTo="@id/orderDetailFragment"
             app:destination="@id/orderDetailFragment"/>
     </fragment>
 
@@ -139,6 +148,7 @@
         tools:layout="@layout/fragment_third_banner">
         <action
             android:id="@+id/action_thirdBannerFragment_to_menuDetail"
+            app:popUpTo="@id/orderDetailFragment"
             app:destination="@id/orderDetailFragment"/>
     </fragment>
 
