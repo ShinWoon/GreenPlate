@@ -1,7 +1,6 @@
 package com.ssafy.green_plate.src.main.mypage
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,15 +12,17 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.ssafy.green_plate.src.main.MainActivityViewModel
 import com.ssafy.green_plate.R
 import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.FragmentMypageBinding
 import com.ssafy.green_plate.dto.Coupon
 import com.ssafy.green_plate.dto.User
 import com.ssafy.green_plate.src.main.MainActivity
+import com.ssafy.green_plate.src.main.MainActivityViewModel
+
 
 private const val TAG = "MypageFragment_싸피"
 
@@ -113,7 +114,6 @@ class MypageFragment : Fragment() {
                 adapter = stampAdapter
                 stampAdapter.notifyDataSetChanged()
                 layoutManager = GridLayoutManager(requireContext(), 5)
-
             }
 
             binding.levelProgressBar.progress = currentStamps
@@ -171,7 +171,7 @@ class MypageFragment : Fragment() {
     }
 
     private fun setStampList(stamps: Int) {
-        for (flag in 0..10) {
+        for (flag in 0 until 10) {
             stampList.add(false)
         }
 

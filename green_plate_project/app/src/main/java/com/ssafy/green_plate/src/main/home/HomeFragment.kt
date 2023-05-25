@@ -3,6 +3,7 @@ package com.ssafy.green_plate.src.main.home
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.ScrollView
@@ -18,6 +19,7 @@ import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentHomeBinding
 import com.ssafy.green_plate.dto.Product
+import com.ssafy.green_plate.models.MenuDetailWithProductInfo
 import com.ssafy.green_plate.src.main.MainActivity
 import com.ssafy.green_plate.src.main.mypage.MypageViewModel
 import kotlinx.coroutines.launch
@@ -90,6 +92,19 @@ class HomeFragment :
                 layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             }
+            recentMenuAdapter.setItemClickListener(object : RecentMenuAdapter.ItemClickListener{
+                override fun onClick(view: View, position: Int, menu : MenuDetailWithProductInfo) {
+                    lifecycleScope.launch {
+                        Log.d(TAG, "onClick: ${menu}")
+                        activityViewModel.setPageType("recommend")
+                        val tmpMenu = Product(0, menu.productName, menu.engName, menu.productType, "", menu.price, menu.productImg)
+                        activityViewModel.addSelectedMenu(tmpMenu)
+                        Navigation.findNavController(view)
+                            .navigate(R.id.action_homeFragment_to_orderDetailFragment)
+                    }
+                }
+
+            })
         }
     }
 

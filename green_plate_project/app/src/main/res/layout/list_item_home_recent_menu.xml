@@ -20,12 +20,13 @@
 
     <TextView
         android:id="@+id/recent_recommend_menu_tv"
+        style="@style/Text.regular.kr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:gravity="center"
         android:text="연어 샐러드"
-        style="@style/Text.regular.kr"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/recent_recommend_iv"
         app:layout_constraintTop_toTopOf="parent" />
 

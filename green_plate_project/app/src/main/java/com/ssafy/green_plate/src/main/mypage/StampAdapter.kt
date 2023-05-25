@@ -52,4 +52,5 @@ class StampAdapter (val context : Context, private var items : List<Boolean>) : 
     }
 
 
+
 }
