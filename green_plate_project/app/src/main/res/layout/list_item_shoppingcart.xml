@@ -68,21 +68,14 @@
                             android:text="메뉴명" />
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_weight="1.5"
+                        android:layout_weight="2"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <TextView
-                            android:id="@+id/shoppingItemCntTv"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1.5"
-                            android:text="1" />
-                        <TextView
                             android:id="@+id/shoppingItemPriceTv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:text="10,000원" />
                     </LinearLayout>
 
@@ -133,16 +126,6 @@
                     app:layout_constraintStart_toEndOf="@id/shoppingItemImgIv"
                     app:layout_constraintTop_toBottomOf="@id/mainDressingLayout">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="추가 드레싱" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/subDressingRv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
                 </LinearLayout>
 
                 <LinearLayout

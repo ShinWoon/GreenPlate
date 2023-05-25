@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -34,6 +35,10 @@ class OrderHistoryAdapter(val context: Context, private var items: MutableList<L
             binding.orderStoreNameTv.text = items[0].storeName
             Log.d(TAG, "bindInfo: ${items[0].orderCompleted}")
             if (items[0].orderCompleted == 'N') {
+                // blink 애니메이션
+                val anim = AnimationUtils.loadAnimation(context, R.anim.blink_animation)
+                binding.pickupWaitCircle.startAnimation(anim)
+                binding.pickupWaitTv.startAnimation(anim)
                 binding.pickupWaitCircle.setBackgroundResource(R.drawable.order_state_circle)
                 binding.pickupWaitTv.setTextColor(ContextCompat.getColor(context, R.color.green_plate_state_green))
             } else {

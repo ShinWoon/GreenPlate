@@ -1,6 +1,7 @@
 package com.ssafy.green_plate.src.main.mypage
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ import com.ssafy.green_plate.R
 import com.ssafy.green_plate.config.ApplicationClass
 import com.ssafy.green_plate.databinding.FragmentMypageBinding
 import com.ssafy.green_plate.dto.Coupon
+import com.ssafy.green_plate.dto.User
 import com.ssafy.green_plate.src.main.MainActivity
 
 private const val TAG = "MypageFragment_싸피"
@@ -55,23 +57,21 @@ class MypageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val id = getUserData()
-        activityViewModel.getUserInfo(id)
+        val user = getUserData()
+        activityViewModel.getUserInfo(user.id)
         activityViewModel.gradeInfo.observe(viewLifecycleOwner) {
-            Log.d(TAG, "onViewCreated: ${it.img}")
-            binding.mypageGreetingTv.text = it.greetings
+            Log.d(TAG, "onViewCreated: ${it.max}")
+            binding.apply {
+                mypageGreetingTv.text = it.greetings
+                mypageLevelDiscTv.text = "${user.name}님의 현재 등급은 [${it.title}] 입니다."
+            }
 
             Glide.with(view)
                 .load("${ApplicationClass.GRADE_URL}${it.img}")
                 .into(binding.levelImageView)
         }
-        initListener(view)
-        initObserver(id)
-        binding.mypageWithdrawal.setOnClickListener {
-            initDialog(id)
-        }
-
-
+        initListener(view, user.id)
+        initObserver(user.id)
 
     }
 
@@ -82,6 +82,7 @@ class MypageFragment : Fragment() {
 
         builder.setPositiveButton("확인") { dialog, which ->
             mypageViewModel.deleteUser(id)
+            mainActivity.logout()
         }
 
         builder.setNegativeButton("취소") { dialog, which ->
@@ -125,7 +126,7 @@ class MypageFragment : Fragment() {
                 binding.levelProgressBar.setIndicatorColor(indicatorColor)
 
             } else if (currentStamps < 10) {
-                indicatorColor = ContextCompat.getColor(mainActivity, R.color.green_plate_orange)
+                indicatorColor = ContextCompat.getColor(mainActivity, R.color.green_plate_green)
                 binding.levelProgressBar.setIndicatorColor(indicatorColor)
             } else {
                 indicatorColor =
@@ -136,15 +137,15 @@ class MypageFragment : Fragment() {
         }
     }
 
-    private fun getUserData(): String {
+    private fun getUserData(): User {
         val user = ApplicationClass.sharedPreferencesUtil.getUser()
         binding.mypageNameTv.text = user.name
 
-        return user.id
+        return user
     }
 
 
-    private fun initListener(view: View) {
+    private fun initListener(view: View, id : String) {
         binding.linearLayoutCoupon.setOnClickListener {
             Navigation.findNavController(view)
                 .navigate(R.id.action_mypageFragment_to_couponFragment)
@@ -165,7 +166,7 @@ class MypageFragment : Fragment() {
         }
 
         binding.mypageWithdrawal.setOnClickListener {
-
+            initDialog(id)
         }
     }
 

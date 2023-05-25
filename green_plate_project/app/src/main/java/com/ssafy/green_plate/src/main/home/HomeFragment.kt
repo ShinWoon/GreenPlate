@@ -118,8 +118,8 @@ class HomeFragment :
 
         val timeGreeting : String = when (currentHour) {
             in 6 .. 10 -> "활기찬 아침입니다!"
-            in 11..14 -> "오늘 점심 같이\n할래요?"
-            else -> "하루를 마무리하는\n저녁입니다."
+            in 11..14 -> "\n오늘 점심 같이 할래요?"
+            else -> "\n하루를 마무리하는 저녁입니다."
         }
 
         binding.apply {

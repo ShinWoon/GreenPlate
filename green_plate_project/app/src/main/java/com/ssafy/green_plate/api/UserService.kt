@@ -31,6 +31,6 @@ interface UserService {
     @POST("rest/user/login")
     suspend fun login(@Body body: User?): User?
 
-    @DELETE("/delete/{id}")
+    @DELETE("rest/user/delete/{id}")
     suspend fun delete(@Path("id") id : String) : Int
 }

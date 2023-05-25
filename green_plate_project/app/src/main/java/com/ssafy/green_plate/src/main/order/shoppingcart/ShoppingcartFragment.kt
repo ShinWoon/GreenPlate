@@ -2,6 +2,8 @@ package com.ssafy.green_plate.src.main.order.shoppingcart
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View

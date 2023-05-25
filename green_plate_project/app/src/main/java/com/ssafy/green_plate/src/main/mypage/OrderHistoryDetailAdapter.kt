@@ -19,7 +19,6 @@ class OrderHistoryDetailAdapter(val context: Context, private var items: Mutable
             fun bindInfo(data : OrderHistory) {
                 binding.apply {
                     orderHistoryItemNameTv.text = data.productName
-                    orderHistoryItemCntTv.text = "1"
                     orderHistoryItemPriceTv.text = CommonUtils.makeComma(data.productPrice)
                     orderHistoryMainDressingTv.text = if(data.dressingName.equals("")) "X" else data.dressingName
 

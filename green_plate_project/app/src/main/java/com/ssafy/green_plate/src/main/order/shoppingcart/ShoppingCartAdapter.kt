@@ -33,7 +33,6 @@ class ShoppingCartAdapter(val context : Context, private var items : List<Shoppi
         fun bind(item: ShoppingCart) {
             binding.shoppingItemNameTv.text = item.productName
             binding.shoppingItemPriceTv.text = CommonUtils.makeComma(item.productPrice)
-            binding.shoppingItemCntTv.text = item.menuCnt.toString()
             binding.mainDressingTv.text = item.dressingName
             Glide.with(context)
                 .load("${ApplicationClass.MENU_IMGS_URL}${item.productImg}")

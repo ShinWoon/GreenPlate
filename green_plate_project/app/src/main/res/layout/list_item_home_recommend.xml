@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100dp"
+    android:layout_width="110dp"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="12dp"
+    android:layout_marginHorizontal="4dp"
     android:gravity="center"
     android:orientation="vertical">
 
     <FrameLayout
-        android:layout_width="100dp"
-        android:layout_height="100dp">
+        android:layout_width="110dp"
+        android:layout_height="110dp">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/home_recommend_circle"/>
+            android:background="@drawable/plate"/>
         <ImageView
             android:id="@+id/recommend_iv"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="116dp"
+            android:layout_height="116dp"
             android:layout_gravity="center"/>
     </FrameLayout>
     <TextView
@@ -25,7 +25,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginVertical="4dp"
         android:text="연어 샐러드"
+        style="@style/Text.regular.small.kr"
         android:textAlignment="center"
         android:textSize="14sp"/>
 </LinearLayout>

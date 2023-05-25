@@ -75,6 +75,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(FragmentJoinBinding::bind
                         // 값이 모두 들어 왔고, 비밀번호와 비밀번호확인이 같으면 회원가입 가능
                         viewModel.join(joinId, joinName, joinPassword)
                         viewModel.addCoupon(Coupon(0, joinId, "신규 가입", 3000))
+                        showToast("회원가입을 축하합니다!")
                         loginActivity.openFragment(3)
                     }
 
