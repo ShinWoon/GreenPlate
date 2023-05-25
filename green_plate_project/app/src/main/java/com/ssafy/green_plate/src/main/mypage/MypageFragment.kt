@@ -156,7 +156,8 @@ class MypageFragment : Fragment() {
         }
 
         binding.linearLayoutStoreInfo.setOnClickListener {
-
+            Navigation.findNavController(view)
+                .navigate(R.id.action_mypageFragment_to_storeFragment)
         }
 
         binding.mypageLogout.setOnClickListener {

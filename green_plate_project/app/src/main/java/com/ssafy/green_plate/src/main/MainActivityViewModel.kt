@@ -16,6 +16,9 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "MainActivityViewModel_싸피"
 class MainActivityViewModel : ViewModel(){
+
+    var permissionCheck = false
+
     private var _productList = MutableLiveData<MutableList<Product>>()
     val productList : LiveData<MutableList<Product>>
         get() = _productList

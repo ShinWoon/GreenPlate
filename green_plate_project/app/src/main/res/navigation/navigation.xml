@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_mypageFragment_to_couponFragment"
             app:destination="@id/couponFragment"/>
+        <action
+            android:id="@+id/action_mypageFragment_to_storeFragment"
+            app:destination="@+id/storeFragment"/>
     </fragment>
 
     <fragment
@@ -46,6 +49,11 @@
         android:label="fragment_coupon"
         tools:layout="@layout/fragment_coupon"/>
 
+    <fragment
+        android:id="@+id/storeFragment"
+        android:name="com.ssafy.green_plate.src.main.mypage.StoreFragment"
+        android:label="fragment_store"
+        tools:layout="@layout/fragment_store"/>
     <fragment
         android:id="@+id/orderDetailFragment"
         android:name="com.ssafy.green_plate.src.main.order.OrderDetailFragment"
