@@ -22,6 +22,15 @@ create table t_product(
     img varchar(100)
 );
 
+create table t_store(
+	id integer auto_increment primary key,
+    name varchar(100) not null,
+    latitude long,
+    longitude long,
+    phone_num varchar(100) not null
+);
+
+
 create table t_order(
     o_id integer auto_increment primary key,
     user_id varchar(100) not null,
@@ -211,6 +220,14 @@ INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 07', '신규 �
 INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 08', '신규 가입', 7000);
 INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 09', '신규 가입', 7000);
 INSERT INTO t_coupon(user_id, type, discount_amount) VALUES ('id 10', '신규 가입', 7000);
+
+
+INSERT INTO t_store(name, latitude, longitude, phone_num) VALUES ('구미점', 36.128156, 128.332765, '01012345678');
+INSERT INTO t_store(name, latitude, longitude, phone_num) VALUES ('송정점', 36.116350, 128.350211, '01087654321');
+INSERT INTO t_store(name, latitude, longitude, phone_num) VALUES ('인동점', 36.107370, 128.49145, '01012225678');
+INSERT INTO t_store(name, latitude, longitude, phone_num) VALUES ('구미공단점', 36.101625, 128.386003, '01012345677');
+INSERT INTO t_store(name, latitude, longitude, phone_num) VALUES ('진평점', 36.0969960, 128.427679, '01032145678');
+
 
 
 select * from t_order;
