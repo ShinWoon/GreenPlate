@@ -40,11 +40,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var user = ApplicationClass.sharedPreferencesUtil.getUser()
         setBottomNavigation()
         setRecommendMenu()
         setProductList()
-        activityViewModel.putRecentOrderedMenu(user.id)
         setLocationPermission()
 
 
