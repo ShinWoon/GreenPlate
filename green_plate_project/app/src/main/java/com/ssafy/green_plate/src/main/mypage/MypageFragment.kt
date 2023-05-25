@@ -125,7 +125,7 @@ class MypageFragment : Fragment() {
                 // indicatorColor 변경
                 binding.levelProgressBar.setIndicatorColor(indicatorColor)
 
-            } else if (currentStamps < 10) {
+            } else if (currentStamps < 15) {
                 indicatorColor = ContextCompat.getColor(mainActivity, R.color.green_plate_green)
                 binding.levelProgressBar.setIndicatorColor(indicatorColor)
             } else {
