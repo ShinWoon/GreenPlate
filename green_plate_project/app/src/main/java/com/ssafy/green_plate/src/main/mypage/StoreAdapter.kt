@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.ssafy.green_plate.databinding.ListItemStorePageBinding
 import com.ssafy.green_plate.dto.Store
+import com.ssafy.green_plate.util.CommonUtils
 import java.io.IOException
 import java.util.Locale
 
@@ -26,7 +27,7 @@ class StoreAdapter(val context: Context, private var items: List<Store>): Recycl
                 storeInfoNameTv.text = data.name
                 storePhoneNumTv.text = setPhoneNumText(data.phoneNum)
                 storeAddressTv.text = getCurrentAddress(location)
-                storeDistanceTv.text = "${data.distance}m"
+                storeDistanceTv.text = "${CommonUtils.makeComma1(data.distance)}m"
                 Log.d(TAG, "bindInfo: ${storeAddressTv.text}")
             }
         }

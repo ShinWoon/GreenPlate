@@ -15,6 +15,10 @@ object CommonUtils {
         return "${comma.format(num)} 원"
     }
 
+    fun makeComma1(num: Int): String {
+        var comma = DecimalFormat("#,###")
+        return "${comma.format(num)}"
+    }
     fun getFormattedString(date:Date): String {
         val dateFormat = SimpleDateFormat("yyyy.MM.dd HH시 mm분")
         dateFormat.timeZone = TimeZone.getTimeZone("Seoul/Asia")

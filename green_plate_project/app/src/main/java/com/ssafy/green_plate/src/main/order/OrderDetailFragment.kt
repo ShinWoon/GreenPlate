@@ -221,7 +221,6 @@ class OrderDetailFragment : Fragment() {
 
             }
         }
-
         binding.addShoppingcartBtn.setOnClickListener {
             Log.d(TAG, "setListner: button clicked")
             if (selectedDressing || selectedMenu.type == "yogurt") {
