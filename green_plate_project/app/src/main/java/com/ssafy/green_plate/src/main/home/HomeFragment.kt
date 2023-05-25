@@ -93,9 +93,10 @@ class HomeFragment :
             recentMenuAdapter.setItemClickListener(object : RecentMenuAdapter.ItemClickListener{
                 override fun onClick(view: View, position: Int, menu : MenuDetailWithProductInfo) {
                     lifecycleScope.launch {
-                        Log.d(TAG, "onClick: ${menu}")
+                        Log.d(TAG, "onClick: ${menu.productId}")
+
                         activityViewModel.setPageType("recommend")
-                        val tmpMenu = Product(0, menu.productName, menu.engName, menu.productType, "", menu.price, menu.productImg)
+                        val tmpMenu = Product(menu.productId, menu.productName, menu.engName, menu.productType, "", menu.price, menu.productImg)
                         activityViewModel.addSelectedMenu(tmpMenu)
                         Navigation.findNavController(view)
                             .navigate(R.id.action_homeFragment_to_orderDetailFragment)

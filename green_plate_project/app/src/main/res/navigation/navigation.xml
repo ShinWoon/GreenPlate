@@ -127,6 +127,7 @@
         <action
             android:id="@+id/action_firstBannerFragment_to_menuDetail"
             app:popUpTo="@id/orderDetailFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/orderDetailFragment"/>
     </fragment>
 
@@ -138,6 +139,7 @@
         <action
             android:id="@+id/action_secondBannerFragment_to_menuDetail"
             app:popUpTo="@id/orderDetailFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/orderDetailFragment"/>
     </fragment>
 
@@ -149,6 +151,7 @@
         <action
             android:id="@+id/action_thirdBannerFragment_to_menuDetail"
             app:popUpTo="@id/orderDetailFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/orderDetailFragment"/>
     </fragment>
 
