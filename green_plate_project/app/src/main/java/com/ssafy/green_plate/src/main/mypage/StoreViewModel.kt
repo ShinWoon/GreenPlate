@@ -1,5 +1,9 @@
 package com.ssafy.green_plate.src.main.mypage
 
+import android.annotation.SuppressLint
+import android.location.Location
+import android.location.LocationListener
+import android.os.Build
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -24,4 +28,7 @@ class StoreViewModel : ViewModel() {
             }
         }
     }
+
+    var lng = 0.0
+    var lat = 0.0
 }

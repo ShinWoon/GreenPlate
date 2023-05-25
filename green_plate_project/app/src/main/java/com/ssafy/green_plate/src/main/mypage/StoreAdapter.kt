@@ -16,23 +16,25 @@ import java.util.Locale
 
 private const val TAG = "StoreAdapter"
 class StoreAdapter(val context: Context, private var items: List<Store>): RecyclerView.Adapter<StoreAdapter.StoreViewHolder>() {
-    inner class StoreViewHolder(private val binding: ListItemStorePageBinding)
-        : RecyclerView.ViewHolder(binding.root) {
-            fun bindInfo(data : Store) {
-                val location = Location("")
-                location.latitude = data.latitude
-                location.longitude = data.longitude
-                binding.apply {
-                    storeInfoNameTv.text = data.name
-                    storePhoneNumTv.text = data.phoneNum
-                    storeAddressTv.text = getCurrentAddress(location)
-                    Log.d(TAG, "bindInfo: ${storeAddressTv.text}")
-                }
+    inner class StoreViewHolder(private val binding: ListItemStorePageBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bindInfo(data: Store) {
+            val location = Location("")
+            location.latitude = data.latitude
+            location.longitude = data.longitude
+            binding.apply {
+                storeInfoNameTv.text = data.name
+                storePhoneNumTv.text = setPhoneNumText(data.phoneNum)
+                storeAddressTv.text = getCurrentAddress(location)
+                storeDistanceTv.text = "${data.distance}m"
+                Log.d(TAG, "bindInfo: ${storeAddressTv.text}")
             }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoreViewHolder {
-        val binding = ListItemStorePageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListItemStorePageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return StoreViewHolder(binding)
     }
 
@@ -71,5 +73,15 @@ class StoreAdapter(val context: Context, private var items: List<Store>): Recycl
             val address = addresses[0]
             address.getAddressLine(0).toString()
         }
+    }
+
+    private fun setPhoneNumText(textData: String): String {
+        var resultStr = ""
+        resultStr += "${textData[0]}${textData[1]}${textData[2]}"
+        resultStr += "-"
+        resultStr += "${textData[3]}${textData[4]}${textData[5]}${textData[6]}"
+        resultStr += "-"
+        resultStr += "${textData[7]}${textData[8]}${textData[9]}${textData[10]}"
+        return resultStr
     }
 }
