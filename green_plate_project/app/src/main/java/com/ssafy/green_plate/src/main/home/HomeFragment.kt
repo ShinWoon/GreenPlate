@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,7 @@ import com.ssafy.green_plate.config.BaseFragment
 import com.ssafy.green_plate.databinding.FragmentHomeBinding
 import com.ssafy.green_plate.dto.Product
 import com.ssafy.green_plate.src.main.MainActivity
+import com.ssafy.green_plate.src.main.mypage.MypageViewModel
 import kotlinx.coroutines.launch
 import java.util.*
 

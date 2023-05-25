@@ -32,5 +32,5 @@ interface UserService {
     suspend fun login(@Body body: User?): User?
 
     @DELETE("/delete/{id}")
-    suspend fun delete(@Path("id") id : Int) : Int
+    suspend fun delete(@Path("id") id : String) : Int
 }

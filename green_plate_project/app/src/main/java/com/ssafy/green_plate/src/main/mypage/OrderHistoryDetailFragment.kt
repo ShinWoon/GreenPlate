@@ -74,10 +74,7 @@ class OrderHistoryDetailFragment : BaseFragment<FragmentOrderHistoryDetailBindin
             binding.orderHistoryPickUpBtn.isEnabled = false
             binding.orderHistoryPickUpBtn.text = "픽업 완료"
         }
-//
-//        binding.orderHistorySubToppingRv.apply {
-//            adapter = SubToppingAdapter(mainActivity, items)
-//        }
+
     }
 
     override fun onDestroy() {
