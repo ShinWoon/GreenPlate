@@ -44,6 +44,7 @@
 
         <AutoCompleteTextView
             android:id="@+id/payingCouponTv"
+            android:inputType="none"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="할인쿠폰 선택"
@@ -94,6 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="카드사 선택"
+                android:inputType="none"
                 app:simpleItems="@array/simple_items"
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -132,7 +134,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="2.5"
             android:layout_marginHorizontal="8dp"
             android:orientation="vertical">
             <LinearLayout
@@ -187,13 +189,13 @@
                     android:text="15,000원"/>
             </LinearLayout>
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/payingBtn"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginVertical="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cornerRadius="20dp"
+                style="@style/Text.bold.white.kr"
                 android:text="결제하기" />
 
         </LinearLayout>

@@ -34,6 +34,7 @@ class OrderDetailFragment : Fragment() {
     private val DRESSING_DEFAULT_ID =  30
     
     lateinit var orderDetailToppingAdapter : OrderDetailToppingAdapter
+    var selectedDressing = false
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -143,42 +144,55 @@ class OrderDetailFragment : Fragment() {
                 R.id.dressing_rbtn1 -> { // 시저 드레싱
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 1
                     shoppingCart.dressingName = "시저 드레싱"
+                    selectedDressing = true
                 }
                 R.id.dressing_rbtn2 -> { // 오리엔탈 드레싱
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 2
                     shoppingCart.dressingName = "오리엔탈 드레싱"
+                    selectedDressing = true
                 }
                 R.id.dressing_rbtn3 -> { // 발사믹 드레싱
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 3
                     shoppingCart.dressingName = "발사믹 드레싱"
+                    selectedDressing = true
                 }
                 R.id.dressing_rbtn4 -> { // 레몬 드레싱
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 4
                     shoppingCart.dressingName = "레몬 드레싱"
+                    selectedDressing = true
                 }
                 R.id.dressing_rbtn5 -> { // 머스타드 드레싱
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 5
                     shoppingCart.dressingName = "머스타드 드레싱"
+                    selectedDressing = true
                 }
                 R.id.dressing_rbtn6 -> { // 칠리 드레싱
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 6
                     shoppingCart.dressingName = "칠리 드레싱"
+                    selectedDressing = true
                 }
                 R.id.dressing_rbtn7 -> { // 드레싱X
                     shoppingCart.dressingId = DRESSING_DEFAULT_ID + 7
                     shoppingCart.dressingName = "드레싱 X"
+                    selectedDressing = true
                 }
+
             }
         }
 
         binding.addShoppingcartBtn.setOnClickListener {
 
-            val checkedItems = orderDetailToppingAdapter.getCheckedItems()
-            Log.d(TAG, "onViewCreated: $checkedItems")
-            shoppingCart.addedStuff = checkedItems
-            activityViewModel.addShoppingList(shoppingCart)
-            Toast.makeText(context, "상품이 장바구니에 담겼습니다.", Toast.LENGTH_SHORT).show()
-            Navigation.findNavController(view).navigate(R.id.action_orderDetailFragment_to_orderFragment)
+            if (selectedDressing) {
+                val checkedItems = orderDetailToppingAdapter.getCheckedItems()
+                Log.d(TAG, "onViewCreated: $checkedItems")
+                shoppingCart.addedStuff = checkedItems
+                activityViewModel.addShoppingList(shoppingCart)
+                Toast.makeText(context, "상품이 장바구니에 담겼습니다.", Toast.LENGTH_SHORT).show()
+                Navigation.findNavController(view).navigate(R.id.action_orderDetailFragment_to_orderFragment)
+            } else {
+                Toast.makeText(mainActivity, "드레싱을 선택하세요.", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
     }
