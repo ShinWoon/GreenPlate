@@ -82,6 +82,8 @@ class HomeFragment :
             })
         }
 
+        var user = ApplicationClass.sharedPreferencesUtil.getUser()
+        activityViewModel.putRecentOrderedMenu(user.id)
         activityViewModel.recentOrderMenu.observe(viewLifecycleOwner) {
             recentMenuAdapter = RecentMenuAdapter(requireContext(), it)
             recentMenuAdapter.notifyDataSetChanged()
